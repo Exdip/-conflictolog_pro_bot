@@ -22,6 +22,16 @@ async def send_menu(update, context):
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('Привет! Выберите:', reply_markup=reply_markup)
 
+async def button_handler(update, context):
+    query = update.callback_query
+    await query.answer()  # Отправляем "ответ" на нажатие
+
+    if query.data == 'buy_course':
+        await query.edit_message_text(text="Вы выбрали: Посмотреть примеры")
+    elif query.data == 'free_lesson':
+        await query.edit_message_text(text="Вы выбрали: Оплатить подписку")
+    elif query.data == 'contacts':
+        await query.edit_message_text(text="Контакты: @ckikmru")
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     url = create_payment(490, "Подписка на Конфликтолог PRO", user_id)
