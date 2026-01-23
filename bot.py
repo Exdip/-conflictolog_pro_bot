@@ -44,12 +44,14 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("subscribe", subscribe))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-app.add_handler(CommandHandler("start", send_menu))
-app.add_handler(CallbackQueryHandler(button_handler))
+    app.add_handler(CommandHandler("start", send_menu))  # ← если вы добавили меню
+    app.add_handler(CallbackQueryHandler(button_handler))
 
+    # Вызов init_db() должен быть ВНУТРИ main()
     init_db()
-    app.run_polling()
 
+    # Запуск бота
+    app.run_polling()
 
 if __name__ == '__main__':
     main()
