@@ -20,7 +20,7 @@ async def send_menu(update, context):
         [InlineKeyboardButton("Контакты", callback_data='contacts')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('Выберите:', reply_markup=reply_markup)
+    await update.message.reply_text('', reply_markup=reply_markup)
     
 async def button_handler(update, context):
     query = update.callback_query
