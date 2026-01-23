@@ -1,5 +1,5 @@
-from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler 
 from config import Config
 from database import init_db, add_user, is_subscribed
 from analysis import analyze_conflict
@@ -12,6 +12,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Привет! Я Конфликтолог PRO. Опишите свой конфликт, и я помогу разобраться.\n\n"
         "Если у вас нет подписки — 490₽/мес. Напишите /subscribe, чтобы оформить."
     )
+
+async def send_menu(update, context):
+    keyboard = [
+        [InlineKeyboardButton("Посмотреть примеры", callback_data='buy_course')],
+        [InlineKeyboardButton("Оплатить подписку", callback_data='free_lesson')],
+        [InlineKeyboardButton("Контакты", callback_data='contacts')]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text('Привет! Выберите:', reply_markup=reply_markup)
 
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -35,9 +44,12 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("subscribe", subscribe))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+app.add_handler(CommandHandler("start", send_menu))
+app.add_handler(CallbackQueryHandler(button_handler))
 
     init_db()
     app.run_polling()
+
 
 if __name__ == '__main__':
     main()
