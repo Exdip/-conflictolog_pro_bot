@@ -21,7 +21,7 @@ async def send_menu(update, context):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('Выберите:', reply_markup=reply_markup)
-
+    
 async def button_handler(update, context):
     query = update.callback_query
     await query.answer()  # Отправляем "ответ" на нажатие
@@ -31,7 +31,7 @@ async def button_handler(update, context):
     elif query.data == 'free_lesson':
         await query.edit_message_text(text="Вы выбрали: Оплатить подписку")
     elif query.data == 'contacts':
-        await query.edit_message_text(text="Контакты: @ckikmru")
+        await query.edit_message_text(text="Контакты: @ckikmru")     
         
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -52,7 +52,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     app = Application.builder().token(Config.TELEGRAM_BOT_TOKEN).build()
 
-    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("start", send_menu))
     app.add_handler(CommandHandler("subscribe", subscribe))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     app.add_handler(CommandHandler("start", send_menu))  # ← если вы добавили меню
