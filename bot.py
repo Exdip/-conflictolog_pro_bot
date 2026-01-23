@@ -20,7 +20,7 @@ async def send_menu(update, context):
         [InlineKeyboardButton("Контакты", callback_data='contacts')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('Привет! Выберите:', reply_markup=reply_markup)
+    await update.message.reply_text('Выберите:', reply_markup=reply_markup)
 
 async def button_handler(update, context):
     query = update.callback_query
@@ -32,6 +32,7 @@ async def button_handler(update, context):
         await query.edit_message_text(text="Вы выбрали: Оплатить подписку")
     elif query.data == 'contacts':
         await query.edit_message_text(text="Контакты: @ckikmru")
+        
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     url = create_payment(490, "Подписка на Конфликтолог PRO", user_id)
