@@ -80,16 +80,16 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     analysis_result = analyze_conflict(user_message)
     await update.message.reply_text(analysis_result, parse_mode='HTML')
 
-def main():
-    app = Application.builder().token(config.TELEGRAM_BOT_TOKEN).build()  
-    
+    def main():
+    app = Application.builder().token(config.TELEGRAM_BOT_TOKEN).build()
+
+    # Обработчики
     app.add_handler(CommandHandler("start", send_menu))
     app.add_handler(CommandHandler("subscribe", subscribe))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    app.add_handler(CommandHandler("start", send_menu))  # ← если вы добавили меню
-    app.add_handler(CallbackQueryHandler(button_handler))
+    app.add_handler(MessageHandler(filters.VOICE, handle_voice))  # ← внутри main()
 
-    # Вызов init_db() должен быть ВНУТРИ main()
+    # Инициализация базы данных
     init_db()
 
     # Запуск бота
