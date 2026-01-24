@@ -79,15 +79,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     analysis_result = analyze_conflict(user_message)
     await update.message.reply_text(analysis_result, parse_mode='HTML')
-
-    def main():
+    
+   def main():
     app = Application.builder().token(config.TELEGRAM_BOT_TOKEN).build()
 
     # Обработчики
     app.add_handler(CommandHandler("start", send_menu))
     app.add_handler(CommandHandler("subscribe", subscribe))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    app.add_handler(MessageHandler(filters.VOICE, handle_voice))  # ← внутри main()
+    app.add_handler(MessageHandler(filters.VOICE, handle_voice))
 
     # Инициализация базы данных
     init_db()
@@ -96,4 +96,3 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     app.run_polling()
 
 if __name__ == '__main__':
-    main()
