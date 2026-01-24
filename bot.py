@@ -7,6 +7,12 @@ from payment import create_payment
 from speech_recognition import voice_to_text_yandex
 
 async def handle_voice(update, context):
+    # Проверяем длину голосового сообщения
+    voice_duration = update.message.voice.duration
+    if voice_duration > 60:  # больше 1 минуты
+        await update.message.reply_text("Сообщение слишком длинное. Максимум 1 минута.")
+        return
+
     # Получаем голосовое сообщение
     voice = update.message.voice
     file_id = voice.file_id
@@ -86,7 +92,12 @@ def main():
     init_db()
 
     # Запуск бота
-    app.run_polling()
+app.run_webhook(
+    listen="0.0.0.0",
+    port=int(os.environ.get("PORT", 10000)),
+    url_path=os.environ.get("TELEGRAM_BOT_TOKEN"),
+    webhook_url=f"https://glorious-communication.up.railway.app/{os.environ.get('TELEGRAM_BOT_TOKEN')}"
+)
 
 if __name__ == '__main__':
     main()
