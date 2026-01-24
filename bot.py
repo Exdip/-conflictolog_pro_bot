@@ -4,6 +4,25 @@ from config import Config
 from database import init_db, add_user, is_subscribed
 from analysis import analyze_conflict
 from payment import create_payment
+from speech_recognition import voice_to_text_yandex
+
+async def handle_voice(update, context):
+    # Получаем голосовое сообщение
+    voice = update.message.voice
+    file_id = voice.file_id
+
+    # Скачиваем файл
+    file = await context.bot.get_file(file_id)
+    await file.download_to_drive('voice.oga')
+
+    # Преобразуем в текст через Yandex
+    text = voice_to_text_yandex('voice.oga')
+
+    # Отправляем текст пользователю
+    await update.message.reply_text(f"Вы сказали: {text}")
+
+# Добавляем обработчик
+app.add_handler(MessageHandler(filters.VOICE, handle_voice))
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
