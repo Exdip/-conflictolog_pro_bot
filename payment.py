@@ -1,7 +1,7 @@
 import yookassa
-from config import Config
+import config
 
-yookassa.Configuration.configure(Config.YOOKASSA_SHOP_ID, Config.YOOKASSA_SECRET_KEY)
+yookassa.Configuration.configure(config.YOOKASSA_SHOP_ID, config.YOOKASSA_SECRET_KEY)
 
 def create_payment(amount, description, user_id):
     payment = yookassa.Payment.create({
