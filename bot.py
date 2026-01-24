@@ -80,7 +80,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     analysis_result = analyze_conflict(user_message)
     await update.message.reply_text(analysis_result, parse_mode='HTML')
     
-   def main():
+    def main():
     app = Application.builder().token(config.TELEGRAM_BOT_TOKEN).build()
 
     # Обработчики
