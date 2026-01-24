@@ -21,7 +21,7 @@ def voice_to_text_yandex(opus_file_path):
     }
 
     params = {
-        "folderId": Config.YANDEX_FOLDER_ID,  # <-- Используем config
+        "folderId": config.YANDEX_FOLDER_ID,  # <-- Используем config
         "lang": "ru-RU"
     }
 
