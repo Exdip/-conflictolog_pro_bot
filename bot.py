@@ -26,12 +26,24 @@ async def button_handler(update, context):
     query = update.callback_query
     await query.answer()  # Отправляем "ответ" на нажатие
 
-    if query.data == 'buy_course':
-        await query.edit_message_text(text="https://github.com/Exdip/-conflictolog_pro_bot/commit/020448b6f4e4b3474204dd1c705f8d7453c2c132")
-    elif query.data == 'free_lesson':
-        await query.edit_message_text(text="Оплатить подписку")
+    if query.data == 'examples':
+        # Отправляем ссылки на скачивание
+        await query.edit_message_text(
+            text="Ссылки на примеры:\n"
+                 "1. [Пример 1](https://example.com/example1)\n"
+                 "2. [Пример 2](https://example.com/example2)\n"
+                 "3. [Пример 3](https://example.com/example3)"
+        )
+    elif query.data == 'subscribe':
+        # Создаём платёж и отправляем ссылку
+        user_id = query.from_user.id
+        url = create_payment(490, "Подписка на Конфликтолог PRO", user_id)
+        await query.edit_message_text(
+            text=f"Ссылка для оплаты: {url}"
+        )
     elif query.data == 'contacts':
-        await query.edit_message_text(text="@ckikmru")     
+        await query.edit_message_text(text="@ckikmru")
+        
         
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
