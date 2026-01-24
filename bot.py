@@ -20,18 +20,18 @@ async def send_menu(update, context):
         [InlineKeyboardButton("Контакты", callback_data='contacts')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('Меню', reply_markup=reply_markup)
+    await update.message.reply_text(' ', reply_markup=reply_markup)
     
 async def button_handler(update, context):
     query = update.callback_query
     await query.answer()  # Отправляем "ответ" на нажатие
 
     if query.data == 'buy_course':
-        await query.edit_message_text(text="Посмотреть примеры")
+        await query.edit_message_text(text="https://github.com/Exdip/-conflictolog_pro_bot/commit/020448b6f4e4b3474204dd1c705f8d7453c2c132")
     elif query.data == 'free_lesson':
         await query.edit_message_text(text="Оплатить подписку")
     elif query.data == 'contacts':
-        await query.edit_message_text(text="Контакты: @ckikmru")     
+        await query.edit_message_text(text="@ckikmru")     
         
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
