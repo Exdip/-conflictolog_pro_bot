@@ -15,8 +15,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def send_menu(update, context):
     keyboard = [
-        [InlineKeyboardButton("Посмотреть примеры", callback_data='buy_course')],
-        [InlineKeyboardButton("Оплатить подписку", callback_data='free_lesson')],
+        [InlineKeyboardButton("Посмотреть примеры", callback_data='examples'),
+         InlineKeyboardButton("Оплатить подписку", callback_data='subscribe')],
         [InlineKeyboardButton("Контакты", callback_data='contacts')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -27,9 +27,9 @@ async def button_handler(update, context):
     await query.answer()  # Отправляем "ответ" на нажатие
 
     if query.data == 'buy_course':
-        await query.edit_message_text(text="Вы выбрали: Посмотреть примеры")
+        await query.edit_message_text(text="Посмотреть примеры")
     elif query.data == 'free_lesson':
-        await query.edit_message_text(text="Вы выбрали: Оплатить подписку")
+        await query.edit_message_text(text="Оплатить подписку")
     elif query.data == 'contacts':
         await query.edit_message_text(text="Контакты: @ckikmru")     
         
