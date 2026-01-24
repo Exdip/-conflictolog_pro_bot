@@ -1,5 +1,5 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler 
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
 import config
 from database import init_db, add_user, is_subscribed
 from analysis import analyze_conflict
@@ -21,9 +21,6 @@ async def handle_voice(update, context):
     # Отправляем текст пользователю
     await update.message.reply_text(f"Вы сказали: {text}")
 
-# Добавляем обработчик
-app.add_handler(MessageHandler(filters.VOICE, handle_voice))
-
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     add_user(user_id)
@@ -40,7 +37,7 @@ async def send_menu(update, context):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('Меню', reply_markup=reply_markup)
-    
+
 async def button_handler(update, context):
     query = update.callback_query
     await query.answer()  # Отправляем "ответ" на нажатие
@@ -62,8 +59,7 @@ async def button_handler(update, context):
         )
     elif query.data == 'contacts':
         await query.edit_message_text(text="@ckikmru")
-        
-        
+
 async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     url = create_payment(490, "Подписка на Конфликтолог PRO", user_id)
@@ -71,15 +67,11 @@ async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    #     if not is_subscribed(user_id):
-    #     await update.message.reply_text("У вас нет подписки. Напишите /subscribe.")
-    #     return
-
 
     user_message = update.message.text
     analysis_result = analyze_conflict(user_message)
     await update.message.reply_text(analysis_result, parse_mode='HTML')
-    
+
 def main():
     app = Application.builder().token(config.TELEGRAM_BOT_TOKEN).build()
 
@@ -88,6 +80,7 @@ def main():
     app.add_handler(CommandHandler("subscribe", subscribe))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     app.add_handler(MessageHandler(filters.VOICE, handle_voice))
+    app.add_handler(CallbackQueryHandler(button_handler))  # Добавляем обработчик кнопок
 
     # Инициализация базы данных
     init_db()
