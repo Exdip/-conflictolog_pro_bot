@@ -39,7 +39,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def send_menu(update, context):
     keyboard = [
         [InlineKeyboardButton("Посмотреть примеры", callback_data='examples'),
-        # InlineKeyboardButton("Оплатить 490 рублей", callback_data='subscribe')],
         [InlineKeyboardButton("Контакты", callback_data='contacts')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
