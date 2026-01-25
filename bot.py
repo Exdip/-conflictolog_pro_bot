@@ -97,6 +97,7 @@ def main():
         listen="0.0.0.0",
         port=int(os.environ.get("PORT", 10000)),
          url_path=config.TELEGRAM_BOT_TOKEN,
+         webhook_url=f"https://glorious-communication.up.railway.app/{config.TELEGRAM_BOT_TOKEN}"
     )
 
 if __name__ == '__main__':
