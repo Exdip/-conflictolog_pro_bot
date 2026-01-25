@@ -96,8 +96,7 @@ def main():
     app.run_webhook(
         listen="0.0.0.0",
         port=int(os.environ.get("PORT", 10000)),
-        url_path=os.environ.get("TELEGRAM_BOT_TOKEN"),
-
+         url_path=config.TELEGRAM_BOT_TOKEN,
     )
 
 if __name__ == '__main__':
