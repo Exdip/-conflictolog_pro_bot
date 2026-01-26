@@ -6,3 +6,5 @@ YOOKASSA_SECRET_KEY = os.getenv("YOOKASSA_SECRET_KEY")
 YANDEX_API_KEY = os.getenv("YANDEX_API_KEY")
 YANDEX_FOLDER_ID = os.getenv("YANDEX_FOLDER_ID")
 DB_PATH = os.getenv('DB_PATH', 'users.db')
+# Новая строка:
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
