@@ -38,7 +38,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def send_menu(update, context):
     keyboard = [
-        [InlineKeyboardButton("Посмотреть примеры", callback_data='examples')]
+        [InlineKeyboardButton("Посмотреть примеры", callback_data='examples')],
         [InlineKeyboardButton("Оплатить 490 рублей", callback_data='subscribe')],
         [InlineKeyboardButton("Контакты", callback_data='contacts')]
     ]
@@ -96,4 +96,5 @@ def main():
     app.run_polling()
 
 if __name__ == '__main__':
+
     main()
