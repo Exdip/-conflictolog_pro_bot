@@ -1,4 +1,4 @@
 pydub
 requests
-python-telegram-bot[webhooks]
+python-telegram-bot
 yookassa

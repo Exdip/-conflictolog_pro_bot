@@ -38,7 +38,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def send_menu(update, context):
     keyboard = [
-        [InlineKeyboardButton("Посмотреть примеры", callback_data='examples')],
+        [InlineKeyboardButton("Посмотреть примеры", callback_data='examples')]
+        [InlineKeyboardButton("Оплатить 490 рублей", callback_data='subscribe')],
         [InlineKeyboardButton("Контакты", callback_data='contacts')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -56,13 +57,13 @@ async def button_handler(update, context):
                  "2. [Пример 2](https://example.com/example2)\n"
                  "3. [Пример 3](https://example.com/example3)"
         )
-    #elif query.data == 'subscribe':
+    elif query.data == 'subscribe':
         # Создаём платёж и отправляем ссылку
-       # user_id = query.from_user.id
-      #  url = create_payment(490, "Подписка на Конфликтолог PRO", user_id)
-      #  await query.edit_message_text(
-       #     text=f"Ссылка для оплаты: {url}"
-       # )
+       user_id = query.from_user.id
+       url = create_payment(490, "Подписка на Конфликтолог PRO", user_id)
+       await query.edit_message_text(
+             text=f"Ссылка для оплаты: {url}"
+       )
     elif query.data == 'contacts':
         await query.edit_message_text(text="@ckikmru")
 
@@ -83,21 +84,16 @@ def main():
 
     # Обработчики
     app.add_handler(CommandHandler("start", send_menu))
-    # app.add_handler(CommandHandler("subscribe", subscribe))
+    app.add_handler(CommandHandler("subscribe", subscribe))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     app.add_handler(MessageHandler(filters.VOICE, handle_voice))
-    # app.add_handler(CallbackQueryHandler(button_handler))  # Добавляем обработчик кнопок
+    app.add_handler(CallbackQueryHandler(button_handler))  # Добавляем обработчик кнопок
 
     # Инициализация базы данных
     init_db()
 
-    # Запуск бота
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=int(os.environ.get("PORT", 10000)),
-         url_path=config.TELEGRAM_BOT_TOKEN,
-         webhook_url=f"https://glorious-communication.up.railway.app/{config.TELEGRAM_BOT_TOKEN}"
-    )
+    # Запуск бота в режиме polling
+    app.run_polling()
 
 if __name__ == '__main__':
     main()
