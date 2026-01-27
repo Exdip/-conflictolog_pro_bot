@@ -30,7 +30,9 @@ async def handle_voice(update, context):
             return
         
              
-        text = voice_to_text_yandex('voice.oga')
+        text = voic# Было: text = voice_to_text_yandex('voice.oga')
+        # Стало:
+        text = voice_to_text_yandex('voice.oga', api_key, folder_id)
         if not text:
             text = "Не удалось распознать речь."
 
