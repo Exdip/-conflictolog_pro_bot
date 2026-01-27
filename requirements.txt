@@ -3,5 +3,5 @@ requests
 python-dotenv
 pydub
 yookassa
-yandex-cloud
+yandexcloud
 
