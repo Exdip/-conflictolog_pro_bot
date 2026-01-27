@@ -9,11 +9,11 @@ def convert_opus_to_wav(opus_file_path):
     wav_buffer = io.BytesIO()
     audio.export(wav_buffer, format="wav")
     return wav_buffer.getvalue()
+    
+def voice_to_text_yandex(oga_path, api_key, folder_id):
+    # ... конвертация через pydub ...
+    # ... запрос к Yandex API с использованием api_key и folder_id ...
 
-def voice_to_text_yandex(opus_file_path):
-    """Распознаёт голосовое сообщение через Yandex SpeechKit"""
-    # Преобразуем Opus в WAV
-    wav_data = convert_opus_to_wav(opus_file_path)
 
     headers = {
         "Authorization": f"Api-Key {config.YANDEX_API_KEY}",  # <-- Используем config

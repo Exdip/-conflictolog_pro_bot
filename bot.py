@@ -6,27 +6,39 @@ from database import init_db, add_user, is_subscribed
 from analysis import analyze_conflict
 from payment import create_payment
 from speech_recognition import voice_to_text_yandex
+from telebot import types
 
 async def handle_voice(update, context):
-    # Проверяем длину голосового сообщения
-    voice_duration = update.message.voice.duration
-    if voice_duration > 60:  # больше 1 минуты
-        await update.message.reply_text("Сообщение слишком длинное. Максимум 1 минута.")
-        return
+    try:
+        voice_duration = update.message.voice.duration
+        if voice_duration > 60:
+            await update.message.reply_text("Сообщение слишком длинное. Максимум 1 минута.")
+            return
 
-    # Получаем голосовое сообщение
-    voice = update.message.voice
-    file_id = voice.file_id
+        file = await context.bot.get_file(update.message.voice.file_id)
+        await file.download_to_drive('voice.oga')
 
-    # Скачиваем файл
-    file = await context.bot.get_file(file_id)
-    await file.download_to_drive('voice.oga')
+        # Логируем факт скачивания
+        print("Файл voice.oga успешно скачан")
 
-    # Преобразуем в текст через Yandex
-    text = voice_to_text_yandex('voice.oga')
+        
+        api_key = os.getenv("YANDEX_API_KEY")
+        folder_id = os.getenv("YANDEX_FOLDER_ID")
 
-    # Отправляем текст пользователю
-    await update.message.reply_text(f"Вы сказали: {text}")
+        if not api_key or not folder_id:
+            await update.message.reply_text("Ошибка: не настроены API-ключи Yandex.")
+            return
+        
+             
+        text = voice_to_text_yandex('voice.oga')
+        if not text:
+            text = "Не удалось распознать речь."
+
+        await update.message.reply_text(f"Вы сказали: {text}")
+
+    except Exception as e:
+        print(f"Ошибка в handle_voice: {e}")
+        await update.message.reply_text("Произошла ошибка при обработке голосового сообщения.")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
@@ -37,13 +49,24 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def send_menu(update, context):
-    keyboard = [
-        [InlineKeyboardButton("Посмотреть примеры", callback_data='examples')],
-        [InlineKeyboardButton("Оплатить 490 рублей", callback_data='subscribe')],
-        [InlineKeyboardButton("Контакты", callback_data='contacts')]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('Меню', reply_markup=reply_markup)
+
+def get_keyboard():
+    keyboard = types.InlineKeyboardMarkup()
+    
+    # Ряд 1: Меню (выделяем с помощью эмодзи)
+    btn_menu = types.InlineKeyboardButton("🔴 МЕНЮ", callback_data="menu")
+    keyboard.add(btn_menu) 
+    # Ряд 2: Две кнопки рядом
+    btn_examples = types.InlineKeyboardButton("Посмотреть примеры", callback_data="examples")
+    btn_pay = types.InlineKeyboardButton("Оплатить 490 рублей", callback_data="pay")
+    # Добавляем их в один метод add через запятую
+    keyboard.row(btn_examples, btn_pay)
+    
+    # Ряд 3: Контакты (одна кнопка, будет по центру/во всю ширину)
+    btn_contacts = types.InlineKeyboardButton("Контакты", callback_data="contacts")
+    keyboard.add(btn_contacts)
+    
+    return keyboard
 
 async def button_handler(update, context):
     query = update.callback_query
