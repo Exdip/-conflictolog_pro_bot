@@ -1,6 +1,7 @@
-python-telegram-bot --pre
+python-telegram-bot
 requests
-python-dotenvpydub
+python-dotenv
+pydub
 yookassa
 yandex-cloud
-pyTelegramBotAPI
+
