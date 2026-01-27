@@ -1,4 +1,6 @@
-pydub
+python-telegram-bot --pre
 requests
-python-telegram-bot
+python-dotenvpydub
 yookassa
+yandex-cloud
+pyTelegramBotAPI

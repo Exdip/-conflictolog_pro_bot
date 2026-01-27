@@ -6,7 +6,7 @@ from database import init_db, add_user, is_subscribed
 from analysis import analyze_conflict
 from payment import create_payment
 from speech_recognition import voice_to_text_yandex
-from telebot import types
+
 
 async def handle_voice(update, context):
     try:
@@ -57,26 +57,17 @@ async def send_menu(update, context):
     # обычно это update.message.reply_text или message.answer)
     await update.message.reply_text("Выберите действие:", reply_markup=markup)
 
-# Функция создания клавиатуры (должна быть ОТДЕЛЬНО, на том же уровне, что и send_menu)
+# Вместо старой функции get_keyboard
 def get_keyboard():
-    keyboard = types.InlineKeyboardMarkup()
-    
-    # --- ИСПРАВЛЕНИЕ ПОРЯДКА КНОПОК ПО ВАШЕМУ ЗАПРОСУ ---
-    
-    # 1. Сначала кнопки "Примеры" и "Оплатить" (рядом)
-    btn_examples = types.InlineKeyboardButton("Посмотреть примеры", callback_data="examples")
-    btn_pay = types.InlineKeyboardButton("Оплатить 490 рублей", callback_data="pay")
-    keyboard.row(btn_examples, btn_pay)
-    
-    # 2. Затем кнопка "Контакты" (внизу под ними)
-    btn_contacts = types.InlineKeyboardButton("Контакты", callback_data="contacts")
-    keyboard.add(btn_contacts)
-
-    # 3. Кнопка МЕНЮ (отдельно, с красным шариком)
-    btn_menu = types.InlineKeyboardButton("🔴 МЕНЮ", callback_data="menu")
-    keyboard.add(btn_menu)
-    
-    return keyboard
+    keyboard = [
+        [
+            InlineKeyboardButton("Посмотреть примеры", callback_data="examples"),
+            InlineKeyboardButton("Оплатить 490 рублей", callback_data="pay")
+        ],
+        [InlineKeyboardButton("Контакты", callback_data="contacts")],
+        [InlineKeyboardButton("🔴 МЕНЮ", callback_data="menu")]
+    ]
+    return InlineKeyboardMarkup(keyboard)
 
 async def button_handler(update, context):
     query = update.callback_query
