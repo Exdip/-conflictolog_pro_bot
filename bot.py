@@ -49,22 +49,32 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def send_menu(update, context):
+    # 1. Сначала получаем клавиатуру из функции ниже
+    markup = get_keyboard()
+    
+    # 2. Отправляем сообщение с этой клавиатурой
+    # (В зависимости от вашей библиотеки команда может отличаться, 
+    # обычно это update.message.reply_text или message.answer)
+    await update.message.reply_text("Выберите действие:", reply_markup=markup)
 
+# Функция создания клавиатуры (должна быть ОТДЕЛЬНО, на том же уровне, что и send_menu)
 def get_keyboard():
     keyboard = types.InlineKeyboardMarkup()
     
-    # Ряд 1: Меню (выделяем с помощью эмодзи)
-    btn_menu = types.InlineKeyboardButton("🔴 МЕНЮ", callback_data="menu")
-    keyboard.add(btn_menu) 
-    # Ряд 2: Две кнопки рядом
+    # --- ИСПРАВЛЕНИЕ ПОРЯДКА КНОПОК ПО ВАШЕМУ ЗАПРОСУ ---
+    
+    # 1. Сначала кнопки "Примеры" и "Оплатить" (рядом)
     btn_examples = types.InlineKeyboardButton("Посмотреть примеры", callback_data="examples")
     btn_pay = types.InlineKeyboardButton("Оплатить 490 рублей", callback_data="pay")
-    # Добавляем их в один метод add через запятую
     keyboard.row(btn_examples, btn_pay)
     
-    # Ряд 3: Контакты (одна кнопка, будет по центру/во всю ширину)
+    # 2. Затем кнопка "Контакты" (внизу под ними)
     btn_contacts = types.InlineKeyboardButton("Контакты", callback_data="contacts")
     keyboard.add(btn_contacts)
+
+    # 3. Кнопка МЕНЮ (отдельно, с красным шариком)
+    btn_menu = types.InlineKeyboardButton("🔴 МЕНЮ", callback_data="menu")
+    keyboard.add(btn_menu)
     
     return keyboard
 
