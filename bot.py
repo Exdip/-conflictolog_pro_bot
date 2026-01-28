@@ -67,7 +67,7 @@ def get_keyboard():
     keyboard = [
         [
             InlineKeyboardButton("Посмотреть примеры", callback_data="examples"),
-            InlineKeyboardButton("Оплатить 490 рублей", callback_data="pay")
+            InlineKeyboardButton("Оплатить 490 рублей", callback_data="subscribe")
         ],
         [InlineKeyboardButton("Контакты", callback_data="contacts")],
         [InlineKeyboardButton("🔴 Разбор от Центра Качественного Мышления", callback_data="menu")]
