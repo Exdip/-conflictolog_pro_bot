@@ -25,18 +25,21 @@ async def handle_voice(update, context):
         api_key = os.getenv("YANDEX_API_KEY")
         folder_id = os.getenv("YANDEX_FOLDER_ID")
 
-        if not api_key or not folder_id:
-            await update.message.reply_text("Ошибка: не настроены API-ключи Yandex.")
-            return
-        
-             
-        text = voic# Было: text = voice_to_text_yandex('voice.oga')
-        # Стало:
-        text = voice_to_text_yandex('voice.oga', api_key, folder_id)
-        if not text:
-            text = "Не удалось распознать речь."
+        # ПРОВЕРКА В ЛОГАХ (увидите в Railway)
+        print(f"DEBUG: Использую Folder ID: {folder_id}")
+        print(f"DEBUG: Ключ получен (длина): {len(api_key) if api_key else 'НЕТ КЛЮЧА'}")
 
-        await update.message.reply_text(f"Вы сказали: {text}")
+        if not api_key or not folder_id:
+            await update.message.reply_text("Ошибка: не настроены API-ключи Yandex в Variables.")
+            return
+            
+        text = voice_to_text_yandex('voice.oga', api_key, folder_id)
+        
+        if not text:
+            await update.message.reply_text("Яндекс не смог распознать аудио (пустой ответ).")
+        else:
+            await update.message.reply_text(f"Вы сказали: {text}")
+
 
     except Exception as e:
         print(f"Ошибка в handle_voice: {e}")
@@ -67,7 +70,7 @@ def get_keyboard():
             InlineKeyboardButton("Оплатить 490 рублей", callback_data="pay")
         ],
         [InlineKeyboardButton("Контакты", callback_data="contacts")],
-        [InlineKeyboardButton("🔴 МЕНЮ", callback_data="menu")]
+        [InlineKeyboardButton("🔴 Разбор от Центра Качественного Мышления", callback_data="menu")]
     ]
     return InlineKeyboardMarkup(keyboard)
 
