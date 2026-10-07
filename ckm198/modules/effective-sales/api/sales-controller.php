@@ -237,7 +237,7 @@ final class SalesController {
             if(self::flag($data['create_case']??false)){
                 $outcome=(string)($result['dialog']['goal_status']??'');
                 if(in_array($outcome,['unsuccessful','stalled'],true)){
-                    $case=SalesPracticeFeedbackService::createCase($scriptId,(string)$result['session_id']);
+                    $made=SalesPracticeFeedbackService::createCase($scriptId,(string)$result['session_id']);$case=is_array($made['case']??null)?$made['case']:null;
                 }
             }
             return new \WP_REST_Response(['ok'=>true]+$result+['training_case'=>$case],!empty($result['reused'])?200:201,['Cache-Control'=>'no-store, private']);
