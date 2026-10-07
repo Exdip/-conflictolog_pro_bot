@@ -284,7 +284,9 @@ final class SalesClientFallback {
         foreach ((array)($context['hidden_facts'] ?? []) as $fact) {
             if (!is_array($fact) || !self::usableFact($context, $fact, $playerText)) { continue; }
             $score=self::genericMatchScore($fact,$playerText);
-            if($score>$bestScore){$best=$fact;$bestScore=$score;}
+            $preferLessRevealed=$best!==null&&$score>0&&$score===$bestScore
+                && self::revealLevel($context,$fact)<self::revealLevel($context,$best);
+            if($score>$bestScore||$preferLessRevealed){$best=$fact;$bestScore=$score;}
         }
         // A direct question that names the stored fact title is specific enough
         // even when the generic lexical matcher has only one anchor (for example,
@@ -328,6 +330,10 @@ final class SalesClientFallback {
                 if (preg_match('/(?<![\p{L}])' . preg_quote($subject, '/') . '(?![\p{L}])/iu', $text)) { return ''; }
             }
         }
+
+        // Remove authoring instructions from stored fact wording before client speech.
+        // This only deletes meta text; it never adds scenario facts.
+        $text = preg_replace('/,\s+котор(?:ую|ый|ое|ые)\s+нужно\s+выявить\s+вопросами,\s+а\s+не\s+предполагать\.?$/iu', '.', $text) ?? $text;
 
         // Safe grammatical conversions that do not add facts.
         $text = preg_replace('/\\bкомпания может\\b/iu', 'мы можем', $text) ?? $text;
