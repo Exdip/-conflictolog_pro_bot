@@ -237,3 +237,10 @@ body.ckm-sales-app-document *{box-sizing:border-box}.ckm-sales-frame{min-height:
 .ckm-sales-real-dialog-result .ckm-sales-practice-actions{margin-top:5px}
 .ckm-sales-real-dialog-result .ckm-sales-practice-actions form{margin:0}
 
+/* .583 — Real conversation training result */
+.ckm-sales-training-result{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid rgba(0,0,0,.10);border-radius:999px;background:rgba(255,255,255,.66)}
+.ckm-sales-training-result b{font-size:13px}
+.ckm-sales-training-result small{font-size:10px}
+.ckm-sales-training-result.is-pass{border-color:rgba(34,120,72,.28)}
+.ckm-sales-training-result.is-repeat{border-color:rgba(170,121,25,.30)}
+
