@@ -86,7 +86,7 @@ final class SalesClientFallback {
     private static function genericRequestsConcreteDetail(array $fact,string $playerText): bool {
         if(self::adaptiveCueScore($fact,$playerText)>0)return true;
         $t=self::lower($playerText);
-        foreach(['что именно','сколько','какой','какая','какие','кто ','почему','как ','где ','когда','каков','процент','доля','срок','критер','услов','риск','причин','что нужно','что требуется'] as $cue){if(str_contains($t,$cue))return true;}
+        foreach(['что именно','сколько','какой','какая','какие','каких','кто ','почему','как ','где ','когда','каков','процент','доля','срок','критер','услов','риск','причин','что нужно','что требуется','в каких ситуац','переста','не работает','не работают'] as $cue){if(str_contains($t,$cue))return true;}
         return self::genericMatchScore($fact,$playerText,'revealed')>self::genericMatchScore($fact,$playerText,'partial');
     }
 
@@ -324,6 +324,11 @@ final class SalesClientFallback {
         // Safe grammatical conversions that do not add facts.
         $text = preg_replace('/\\bкомпания может\\b/iu', 'мы можем', $text) ?? $text;
         $text = preg_replace('/\\bкомпания не может\\b/iu', 'мы не можем', $text) ?? $text;
+        $text = preg_replace('/^Клиент уже решает\\b/iu', 'Мы уже решаем', $text) ?? $text;
+        $text = preg_replace('/^Клиент не\\b/iu', 'Мы не', $text) ?? $text;
+        $text = preg_replace('/^У клиента есть\\b/iu', 'У нас есть', $text) ?? $text;
+        $text = preg_replace('/^Клиент оценивает\\b/iu', 'Мы оцениваем', $text) ?? $text;
+        $text = preg_replace('/^На решение влияет\\b/iu', 'На наше решение влияет', $text) ?? $text;
         $text = preg_replace('/^Проблема\\s+не\\s+в\\b/iu', 'У нас проблема не в', $text) ?? $text;
         $text = preg_replace('/^я\\s+/u', 'Я ', $text) ?? $text;
 
@@ -452,6 +457,9 @@ final class SalesClientFallback {
         $unsupported=self::specificUnsupportedMetric($context,$playerText);
         if($unsupported!==''){return $unsupported;}
         $fact=self::matchingFact($context,$playerText);
+        // A direct diagnostic question about a matched scenario fact must be answered
+        // from that grounded fact before any generic value/progress acknowledgement.
+        if($fact&&str_contains($playerText,'?')){return '';}
         if($fact&&self::genericRequestsConcreteDetail($fact,$playerText)){return '';}
         $mechanics=is_array($context['mechanics']??null)?$context['mechanics']:[];
         $replies=is_array($mechanics['progress_replies']??null)?$mechanics['progress_replies']:[];
