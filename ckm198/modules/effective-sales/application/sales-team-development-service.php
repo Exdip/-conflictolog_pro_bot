@@ -204,6 +204,17 @@ final class SalesTeamDevelopmentService {
         return $out;
     }
 
+    public static function registeredEmployees(): array {
+        if(!self::canManage())return [];
+        $out=[];
+        foreach((array)(self::dashboard()['employees']??[]) as $row){
+            if(!is_array($row)||(int)($row['user_id']??0)<1)continue;
+            $key=(string)($row['participant_key']??'');if($key==='')continue;
+            $out[]=['participant_key'=>$key,'user_id'=>(int)$row['user_id'],'label'=>(string)($row['label']??self::participantLabel($key))];
+        }
+        return $out;
+    }
+
     public static function assignTraining(string $participantKey,string $focus,float $score,string $scriptId=''): array {
         if(!self::canManage())throw new \RuntimeException('Назначение тренировки доступно организатору или партнёру.');
         $userId=self::userIdFromKey($participantKey);if($userId<1)throw new \InvalidArgumentException('Автоматическое назначение доступно только зарегистрированному сотруднику.');
