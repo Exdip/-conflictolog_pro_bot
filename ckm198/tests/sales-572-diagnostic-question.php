@@ -26,6 +26,7 @@ s572('diagnostic question is not swallowed by value progress acknowledgement',$p
 $reply=$fallback->buildFactReply($ctx,$question);
 s572('diagnostic question gets grounded client reply',$reply!=='');
 s572('grounded reply uses client perspective',str_contains($reply,'Мы ')||str_contains($reply,'У нас '));
+s572('grounded reply keeps first-person grammar',$reply==='Мы уже решаем задачу некоторым способом и не станем менять этот способ без понятной причины.');
 
 $method=new ReflectionMethod(ArbiterService::class,'deterministicFactUpdates');
 $updates=$method->invoke(null,['mechanics'=>['training_domain'=>'sales'],'target_message'=>['actor'=>'player','content'=>$question],'hidden_facts'=>$facts]);
