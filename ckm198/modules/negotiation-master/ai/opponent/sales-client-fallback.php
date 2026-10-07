@@ -324,6 +324,7 @@ final class SalesClientFallback {
         // Safe grammatical conversions that do not add facts.
         $text = preg_replace('/\\bкомпания может\\b/iu', 'мы можем', $text) ?? $text;
         $text = preg_replace('/\\bкомпания не может\\b/iu', 'мы не можем', $text) ?? $text;
+        $text = preg_replace('/^Клиент уже решает задачу некоторым способом и не станет менять его без понятной причины\\.?$/iu', 'Мы уже решаем задачу некоторым способом и не станем менять этот способ без понятной причины.', $text) ?? $text;
         $text = preg_replace('/^Клиент уже решает\\b/iu', 'Мы уже решаем', $text) ?? $text;
         $text = preg_replace('/^Клиент не\\b/iu', 'Мы не', $text) ?? $text;
         $text = preg_replace('/^У клиента есть\\b/iu', 'У нас есть', $text) ?? $text;
