@@ -34,6 +34,7 @@ final class SalesDevelopmentCenterPage {
         $latest=is_array($w['latest_check']??null)?$w['latest_check']:null;$scriptId=(string)$script['id'];
         $adaptive=SalesAdaptivePolygonService::recommendation($script);$adaptiveHistory=SalesAdaptivePolygonService::history($script);
         $realDialogs=SalesPracticeFeedbackService::realDialogHistory($scriptId,8);
+        $employeeOptions=SalesTeamDevelopmentService::registeredEmployees();
         $pendingAdaptive=!empty($adaptive['pending'])&&is_array($adaptive['case']??null)?$adaptive['case']:null; ?>
         <section class="ckm-sales-center-progress" aria-label="Цикл развития продаж"><?php foreach($progress as $i=>$step): ?>
             <div class="<?php echo !empty($step['done'])?'is-done':''; ?>"><b><?php echo (int)($i+1); ?></b><span><?php echo esc_html((string)$step['title']); ?></span></div>
@@ -136,7 +137,11 @@ final class SalesDevelopmentCenterPage {
                     <span class="ckm-sales-status is-approved">Контакты не попадут в кейс</span>
                 </div>
                 <div class="ckm-sales-real-dialog-grid">
-                    <label><span>Сотрудник</span><input id="ckm-sales-real-dialog-employee" type="text" maxlength="120" placeholder="Например, Иван Петров"></label>
+                    <label class="ckm-sales-real-dialog-employee"><span>Сотрудник</span>
+                        <?php if($employeeOptions): ?><select id="ckm-sales-real-dialog-participant"><option value="">Другой / не зарегистрирован</option><?php foreach($employeeOptions as $employee): ?><option value="<?php echo esc_attr((string)$employee['participant_key']); ?>" data-name="<?php echo esc_attr((string)$employee['label']); ?>"><?php echo esc_html((string)$employee['label']); ?></option><?php endforeach; ?></select><?php endif; ?>
+                        <input id="ckm-sales-real-dialog-employee" type="text" maxlength="120" placeholder="Имя сотрудника">
+                        <?php if($employeeOptions): ?><small>Выберите зарегистрированного сотрудника — тогда кейс можно назначить ему как тренировку.</small><?php endif; ?>
+                    </label>
                     <label><span>Канал</span><select id="ckm-sales-real-dialog-channel"><option value="phone">Телефонный звонок</option><option value="telegram">Telegram</option><option value="max">MAX</option><option value="whatsapp">WhatsApp</option><option value="web">Другой чат</option></select></label>
                     <label><span>Исход разговора</span><select id="ckm-sales-real-dialog-outcome"><option value="unsuccessful">Сделка не состоялась</option><option value="stalled">Диалог остановился</option><option value="successful">Успешный разговор</option></select></label>
                     <label class="ckm-sales-real-dialog-file"><span>Загрузить расшифровку</span><input id="ckm-sales-real-dialog-file" type="file" accept=".txt,.md,.csv,text/plain,text/markdown,text/csv"><small>TXT, MD или CSV. Файл читается в браузере и отправляется как текст.</small></label>
@@ -174,7 +179,19 @@ final class SalesDevelopmentCenterPage {
                             <?php if(!empty($dialog['case_created'])&&$case): ?>
                                 <span class="ckm-sales-status is-approved">Кейс создан</span>
                                 <strong><?php echo esc_html((string)($case['focus_title']??$dialog['focus_title']??'Тренировочная ситуация')); ?></strong>
-                                <?php if($scenarioIdCreated>0): ?><a class="ckm-sales-btn" href="<?php echo esc_url(self::url(['sales_custom_scenario'=>$scenarioIdCreated,'sales_format'=>'training','sales_methodology'=>$scriptId])); ?>">Открыть в Полигоне</a><?php endif; ?>
+                                <div class="ckm-sales-practice-actions">
+                                    <?php if($scenarioIdCreated>0): ?><a class="ckm-sales-btn" href="<?php echo esc_url(self::url(['sales_custom_scenario'=>$scenarioIdCreated,'sales_format'=>'training','sales_methodology'=>$scriptId])); ?>">Открыть в Полигоне</a><?php endif; ?>
+                                    <?php if(!empty($dialog['participant_key'])): ?>
+                                    <form method="post" action="<?php echo esc_url(self::url(['sales_methodology'=>$scriptId])); ?>">
+                                        <?php wp_nonce_field('ckm_sales_script','_ckm_sales_script_nonce'); ?>
+                                        <input type="hidden" name="ckm_sales_script_action" value="practice_assign_case">
+                                        <input type="hidden" name="script_id" value="<?php echo esc_attr($scriptId); ?>">
+                                        <input type="hidden" name="dialog_id" value="<?php echo esc_attr((string)$dialog['session_id']); ?>">
+                                        <input type="hidden" name="participant_key" value="<?php echo esc_attr((string)$dialog['participant_key']); ?>">
+                                        <button class="ckm-sales-btn ckm-sales-primary" type="submit">Назначить тренировку</button>
+                                    </form>
+                                    <?php endif; ?>
+                                </div>
                             <?php elseif((string)$dialog['goal_status']==='successful'): ?>
                                 <span class="ckm-sales-status is-approved">Хорошая практика</span>
                                 <strong>Отдельный тренировочный кейс не требуется</strong>
