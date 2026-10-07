@@ -2,14 +2,14 @@
 /**
  * Plugin Name: CKM Quiz Pro — Intellectual Games + Negotiation Duel
  * Description: CKM platform for business games and intellectual games with a unified game engine, organizer cabinet, AI/human host, payments, tenant/subdomain storefronts, licensing and entitlements.
- * Version: 0.3.23.541-dev.573-SALES-CLIENT-GRAMMAR-FIX
+ * Version: 0.3.23.542-dev.574-SALES-PROBLEM-FOLLOWUP-FIX
  * Requires PHP: 8.3
  * Requires at least: 6.9
  * Author: CKM
  */
 if (!defined('ABSPATH')) exit;
 
-define('CKM_QUIZ_PRO_VERSION', '0.3.23.541-dev.573-SALES-CLIENT-GRAMMAR-FIX');
+define('CKM_QUIZ_PRO_VERSION', '0.3.23.542-dev.574-SALES-PROBLEM-FOLLOWUP-FIX');
 // Compatibility marker retained for historical regression tests: 0.3.23.246-dev.278-GAME-TITLE-RENAMES
 define('CKM_QUIZ_PRO_FILE',__FILE__);
 define('CKM_QUIZ_PRO_DIR',plugin_dir_path(__FILE__));
