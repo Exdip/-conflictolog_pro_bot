@@ -111,6 +111,7 @@ final class SalesPracticeFeedbackService {
                 'session_id'=>$sessionId,
                 'channel'=>(string)($dialog['channel']??'web'),
                 'employee_name'=>(string)($dialog['employee_name']??''),
+                'participant_key'=>(string)($dialog['participant_key']??''),
                 'goal_status'=>$goal,
                 'last_at'=>(string)($dialog['last_at']??''),
                 'messages'=>count((array)($dialog['messages']??[])),
