@@ -15,8 +15,8 @@ final class SalesDevelopmentCenterPage {
             <h1>От методики — к проверяемому навыку</h1>
             <p class="ckm-sales-lead">Стандарт задаёт обязательные принципы, а адаптивный Полигон учит выбирать действие по ситуации: новый клиент → новая развилка → обратная связь → усложнение → контроль переноса.</p>
             <div class="ckm-sales-center-tabs">
-                <a href="#ckm-center-methodology">Методика</a><a href="#ckm-center-polygon">Полигон продаж</a><a href="#ckm-center-check">Проверка</a>
-                <a href="<?php echo esc_url(self::url(['sales_view'=>'ai-sellers'])); ?>">Практика</a><a href="#ckm-center-result">Аналитика</a>
+                <a href="#ckm-center-methodology">Методика</a><a href="#ckm-center-polygon">Полигон продаж</a>
+                <a href="#ckm-center-real-practice">Реальный разговор → кейс</a><a href="#ckm-center-check">Проверка</a><a href="#ckm-center-result">Аналитика</a>
             </div>
         </section>
         <?php if(!empty($notice['message'])): ?><div class="ckm-sales-inline-status <?php echo !empty($notice['error'])?'ckm-sales-error':''; ?>"><?php echo esc_html((string)$notice['message']); ?></div><?php endif; ?>
@@ -125,6 +125,55 @@ final class SalesDevelopmentCenterPage {
                 <?php endforeach; ?>
             </div><?php endif; ?>
             <div class="ckm-sales-inline-status" id="ckm-sales-adaptive-status" aria-live="polite"></div>
+        </section>
+
+        <section class="ckm-sales-section" id="ckm-center-real-practice">
+            <div class="ckm-sales-section-head"><div><div class="ckm-sales-kicker">ПРАКТИКА → ПОЛИГОН</div><h2>Превратить реальный разговор в тренировочный кейс</h2></div></div>
+            <div class="ckm-sales-card ckm-sales-real-practice" id="ckm-sales-practice-import" data-script-id="<?php echo esc_attr($scriptId); ?>">
+                <div class="ckm-sales-real-practice-intro">
+                    <div><strong>Загрузите транскрипт звонка или вставьте чат</strong><p>Система возьмёт трудную ситуацию из практики, определит навык для тренировки и создаст обезличенный кейс Полигона. Исходный разговор в сценарий не копируется.</p></div>
+                    <a class="ckm-sales-btn" href="<?php echo esc_url(self::url(['sales_view'=>'ai-sellers'])); ?>">Открыть текущую практику</a>
+                </div>
+                <div class="ckm-sales-real-practice-grid">
+                    <label>Канал
+                        <select id="ckm-sales-practice-channel" class="ckm-sales-select">
+                            <option value="phone">Телефонный звонок</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="max">MAX</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="web">Другой чат / CRM</option>
+                        </select>
+                    </label>
+                    <label>Исход разговора
+                        <select id="ckm-sales-practice-outcome" class="ckm-sales-select">
+                            <option value="unsuccessful">Неуспешный</option>
+                            <option value="stalled">Застопорился</option>
+                        </select>
+                    </label>
+                    <label>ID звонка / чата <small>необязательно, без ФИО и телефона</small>
+                        <input id="ckm-sales-practice-external-id" type="text" maxlength="120" placeholder="например, CRM-15482">
+                    </label>
+                </div>
+                <div class="ckm-sales-real-practice-source">
+                    <label class="ckm-sales-real-practice-file">
+                        <span><strong>Загрузить файл</strong><small>TXT или CSV · файл читается в браузере и отдельно на сервер не загружается</small></span>
+                        <input id="ckm-sales-practice-file" type="file" accept=".txt,.csv,text/plain,text/csv">
+                    </label>
+                    <div class="ckm-sales-real-practice-or">или</div>
+                    <label class="ckm-sales-real-practice-text">
+                        <span>Вставить разговор</span>
+                        <textarea id="ckm-sales-practice-text" rows="12" placeholder="Клиент: У нас уже есть скрипт, менять его не хочу.&#10;Менеджер: Что именно в текущем подходе вас не устраивает?&#10;Клиент: Менеджеры теряются, когда разговор идёт не по шаблону."></textarea>
+                    </label>
+                </div>
+                <div class="ckm-sales-real-practice-format">
+                    <span>Роли распознаются по меткам <b>Клиент:</b>, <b>Покупатель:</b>, <b>Менеджер:</b>, <b>Продавец:</b>, <b>Сотрудник:</b> или <b>Оператор:</b>.</span>
+                    <span id="ckm-sales-practice-count">Реплики ещё не распознаны.</span>
+                </div>
+                <div class="ckm-sales-card-actions ckm-sales-real-practice-actions">
+                    <button class="ckm-sales-btn ckm-sales-primary" id="ckm-sales-practice-create-case" type="button">Создать тренировочный кейс</button>
+                </div>
+                <div class="ckm-sales-inline-status" id="ckm-sales-practice-import-status" aria-live="polite"></div>
+            </div>
         </section>
 
         <section class="ckm-sales-section" id="ckm-center-check">
