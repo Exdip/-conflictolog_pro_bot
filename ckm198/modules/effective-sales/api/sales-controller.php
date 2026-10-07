@@ -35,6 +35,7 @@ final class SalesController {
         register_rest_route('ckm/v1','/sales/sessions/(?P<id>\d+)/evaluate',['methods'=>'POST','callback'=>[self::class,'evaluate'],'permission_callback'=>[self::class,'permission']]);
         register_rest_route('ckm/v1','/sales/sessions/(?P<id>\d+)/result',['methods'=>'GET','callback'=>[self::class,'result'],'permission_callback'=>[self::class,'permission']]);
         register_rest_route('ckm/v1','/sales/sessions/(?P<id>\d+)/writer/takeover',['methods'=>'POST','callback'=>[self::class,'takeoverWriter'],'permission_callback'=>[self::class,'permission']]);
+        register_rest_route('ckm/v1','/sales/practice/dialogs/import',['methods'=>'POST','callback'=>[self::class,'importPracticeDialog'],'permission_callback'=>[self::class,'permission']]);
         register_rest_route('ckm/v1','/sales/competitions',[
             ['methods'=>'GET','callback'=>[self::class,'competitions'],'permission_callback'=>[self::class,'permission']],
             ['methods'=>'POST','callback'=>[self::class,'createCompetition'],'permission_callback'=>[self::class,'permission']],
@@ -224,6 +225,22 @@ final class SalesController {
             $gate=(new SalesCompetitionService())->resultGate($id);
             if (empty($gate['visible'])) { $result=['ready'=>true,'hidden'=>true,'message'=>(string)$gate['message'],'competition'=>$gate]; }
             return new \WP_REST_Response(['ok'=>true,'result'=>$result],200,['Cache-Control'=>'no-store, private']);
+        } catch (\Throwable $e) { return self::failure($e,403); }
+    }
+
+    public static function importPracticeDialog($request): \WP_REST_Response {
+        try {
+            $data=self::body($request);$scriptId=trim((string)($data['script_id']??''));
+            if($scriptId==='')throw new \InvalidArgumentException('Укажите методику продаж.');
+            $result=SalesAiSellerWorkspaceService::importHumanDialog($scriptId,$data);
+            $case=null;
+            if(self::flag($data['create_case']??false)){
+                $outcome=(string)($result['dialog']['goal_status']??'');
+                if(in_array($outcome,['unsuccessful','stalled'],true)){
+                    $case=SalesPracticeFeedbackService::createCase($scriptId,(string)$result['session_id']);
+                }
+            }
+            return new \WP_REST_Response(['ok'=>true]+$result+['training_case'=>$case],!empty($result['reused'])?200:201,['Cache-Control'=>'no-store, private']);
         } catch (\Throwable $e) { return self::failure($e,403); }
     }
 
