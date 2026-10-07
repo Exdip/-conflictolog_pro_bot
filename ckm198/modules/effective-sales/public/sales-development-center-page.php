@@ -190,6 +190,15 @@ final class SalesDevelopmentCenterPage {
                                                 <b><?php echo (int)round((float)($trainingResult['final_score']??0)); ?>/100</b>
                                                 <small><?php echo !empty($trainingResult['passed'])?'Навык отработан':'Нужно повторить'; ?></small>
                                             </span>
+                                            <?php $transfer=is_array($dialog['transfer_evidence']??null)?$dialog['transfer_evidence']:null; ?>
+                                            <?php if($transfer): ?>
+                                                <span class="ckm-sales-transfer-result <?php echo (string)($transfer['status']??'')==='confirmed'?'is-confirmed':'is-repeated'; ?>">
+                                                    <b><?php echo (string)($transfer['status']??'')==='confirmed'?'Перенос подтверждён':'Ошибка повторилась'; ?></b>
+                                                    <small><?php echo esc_html((string)($transfer['last_at']??'')); ?></small>
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="ckm-sales-transfer-result is-pending"><b>Ждём реальную практику</b><small>Нужен следующий разговор по этой же ситуации</small></span>
+                                            <?php endif; ?>
                                         <?php endif; ?>
                                         <?php if(!empty($assignment['assignment_url'])): ?><a class="ckm-sales-btn" href="<?php echo esc_url((string)$assignment['assignment_url']); ?>">Открыть назначение</a><?php endif; ?>
                                     <?php elseif(!empty($dialog['participant_key'])): ?>
