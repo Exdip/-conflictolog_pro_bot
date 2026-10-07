@@ -307,7 +307,7 @@ final class SalesAdaptivePolygonService {
             'label'=>self::levelLabel($level,false).' · '.(string)$meta['title'],'brief'=>(string)$meta['brief'],'behavior'=>(string)$meta['behavior'],
             'why'=>$why,'opening'=>(string)($seed['opening']??''),'facts'=>(array)($seed['facts']??[]),'adaptive_schema'=>3,
         ];
-        foreach(['practice_source_session_id','practice_source_channel','practice_source_outcome','recertification_revision','recertification_focus'] as $contextKey){
+        foreach(['practice_source_session_id','practice_source_channel','practice_source_outcome','recertification_revision','recertification_focus','reinforcement_source_session_id','reinforcement_participant_key','reinforcement_from_case_id'] as $contextKey){
             if(isset($context[$contextKey])&&trim((string)$context[$contextKey])!=='')$spec[$contextKey]=trim((string)$context[$contextKey]);
         }
         $client=(new SalesScriptClientService())->generateAdaptiveCase($scriptId,$spec);
