@@ -110,6 +110,7 @@ final class SalesPracticeFeedbackService {
             $participantKey=(string)($dialog['participant_key']??'');
             $scenarioId=(int)($case['scenario_id']??0);
             $assignment=$participantKey!==''&&$scenarioId>0?SalesTeamDevelopmentService::assignmentForScenario($participantKey,$scenarioId):null;
+            $trainingResult=$participantKey!==''&&$scenarioId>0?SalesTeamDevelopmentService::latestScenarioTrainingResult($participantKey,$scenarioId):null;
             $out[]=[
                 'session_id'=>$sessionId,
                 'channel'=>(string)($dialog['channel']??'web'),
@@ -123,6 +124,7 @@ final class SalesPracticeFeedbackService {
                 'case_created'=>$case!==null,
                 'case'=>$case,
                 'assignment'=>$assignment,
+                'training_result'=>$trainingResult,
             ];
             if(count($out)>=max(1,min(20,$limit)))break;
         }
