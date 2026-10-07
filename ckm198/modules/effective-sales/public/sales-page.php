@@ -167,6 +167,15 @@ final class SalesPage {
                 self::setScriptNotice($decision==='confirm'?'Редакция стандарта закреплена по подтверждённому эффекту.':'Правило отправлено на доработку и исключено из действующего стандарта.');
                 wp_safe_redirect($back);exit;
             }
+            if($action==='practice_assign_case'){
+                $back=self::url(['sales_methodology'=>$id]).'#ckm-center-real-dialog';
+                $participantKey=sanitize_text_field((string)wp_unslash($_POST['participant_key']??''));
+                if($participantKey==='')throw new \InvalidArgumentException('Выберите зарегистрированного сотрудника.');
+                $made=SalesPracticeFeedbackService::createAndAssign($id,$dialogId,$participantKey);
+                $assignment=(array)($made['assignment']??[]);
+                self::setScriptNotice(!empty($assignment['reused'])?'Эта тренировка уже назначена сотруднику.':'Тренировка по реальной ошибке назначена сотруднику.');
+                wp_safe_redirect($back);exit;
+            }
             if(str_starts_with($action,'seller_')){$backArgs=['sales_view'=>'ai-sellers','sales_agent'=>$id];if($dialogId!=='')$backArgs['sales_dialog']=$dialogId;$back=self::url($backArgs);} 
             if(str_starts_with($action,'integration_'))$back=self::url(['sales_view'=>'integrations']);
             if($action==='integration_telegram_connect'){
