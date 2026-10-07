@@ -161,6 +161,7 @@ final class ArbiterService {
         $groups = [
             '__sales_money' => ['бюдж','стоим','цена','цену','цены','ценой','цене','денег','оплат','платить','затрат'],
             '__sales_value' => ['окуп','эконом','выгод','эффект','результ','ценност','возврат инвест'],
+            '__sales_problem' => ['проблем','не устраива','неудоб','затруднен','затруднён'],
             '__sales_process' => ['процесс','таблиц','мессендж','ручн','передач','скрипт','менеджер','ситуац','переста','не работает','не работают'],
             '__sales_leads' => ['лид','заяв','контакт','потер','завис','ворон'],
             '__sales_decision' => ['лпр','соглас','утверд','утвержд','директор','руковод','комитет','принимает решение','принятие реш'],
@@ -184,7 +185,7 @@ final class ArbiterService {
         $markers = self::salesTopicMarkers($ruleText);
         if (!$markers) { return ''; }
         // Prefer the most discriminating business topic. Generic value language is deliberately last.
-        foreach (['__sales_decision','__sales_experience','__sales_deal_value','__sales_process','__sales_money','__sales_leads','__sales_value'] as $marker) {
+        foreach (['__sales_decision','__sales_experience','__sales_deal_value','__sales_problem','__sales_process','__sales_money','__sales_leads','__sales_value'] as $marker) {
             if (in_array($marker, $markers, true)) { return $marker; }
         }
         return (string)($markers[0] ?? '');
