@@ -136,6 +136,7 @@ final class SalesDevelopmentCenterPage {
                     <span class="ckm-sales-status is-approved">Контакты не попадут в кейс</span>
                 </div>
                 <div class="ckm-sales-real-dialog-grid">
+                    <label><span>Сотрудник</span><input id="ckm-sales-real-dialog-employee" type="text" maxlength="120" placeholder="Например, Иван Петров"></label>
                     <label><span>Канал</span><select id="ckm-sales-real-dialog-channel"><option value="phone">Телефонный звонок</option><option value="telegram">Telegram</option><option value="max">MAX</option><option value="whatsapp">WhatsApp</option><option value="web">Другой чат</option></select></label>
                     <label><span>Исход разговора</span><select id="ckm-sales-real-dialog-outcome"><option value="unsuccessful">Сделка не состоялась</option><option value="stalled">Диалог остановился</option><option value="successful">Успешный разговор</option></select></label>
                     <label class="ckm-sales-real-dialog-file"><span>Загрузить расшифровку</span><input id="ckm-sales-real-dialog-file" type="file" accept=".txt,.md,.csv,text/plain,text/markdown,text/csv"><small>TXT, MD или CSV. Файл читается в браузере и отправляется как текст.</small></label>
@@ -165,8 +166,8 @@ final class SalesDevelopmentCenterPage {
                     ?>
                     <article class="ckm-sales-card ckm-sales-real-dialog-row">
                         <div class="ckm-sales-real-dialog-meta">
-                            <strong><?php echo esc_html((string)($channelLabels[$dialog['channel']]??$dialog['channel'])); ?></strong>
-                            <span><?php echo esc_html((string)($outcomeLabels[$dialog['goal_status']]??$dialog['goal_status'])); ?></span>
+                            <strong><?php echo esc_html((string)(($dialog['employee_name']??'')!==''?$dialog['employee_name']:'Сотрудник не указан')); ?></strong>
+                            <span><?php echo esc_html((string)($channelLabels[$dialog['channel']]??$dialog['channel'])); ?> · <?php echo esc_html((string)($outcomeLabels[$dialog['goal_status']]??$dialog['goal_status'])); ?></span>
                             <small><?php echo esc_html((string)$dialog['last_at']); ?> · <?php echo (int)$dialog['messages']; ?> реплик</small>
                         </div>
                         <div class="ckm-sales-real-dialog-result">
