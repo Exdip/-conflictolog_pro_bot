@@ -244,6 +244,37 @@ final class SalesTeamDevelopmentService {
         return ['assignment'=>$assignment,'target'=>$target,'reused'=>false];
     }
 
+    public static function assignmentForScenario(string $participantKey,int $scenarioId): ?array {
+        if(!self::canManage()||$scenarioId<1)return null;
+        $userId=self::userIdFromKey($participantKey);if($userId<1)return null;
+        $svc=new \CKM\NegotiationMaster\AssignmentService();
+        try{$rows=$svc->listOwn();}catch(\Throwable){return null;}
+        $best=null;
+        foreach($rows as $row){
+            if(!is_array($row)||(int)($row['scenario_id']??0)!==$scenarioId)continue;
+            if((string)($row['assignment_mode']??'')!=='individual'||(string)($row['mode']??'')!=='training')continue;
+            try{$detail=$svc->detail((int)$row['id']);}catch(\Throwable){continue;}
+            foreach((array)($detail['participants']??[]) as $p){
+                if(!is_array($p)||(int)($p['user_id']??0)!==$userId)continue;
+                $status='Назначено';
+                if((int)($p['active_session_id']??0)>0)$status='В процессе';
+                elseif((int)($p['completed']??0)>0)$status='Выполнено';
+                elseif((string)($detail['status']??'')==='closed')$status='Закрыто';
+                elseif((string)($detail['status']??'')==='draft')$status='Черновик';
+                $candidate=[
+                    'assignment_id'=>(int)($detail['id']??0),
+                    'assignment_url'=>(string)($detail['assignment_url']??''),
+                    'status'=>$status,
+                    'scenario_id'=>$scenarioId,
+                    'completed'=>(int)($p['completed']??0),
+                    'active_session_id'=>(int)($p['active_session_id']??0),
+                ];
+                if($best===null||(int)$candidate['assignment_id']>(int)$best['assignment_id'])$best=$candidate;
+            }
+        }
+        return $best;
+    }
+
     public static function assignScenarioTraining(string $participantKey,int $scenarioId,string $title='Практический кейс'): array {
         if(!self::canManage())throw new \RuntimeException('Назначение тренировки доступно организатору или партнёру.');
         $userId=self::userIdFromKey($participantKey);if($userId<1)throw new \InvalidArgumentException('Автоматическое назначение доступно только зарегистрированному сотруднику.');
