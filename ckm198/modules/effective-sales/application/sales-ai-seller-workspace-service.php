@@ -297,15 +297,24 @@ final class SalesAiSellerWorkspaceService {
         $leadName=self::clean((string)($data['lead_name']??''),120);
         $leadContact=self::clean((string)($data['lead_contact']??''),180);
         $employeeName=self::clean((string)($data['employee_name']??''),120);
+        $participantKey=self::clean((string)($data['participant_key']??''),80);
+        if($participantKey!==''){
+            $matched=null;
+            foreach(SalesTeamDevelopmentService::registeredEmployees() as $employee){
+                if(is_array($employee)&&(string)($employee['participant_key']??'')===$participantKey){$matched=$employee;break;}
+            }
+            if(!$matched)throw new \InvalidArgumentException('Выбранный сотрудник не найден в текущей площадке.');
+            $employeeName=self::clean((string)($matched['label']??$employeeName),120);
+        }
         $now=gmdate('c');$logs=self::readLogs($uid);$reused=false;
         foreach($logs as $row)if(is_array($row)&&(string)($row['session_id']??'')===$sessionId){$reused=true;break;}
-        self::upsertLog($uid,$sessionId,static function(array $log) use($scriptId,$scope,$channel,$outcome,$stage,$leadName,$leadContact,$employeeName,$messages,$externalId,$now): array {
+        self::upsertLog($uid,$sessionId,static function(array $log) use($scriptId,$scope,$channel,$outcome,$stage,$leadName,$leadContact,$employeeName,$participantKey,$messages,$externalId,$now): array {
             return [
                 'session_id'=>(string)($log['session_id']??''),
                 'script_id'=>$scriptId,'scope'=>$scope,
                 'status'=>$outcome==='active'?'active':'ended',
                 'started_at'=>(string)($log['started_at']??$now),'last_at'=>$now,
-                'handoff'=>false,'lead_name'=>$leadName,'lead_contact'=>$leadContact,'employee_name'=>$employeeName,
+                'handoff'=>false,'lead_name'=>$leadName,'lead_contact'=>$leadContact,'employee_name'=>$employeeName,'participant_key'=>$participantKey,
                 'pipeline_stage'=>$stage,'control_mode'=>'human','channel'=>$channel,
                 'messages'=>$messages,'source_kind'=>'human_import','practice_outcome'=>$outcome,
                 'external_source_hash'=>$externalId!==''?hash('sha256',$externalId):'',
