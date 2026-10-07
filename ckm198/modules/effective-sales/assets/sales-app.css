@@ -233,7 +233,7 @@ body.ckm-sales-app-document *{box-sizing:border-box}.ckm-sales-frame{min-height:
 .ckm-sales-real-dialog-result>strong{font-size:13px;line-height:1.45}
 .ckm-sales-real-dialog-result .ckm-sales-btn{margin-top:5px}
 @media(max-width:760px){.ckm-sales-real-dialog-row{grid-template-columns:1fr}}
-.ckm-sales-real-dialog-employee select+.ckm-sales-real-dialog-employee input{margin-top:2px}
+.ckm-sales-real-dialog-employee select+input{margin-top:2px}
 .ckm-sales-real-dialog-result .ckm-sales-practice-actions{margin-top:5px}
 .ckm-sales-real-dialog-result .ckm-sales-practice-actions form{margin:0}
 
