@@ -275,6 +275,24 @@ final class SalesTeamDevelopmentService {
         return $best;
     }
 
+    public static function latestScenarioTrainingResult(string $participantKey,int $scenarioId): ?array {
+        if(!self::canManage()||$participantKey===''||$scenarioId<1)return null;
+        $map=self::scenarioMap();if(!isset($map[$scenarioId]))return null;
+        foreach(self::rawRows($map) as $row){
+            if(!is_array($row)||(string)($row['participant_key']??'')!==$participantKey)continue;
+            if((int)($row['scenario_id']??0)!==$scenarioId)continue;
+            if((string)($row['mode']??'training')!=='training')continue;
+            return [
+                'session_id'=>(int)($row['session_id']??0),
+                'final_score'=>(float)($row['final_score']??0),
+                'completed_at'=>(string)($row['completed_at']??''),
+                'criteria'=>(array)($row['criteria']??[]),
+                'passed'=>(float)($row['final_score']??0)>=self::PASS_SCORE,
+            ];
+        }
+        return null;
+    }
+
     public static function assignScenarioTraining(string $participantKey,int $scenarioId,string $title='Практический кейс'): array {
         if(!self::canManage())throw new \RuntimeException('Назначение тренировки доступно организатору или партнёру.');
         $userId=self::userIdFromKey($participantKey);if($userId<1)throw new \InvalidArgumentException('Автоматическое назначение доступно только зарегистрированному сотруднику.');
