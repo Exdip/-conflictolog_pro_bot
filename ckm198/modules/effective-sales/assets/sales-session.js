@@ -59,6 +59,43 @@ if(hostRoot){
  poll();return;
 }
 
+const practiceImport=qs('#ckm-sales-practice-import');
+if(practiceImport){
+ const text=qs('#ckm-sales-practice-text'),file=qs('#ckm-sales-practice-file'),channel=qs('#ckm-sales-practice-channel'),outcome=qs('#ckm-sales-practice-outcome'),externalId=qs('#ckm-sales-practice-external-id'),count=qs('#ckm-sales-practice-count'),create=qs('#ckm-sales-practice-create-case'),out=qs('#ckm-sales-practice-import-status');
+ const roleOf=v=>{const x=String(v||'').trim().toLowerCase().replace(/ё/g,'е');if(['клиент','покупатель','заказчик','лид','client','customer'].includes(x))return'user';if(['менеджер','продавец','сотрудник','оператор','seller','manager','operator','employee','agent'].includes(x))return'operator';return'';};
+ const parseTranscript=raw=>{
+  const rows=[];let current=null;
+  const push=()=>{if(current&&current.content.trim())rows.push({role:current.role,content:current.content.trim()});current=null;};
+  for(const rawLine of String(raw||'').replace(/\r/g,'').split('\n')){
+   const line=rawLine.trim();if(!line)continue;
+   let m=line.match(/^(?:\[[^\]]{1,30}\]\s*)?([^:;,-]{2,24})\s*:\s*(.+)$/u);
+   if(!m)m=line.match(/^([^;,]{2,24})\s*[;,]\s*(.+)$/u);
+   if(m){const role=roleOf(m[1]);if(role){push();current={role,content:m[2]};continue;}}
+   if(current)current.content+='\n'+line;
+  }
+  push();return rows;
+ };
+ const syncCount=()=>{const rows=parseTranscript(text?.value||''),clients=rows.filter(x=>x.role==='user').length,sellers=rows.filter(x=>x.role==='operator').length;if(count)count.textContent=rows.length?('Распознано: '+rows.length+' реплик · клиент '+clients+' · сотрудник '+sellers):'Реплики ещё не распознаны.';return rows;};
+ if(text)text.addEventListener('input',syncCount);
+ if(file)file.addEventListener('change',async()=>{const picked=file.files&&file.files[0];if(!picked)return;if(picked.size>2*1024*1024){if(out){out.textContent='Файл слишком большой. Для импорта используйте TXT/CSV до 2 МБ.';out.classList.add('ckm-sales-error');}file.value='';return;}try{const raw=await picked.text();if(text)text.value=raw;if(externalId&&!externalId.value)externalId.value='file-'+picked.size+'-'+picked.lastModified;syncCount();if(out){out.textContent='Файл прочитан. Проверьте распознанные роли и создайте кейс.';out.classList.remove('ckm-sales-error');}}catch(e){if(out){out.textContent='Не удалось прочитать файл.';out.classList.add('ckm-sales-error');}}});
+ if(create)create.addEventListener('click',async()=>{
+  if(out){out.textContent='';out.classList.remove('ckm-sales-error');}
+  const messages=syncCount(),clients=messages.filter(x=>x.role==='user').length,sellers=messages.filter(x=>x.role==='operator').length;
+  if(!clients||!sellers){if(out){out.textContent='Не удалось разделить разговор. Добавьте метки «Клиент:» и «Менеджер:» перед репликами.';out.classList.add('ckm-sales-error');}return;}
+  setBusy(create,true,'Создаём кейс…');
+  try{
+   const data=await api('practice/dialogs/import',{method:'POST',body:JSON.stringify({script_id:practiceImport.dataset.scriptId||'',channel:channel?.value||'web',outcome:outcome?.value||'unsuccessful',external_id:(externalId?.value||'').trim(),messages,create_case:true})});
+   const made=data.training_case?.case||null,scenarioId=parseInt(made?.scenario_id||'0',10);
+   if(out){
+    out.classList.remove('ckm-sales-error');out.textContent=(data.training_case?.reused?'Кейс уже существовал: ':'Тренировочный кейс создан: ')+(made?.focus_title||'ситуация из практики')+'. ';
+    if(scenarioId){const a=document.createElement('a');a.className='ckm-sales-practice-open-case';a.href=pageUrl({sales_custom_scenario:scenarioId,sales_format:'training',sales_methodology:practiceImport.dataset.scriptId||''});a.textContent='Открыть кейс';out.appendChild(a);}
+   }
+  }catch(e){if(out){out.textContent=e.message||'Не удалось создать тренировочный кейс.';out.classList.add('ckm-sales-error');}}
+  finally{setBusy(create,false);}
+ });
+ syncCount();
+}
+
 const centerChecks=[...document.querySelectorAll('[data-sales-center-check]')];
 for(const centerCheck of centerChecks){centerCheck.addEventListener('click',async()=>{const section=centerCheck.closest('.ckm-sales-section');const out=section?section.querySelector('.ckm-sales-inline-status'):null;setBusy(centerCheck,true,'Создаём проверку…');if(out){out.textContent='';out.classList.remove('ckm-sales-error');}try{const scenarioId=parseInt(centerCheck.dataset.scenarioId||'0',10),scriptId=centerCheck.dataset.scriptId||'';if(!scenarioId)throw new Error('Сначала создайте ИИ-клиента для этой методики.');const data=await api('sessions/start',{method:'POST',body:JSON.stringify({scenario_id:scenarioId,mode:'exam',difficulty:'medium',restart:true,client_id:clientId()})});location.assign(pageUrl({sales_custom_scenario:scenarioId,sales_session:data.session_id,sales_format:'check',sales_methodology:scriptId}));return;}catch(e){if(out){out.textContent=e.message;out.classList.add('ckm-sales-error');}}finally{setBusy(centerCheck,false);}});}
 
