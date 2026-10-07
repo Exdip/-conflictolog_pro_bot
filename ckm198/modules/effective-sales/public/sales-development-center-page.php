@@ -196,6 +196,22 @@ final class SalesDevelopmentCenterPage {
                                                     <b><?php echo (string)($transfer['status']??'')==='confirmed'?'Перенос подтверждён':'Ошибка повторилась'; ?></b>
                                                     <small><?php echo esc_html((string)($transfer['last_at']??'')); ?></small>
                                                 </span>
+                                                <?php if((string)($transfer['status']??'')==='repeated'): ?>
+                                                    <?php $reinforcementAssignment=is_array($dialog['reinforcement_assignment']??null)?$dialog['reinforcement_assignment']:null; ?>
+                                                    <?php if($reinforcementAssignment): ?>
+                                                        <span class="ckm-sales-status is-approved"><?php echo esc_html((string)($reinforcementAssignment['status']??'Усиленная тренировка назначена')); ?></span>
+                                                        <?php if(!empty($reinforcementAssignment['assignment_url'])): ?><a class="ckm-sales-btn" href="<?php echo esc_url((string)$reinforcementAssignment['assignment_url']); ?>">Открыть усиленную тренировку</a><?php endif; ?>
+                                                    <?php else: ?>
+                                                        <form method="post" action="<?php echo esc_url(self::url(['sales_methodology'=>$scriptId])); ?>">
+                                                            <?php wp_nonce_field('ckm_sales_script','_ckm_sales_script_nonce'); ?>
+                                                            <input type="hidden" name="ckm_sales_script_action" value="practice_assign_reinforcement">
+                                                            <input type="hidden" name="script_id" value="<?php echo esc_attr($scriptId); ?>">
+                                                            <input type="hidden" name="dialog_id" value="<?php echo esc_attr((string)$dialog['session_id']); ?>">
+                                                            <input type="hidden" name="participant_key" value="<?php echo esc_attr((string)$dialog['participant_key']); ?>">
+                                                            <button class="ckm-sales-btn ckm-sales-primary" type="submit">Назначить усиленную тренировку</button>
+                                                        </form>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
                                             <?php else: ?>
                                                 <span class="ckm-sales-transfer-result is-pending"><b>Ждём реальную практику</b><small>Нужен следующий разговор по этой же ситуации</small></span>
                                             <?php endif; ?>
