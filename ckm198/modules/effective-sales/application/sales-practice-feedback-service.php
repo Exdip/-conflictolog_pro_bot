@@ -140,6 +140,12 @@ final class SalesPracticeFeedbackService {
             $trainingResult=$participantKey!==''&&$scenarioId>0?SalesTeamDevelopmentService::latestScenarioTrainingResult($participantKey,$scenarioId):null;
             $focusCode=is_array($focus)?(string)($focus['code']??''):'';
             $transfer=$trainingResult?self::transferEvidence($dialogs,$participantKey,$focusCode,(string)($trainingResult['completed_at']??''),$sessionId):null;
+            $reinforcementCase=null;$reinforcementAssignment=null;
+            if($transfer&&(string)($transfer['status']??'')==='repeated'){
+                $reinforcementCase=self::reinforcementCase($script,(string)($transfer['session_id']??''),$participantKey);
+                $reinforcementScenario=(int)($reinforcementCase['scenario_id']??0);
+                if($reinforcementScenario>0)$reinforcementAssignment=SalesTeamDevelopmentService::assignmentForScenario($participantKey,$reinforcementScenario);
+            }
             $out[]=[
                 'session_id'=>$sessionId,
                 'channel'=>(string)($dialog['channel']??'web'),
@@ -155,10 +161,56 @@ final class SalesPracticeFeedbackService {
                 'assignment'=>$assignment,
                 'training_result'=>$trainingResult,
                 'transfer_evidence'=>$transfer,
+                'reinforcement_case'=>$reinforcementCase,
+                'reinforcement_assignment'=>$reinforcementAssignment,
             ];
             if(count($out)>=max(1,min(20,$limit)))break;
         }
         return $out;
+    }
+
+    private static function reinforcementCase(array $script,string $sourceSessionId,string $participantKey): ?array {
+        if($sourceSessionId===''||$participantKey==='')return null;
+        foreach(array_reverse((array)($script['adaptive_cases']??[])) as $case){
+            if(!is_array($case))continue;
+            if((string)($case['reinforcement_source_session_id']??'')!==$sourceSessionId)continue;
+            if((string)($case['reinforcement_participant_key']??'')!==$participantKey)continue;
+            return $case;
+        }
+        return null;
+    }
+
+    public static function assignReinforcement(string $scriptId,string $sourceSessionId,string $participantKey): array {
+        if(!self::canManage())throw new \RuntimeException('Назначение усиленной тренировки доступно организатору или партнёру.');
+        if($participantKey==='')throw new \InvalidArgumentException('Сотрудник не выбран.');
+        $script=SalesScriptService::find($scriptId);if(!$script)throw new \InvalidArgumentException('Методика не найдена.');
+        $sourceDialog=SalesAiSellerWorkspaceService::findDialog($scriptId,$sourceSessionId);if(!$sourceDialog)throw new \InvalidArgumentException('Исходный реальный разговор не найден.');
+        $sourceCase=self::existingCase($script,$sourceSessionId);if(!$sourceCase)throw new \RuntimeException('Для исходной ошибки ещё нет тренировочного кейса.');
+        $scenarioId=(int)($sourceCase['scenario_id']??0);if($scenarioId<1)throw new \RuntimeException('Исходный тренировочный кейс повреждён.');
+        $trainingResult=SalesTeamDevelopmentService::latestScenarioTrainingResult($participantKey,$scenarioId);
+        if(!$trainingResult)throw new \RuntimeException('Сначала сотрудник должен завершить назначенную тренировку.');
+        $focusCode=(string)($sourceCase['focus_code']??'');if($focusCode==='')$focusCode=(string)(self::focus($sourceDialog)['code']??'');
+        if($focusCode==='')throw new \RuntimeException('Не удалось определить навык для повторной тренировки.');
+        $dialogs=SalesAiSellerWorkspaceService::recentDialogs($scriptId,50);
+        $transfer=self::transferEvidence($dialogs,$participantKey,$focusCode,(string)($trainingResult['completed_at']??''),$sourceSessionId);
+        if(!$transfer||(string)($transfer['status']??'')!=='repeated')throw new \RuntimeException('Усиленная тренировка нужна только после повторения ошибки в реальной практике.');
+        $repeatedSessionId=(string)($transfer['session_id']??'');if($repeatedSessionId==='')throw new \RuntimeException('Повторный реальный разговор не найден.');
+
+        $case=self::reinforcementCase($script,$repeatedSessionId,$participantKey);$reused=$case!==null;
+        if(!$case){
+            $level=min(3,max(2,(int)($sourceCase['level']??1)+1));
+            $case=SalesAdaptivePolygonService::createCaseForFocus($scriptId,$focusCode,$level,[
+                'why'=>'После завершённой тренировки та же ошибка повторилась в реальном разговоре. Назначен более сложный вариативный кейс для закрепления навыка.',
+                'reinforcement_source_session_id'=>$repeatedSessionId,
+                'reinforcement_participant_key'=>$participantKey,
+                'reinforcement_from_case_id'=>(string)($sourceCase['id']??''),
+            ]);
+        }
+        $newScenarioId=(int)($case['scenario_id']??0);if($newScenarioId<1)throw new \RuntimeException('Усиленный тренировочный кейс создан без сценария.');
+        $assignment=SalesTeamDevelopmentService::assignScenarioTraining(
+            $participantKey,$newScenarioId,'Усиленная тренировка: '.(string)($case['focus_title']??'навык продаж')
+        );
+        return ['case'=>$case,'case_reused'=>$reused,'assignment'=>$assignment,'transfer'=>$transfer];
     }
 
     public static function teamEffectiveness(): array {
