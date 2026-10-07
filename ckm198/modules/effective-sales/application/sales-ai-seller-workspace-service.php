@@ -28,6 +28,10 @@ final class SalesAiSellerWorkspaceService {
         $ts=(int)($message['at_ts']??0);if($ts>0)return $ts;$raw=(string)($message['at']??'');$parsed=$raw!==''?strtotime($raw):false;return $parsed===false?0:(int)$parsed;
     }
     private static function goalStatus(array $log,?int $now=null): string {
+        if((string)($log['source_kind']??'')==='human_import'){
+            $forced=(string)($log['practice_outcome']??'');
+            if(in_array($forced,['successful','unsuccessful','stalled'],true))return $forced;
+        }
         $stage=self::stage((string)($log['pipeline_stage']??'new'));if($stage==='won')return 'successful';if($stage==='lost')return 'unsuccessful';
         $now=$now??time();$last=(string)($log['last_at']??'');$lastTs=$last!==''?strtotime($last):false;
         if((string)($log['status']??'')==='ended')return 'unsuccessful';
@@ -251,6 +255,65 @@ final class SalesAiSellerWorkspaceService {
         $uid=(int)($session['owner_user_id']??0);$sid=(string)($session['id']??'');$leadName=self::clean($leadName,120);$leadContact=self::clean($leadContact,180);$channel=in_array($channel,['telegram','max','whatsapp','phone'],true)?$channel:'web';self::upsertLog($uid,$sid,static function(array $log) use($session,$leadName,$leadContact,$channel): array {
             $log+=['script_id'=>(string)($session['script_id']??''),'scope'=>(string)($session['scope']??'default'),'status'=>'active','started_at'=>gmdate('c'),'last_at'=>gmdate('c'),'handoff'=>false,'pipeline_stage'=>'new','control_mode'=>(string)($session['control_mode']??'ai'),'messages'=>[]];$log['lead_name']=$leadName;$log['lead_contact']=$leadContact;$log['channel']=$channel;$log['messages']=[];return $log;
         });
+    }
+
+    private static function importedRole(string $role): string {
+        $role=self::lower(trim($role));
+        if(in_array($role,['user','client','customer','buyer','клиент','покупатель'],true))return 'user';
+        if(in_array($role,['operator','seller','employee','manager','agent','продавец','сотрудник','менеджер'],true))return 'operator';
+        return '';
+    }
+
+    public static function importHumanDialog(string $scriptId,array $data): array {
+        if(!SalesPracticeFeedbackService::canManage())throw new \RuntimeException('Импорт реальных диалогов доступен организатору или партнёру.');
+        $script=SalesScriptService::find($scriptId);if(!$script)throw new \InvalidArgumentException('Методика не найдена.');
+        $uid=get_current_user_id();if($uid<1)throw new \RuntimeException('Требуется вход.');
+        $scope=SalesScriptService::currentScopeKey();
+        $channel=sanitize_key((string)($data['channel']??'web'));
+        if(!in_array($channel,['web','telegram','max','whatsapp','phone'],true))throw new \InvalidArgumentException('Неизвестный канал реального диалога.');
+        $externalId=self::clean((string)($data['external_id']??''),220);
+        $sessionId=$externalId!==''
+            ? 'real_'.substr(hash('sha256',$uid.'|'.$scope.'|'.$scriptId.'|'.$channel.'|'.$externalId),0,32)
+            : 'real_'.str_replace('-','',wp_generate_uuid4());
+
+        $rows=is_array($data['messages']??null)?array_values($data['messages']):[];
+        $messages=[];$clientCount=0;$sellerCount=0;
+        foreach(array_slice($rows,0,self::MAX_LOG_MESSAGES) as $row){
+            if(!is_array($row))continue;
+            $role=self::importedRole((string)($row['role']??''));if($role==='')continue;
+            $content=self::clean((string)($row['content']??''),1200);if($content==='')continue;
+            $m=['role'=>$role,'content'=>$content,'imported_real_dialog'=>true];
+            $at=self::clean((string)($row['at']??''),50);$ts=$at!==''?strtotime($at):false;
+            if($ts!==false&&$ts>0){$m['at']=gmdate('c',(int)$ts);$m['at_ts']=(int)$ts;}
+            $messages[]=$m;
+            if($role==='user')$clientCount++;else $sellerCount++;
+        }
+        if($clientCount<1||$sellerCount<1)throw new \InvalidArgumentException('В реальном диалоге нужна хотя бы одна реплика клиента и одна реплика сотрудника.');
+
+        $outcome=sanitize_key((string)($data['outcome']??'unsuccessful'));
+        if(!in_array($outcome,['active','successful','unsuccessful','stalled'],true))throw new \InvalidArgumentException('Неизвестный исход реального диалога.');
+        $stage=self::stage(sanitize_key((string)($data['pipeline_stage']??'new')));
+        if($outcome==='successful')$stage='won';elseif($outcome==='unsuccessful')$stage='lost';
+        $leadName=self::clean((string)($data['lead_name']??''),120);
+        $leadContact=self::clean((string)($data['lead_contact']??''),180);
+        $now=gmdate('c');$logs=self::readLogs($uid);$reused=false;
+        foreach($logs as $row)if(is_array($row)&&(string)($row['session_id']??'')===$sessionId){$reused=true;break;}
+        self::upsertLog($uid,$sessionId,static function(array $log) use($scriptId,$scope,$channel,$outcome,$stage,$leadName,$leadContact,$messages,$externalId,$now): array {
+            return [
+                'session_id'=>(string)($log['session_id']??''),
+                'script_id'=>$scriptId,'scope'=>$scope,
+                'status'=>$outcome==='active'?'active':'ended',
+                'started_at'=>(string)($log['started_at']??$now),'last_at'=>$now,
+                'handoff'=>false,'lead_name'=>$leadName,'lead_contact'=>$leadContact,
+                'pipeline_stage'=>$stage,'control_mode'=>'human','channel'=>$channel,
+                'messages'=>$messages,'source_kind'=>'human_import','practice_outcome'=>$outcome,
+                'external_source_hash'=>$externalId!==''?hash('sha256',$externalId):'',
+                'imported_at'=>$now,
+            ];
+        });
+        $dialog=self::findDialog($scriptId,$sessionId);
+        if(!$dialog)throw new \RuntimeException('Не удалось сохранить реальный диалог.');
+        return ['session_id'=>$sessionId,'reused'=>$reused,'dialog'=>$dialog];
     }
     public static function recordTurn(array $session,string $userText,array $out): void {
         $uid=(int)($session['owner_user_id']??0);$sid=(string)($session['id']??'');self::upsertLog($uid,$sid,static function(array $log) use($userText,$out): array {
