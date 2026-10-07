@@ -161,6 +161,45 @@ final class SalesPracticeFeedbackService {
         return $out;
     }
 
+    public static function teamEffectiveness(): array {
+        if(!self::canManage())return ['errors'=>0,'trained'=>0,'confirmed'=>0,'repeated'=>0,'pending'=>0,'rate'=>null,'employees'=>[]];
+        $byEmployee=[];$errors=0;$trained=0;$confirmed=0;$repeated=0;
+        foreach(SalesScriptService::all() as $script){
+            if(!is_array($script))continue;$scriptId=(string)($script['id']??'');if($scriptId==='')continue;
+            foreach(self::realDialogHistory($scriptId,20) as $row){
+                if(!is_array($row)||empty($row['case_created']))continue;
+                $participantKey=(string)($row['participant_key']??'');if($participantKey==='')continue;
+                $label=trim((string)($row['employee_name']??''));if($label==='')$label=$participantKey;
+                if(!isset($byEmployee[$participantKey]))$byEmployee[$participantKey]=[
+                    'participant_key'=>$participantKey,'label'=>$label,'errors'=>0,'trained'=>0,'confirmed'=>0,'repeated'=>0,'pending'=>0,'rate'=>null,
+                ];
+                $errors++;$byEmployee[$participantKey]['errors']++;
+                $result=is_array($row['training_result']??null)?$row['training_result']:null;
+                if(!$result)continue;
+                $trained++;$byEmployee[$participantKey]['trained']++;
+                $transfer=is_array($row['transfer_evidence']??null)?$row['transfer_evidence']:null;
+                $status=(string)($transfer['status']??'');
+                if($status==='confirmed'){$confirmed++;$byEmployee[$participantKey]['confirmed']++;}
+                elseif($status==='repeated'){$repeated++;$byEmployee[$participantKey]['repeated']++;}
+            }
+        }
+        foreach($byEmployee as &$employee){
+            $observed=(int)$employee['confirmed']+(int)$employee['repeated'];
+            $employee['pending']=max(0,(int)$employee['trained']-$observed);
+            $employee['rate']=$observed>0?round(((int)$employee['confirmed']/$observed)*100,1):null;
+        }unset($employee);
+        uasort($byEmployee,static function(array $a,array $b): int{
+            $ar=(int)$a['repeated'];$br=(int)$b['repeated'];if($ar!==$br)return $br<=>$ar;
+            return ((int)$b['errors'])<=>((int)$a['errors']);
+        });
+        $observed=$confirmed+$repeated;
+        return [
+            'errors'=>$errors,'trained'=>$trained,'confirmed'=>$confirmed,'repeated'=>$repeated,
+            'pending'=>max(0,$trained-$observed),'rate'=>$observed>0?round(($confirmed/$observed)*100,1):null,
+            'employees'=>array_values($byEmployee),
+        ];
+    }
+
     public static function createCase(string $scriptId,string $sessionId): array {
         if(!self::canManage())throw new \RuntimeException('Кейсы из практики доступны организатору или партнёру.');
         $script=SalesScriptService::find($scriptId);if(!$script)throw new \InvalidArgumentException('Методика не найдена.');
