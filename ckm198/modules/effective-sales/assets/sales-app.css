@@ -210,3 +210,30 @@ body.ckm-sales-app-document *{box-sizing:border-box}.ckm-sales-frame{min-height:
 .ckm-sales-revision-history-row:first-of-type{margin-top:10px}
 .ckm-sales-revision-history-row small{display:block;margin-top:3px;opacity:.6}
 @media(max-width:700px){.ckm-sales-revision-history-row{grid-template-columns:1fr auto}.ckm-sales-revision-history-row>span:last-child{grid-column:1/-1}}
+
+/* .577 — Real Practice -> Polygon */
+.ckm-sales-real-practice{padding:22px}
+.ckm-sales-real-practice-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:22px}
+.ckm-sales-real-practice-intro>div{max-width:900px}
+.ckm-sales-real-practice-intro strong{font-size:17px}
+.ckm-sales-real-practice-intro p{margin:6px 0 0;color:#b9c5d1;line-height:1.55}
+.ckm-sales-real-practice-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:10px;margin-top:18px}
+.ckm-sales-real-practice-grid label,.ckm-sales-real-practice-text{display:flex;flex-direction:column;gap:7px;color:#aeb9c5;font-size:12px}
+.ckm-sales-real-practice-grid label small{font-weight:400;color:#7f8c9a}
+.ckm-sales-real-practice-grid input,.ckm-sales-real-practice-text textarea{width:100%;box-sizing:border-box;border:1px solid var(--sales-line);border-radius:10px;background:#0d141d;color:#fff;padding:10px 12px;font-family:Ubuntu,Arial,sans-serif;font-size:13px;outline:none}
+.ckm-sales-real-practice-grid input{min-height:42px}
+.ckm-sales-real-practice-grid input:focus,.ckm-sales-real-practice-text textarea:focus{border-color:rgba(99,211,255,.42);box-shadow:0 0 0 3px rgba(99,211,255,.06)}
+.ckm-sales-real-practice-source{display:grid;grid-template-columns:minmax(220px,.42fr) 44px minmax(0,1.58fr);gap:12px;align-items:stretch;margin-top:14px}
+.ckm-sales-real-practice-file{min-height:250px;border:1px dashed rgba(99,211,255,.28);border-radius:14px;background:rgba(99,211,255,.035);display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;cursor:pointer}
+.ckm-sales-real-practice-file span{display:flex;flex-direction:column;gap:6px;align-items:center}
+.ckm-sales-real-practice-file strong{font-size:15px;color:#e9f7ff}
+.ckm-sales-real-practice-file small{max-width:240px;color:#8fa0b0;line-height:1.45}
+.ckm-sales-real-practice-file input{position:absolute;opacity:0;pointer-events:none}
+.ckm-sales-real-practice-or{display:flex;align-items:center;justify-content:center;color:#6f7c8b;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.ckm-sales-real-practice-text textarea{min-height:250px;resize:vertical;line-height:1.5}
+.ckm-sales-real-practice-format{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-top:11px;color:#8d99a7;font-size:11px;line-height:1.45}
+.ckm-sales-real-practice-format b{color:#c8d6e0;font-weight:500}
+.ckm-sales-real-practice-actions{display:flex;gap:10px;flex-wrap:wrap}
+.ckm-sales-practice-open-case{display:inline-block;margin-left:6px;color:#9de4ff!important;text-decoration:underline!important}
+@media(max-width:900px){.ckm-sales-real-practice-grid{grid-template-columns:1fr}.ckm-sales-real-practice-source{grid-template-columns:1fr}.ckm-sales-real-practice-or{padding:2px 0}.ckm-sales-real-practice-file{min-height:120px}.ckm-sales-real-practice-intro{flex-direction:column}.ckm-sales-real-practice-format{flex-direction:column}}
+
