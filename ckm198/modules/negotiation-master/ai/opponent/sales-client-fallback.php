@@ -286,7 +286,15 @@ final class SalesClientFallback {
             $score=self::genericMatchScore($fact,$playerText);
             if($score>$bestScore){$best=$fact;$bestScore=$score;}
         }
-        // Generic SALES matching must have at least two independent lexical anchors.
+        // A direct question that names the stored fact title is specific enough
+        // even when the generic lexical matcher has only one anchor (for example,
+        // «проблема» -> hidden fact «Проблема»). This stays data-driven and does not
+        // depend on a scenario slug or hard-coded fact code.
+        if($best!==null&&$bestScore===1&&str_contains($playerText,'?')){
+            $titleScore=self::genericMatchScore(['title'=>(string)($best['title']??''),'reveal_rules'=>[]],$playerText);
+            if($titleScore>=1)return $best;
+        }
+        // Generic SALES matching otherwise needs at least two independent lexical anchors.
         // One shared word (for example, «менеджеров») is too weak to reveal an
         // unrelated hidden fact such as team size for a question about call selection.
         return $bestScore>=2?$best:null;
