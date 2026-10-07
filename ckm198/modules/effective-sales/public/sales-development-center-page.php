@@ -16,7 +16,7 @@ final class SalesDevelopmentCenterPage {
             <p class="ckm-sales-lead">Стандарт задаёт обязательные принципы, а адаптивный Полигон учит выбирать действие по ситуации: новый клиент → новая развилка → обратная связь → усложнение → контроль переноса.</p>
             <div class="ckm-sales-center-tabs">
                 <a href="#ckm-center-methodology">Методика</a><a href="#ckm-center-polygon">Полигон продаж</a><a href="#ckm-center-check">Проверка</a>
-                <a href="<?php echo esc_url(self::url(['sales_view'=>'ai-sellers'])); ?>">Практика</a><a href="#ckm-center-result">Аналитика</a>
+                <a href="<?php echo esc_url(self::url(['sales_view'=>'ai-sellers'])); ?>">Практика</a><a href="#ckm-center-real-dialog">Реальный разговор</a><a href="#ckm-center-result">Аналитика</a>
             </div>
         </section>
         <?php if(!empty($notice['message'])): ?><div class="ckm-sales-inline-status <?php echo !empty($notice['error'])?'ckm-sales-error':''; ?>"><?php echo esc_html((string)$notice['message']); ?></div><?php endif; ?>
@@ -125,6 +125,32 @@ final class SalesDevelopmentCenterPage {
                 <?php endforeach; ?>
             </div><?php endif; ?>
             <div class="ckm-sales-inline-status" id="ckm-sales-adaptive-status" aria-live="polite"></div>
+        </section>
+
+        <section class="ckm-sales-section" id="ckm-center-real-dialog">
+            <div class="ckm-sales-section-head"><div><div class="ckm-sales-kicker">РЕАЛЬНАЯ ПРАКТИКА → ПОЛИГОН</div><h2>Превратить реальный разговор в тренировочный кейс</h2></div></div>
+            <div class="ckm-sales-card ckm-sales-real-dialog-card" id="ckm-sales-real-dialog-import" data-script-id="<?php echo esc_attr($scriptId); ?>">
+                <div class="ckm-sales-real-dialog-intro">
+                    <div><strong>Звонок или чат сотрудника</strong><p>Вставьте расшифровку разговора или загрузите текстовый файл. Система сохранит разговор в контуре практики и создаст обезличенную ситуацию для Полигона.</p></div>
+                    <span class="ckm-sales-status is-approved">Контакты не попадут в кейс</span>
+                </div>
+                <div class="ckm-sales-real-dialog-grid">
+                    <label><span>Канал</span><select id="ckm-sales-real-dialog-channel"><option value="phone">Телефонный звонок</option><option value="telegram">Telegram</option><option value="max">MAX</option><option value="whatsapp">WhatsApp</option><option value="web">Другой чат</option></select></label>
+                    <label><span>Исход разговора</span><select id="ckm-sales-real-dialog-outcome"><option value="unsuccessful">Сделка не состоялась</option><option value="stalled">Диалог остановился</option><option value="successful">Успешный разговор</option></select></label>
+                    <label class="ckm-sales-real-dialog-file"><span>Загрузить расшифровку</span><input id="ckm-sales-real-dialog-file" type="file" accept=".txt,.md,.csv,text/plain,text/markdown,text/csv"><small>TXT, MD или CSV. Файл читается в браузере и отправляется как текст.</small></label>
+                </div>
+                <label class="ckm-sales-real-dialog-text"><span>Расшифровка разговора</span>
+                    <textarea id="ckm-sales-real-dialog-text" rows="12" placeholder="Клиент: Нам кажется, что это слишком дорого.&#10;Менеджер: Давайте я ещё раз расскажу о преимуществах.&#10;Клиент: Цена всё равно выше, чем мы планировали."></textarea>
+                </label>
+                <div class="ckm-sales-real-dialog-help">
+                    <strong>Как оформить</strong><span>Каждая реплика с новой строки: <b>Клиент:</b> … и <b>Менеджер:</b> … (также распознаются «Покупатель», «Продавец», «Сотрудник», «Оператор»).</span>
+                </div>
+                <div class="ckm-sales-card-actions">
+                    <button class="ckm-sales-btn ckm-sales-primary" type="button" id="ckm-sales-real-dialog-create">Создать тренировочный кейс</button>
+                    <span class="ckm-sales-muted">Исходный разговор остаётся в журнале практики; в тренировочный сценарий передаётся только обезличенный паттерн.</span>
+                </div>
+                <div class="ckm-sales-inline-status" id="ckm-sales-real-dialog-status" aria-live="polite"></div>
+            </div>
         </section>
 
         <section class="ckm-sales-section" id="ckm-center-check">
