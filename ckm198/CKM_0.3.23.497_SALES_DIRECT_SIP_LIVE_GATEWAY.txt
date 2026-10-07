@@ -1,0 +1,11 @@
+CKM Quiz Pro 0.3.23.497-dev.529-SALES-DIRECT-SIP-LIVE-GATEWAY
+
+- Platform-owned GPT-Live Direct SIP control plane.
+- Partner-owned SIP trunk credentials remain encrypted per tenant.
+- Direct outbound SIP calls through POST /v1/live/sessions.
+- Inbound live.transport.incoming webhook with Standard Webhooks signature verification and deduplication.
+- DID -> tenant integration -> assigned AI seller routing.
+- Calls are accepted with the approved sales script and knowledge context.
+- No RTP proxy in WordPress: SIP provider exchanges audio directly with GPT-Live.
+- MANGO/UIS adapters remain for call-control; Direct SIP is the AI voice media path.
+- Sideband transcript/tool worker is intentionally not claimed in this release.

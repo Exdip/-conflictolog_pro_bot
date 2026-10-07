@@ -1,0 +1,5 @@
+NEG-WP-THEME-ISOLATION 397
+Version: 0.3.23.365-dev.397-NEG-WP-THEME-ISOLATION
+Scoped reset protects Negotiation Master typography and controls from WordPress theme inheritance.
+Typography remains forced to 14px. UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

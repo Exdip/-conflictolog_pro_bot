@@ -1,0 +1,10 @@
+0.3.23.189-dev.221-NEGOTIATION-CORE-SKELETON
+
+- Добавлен пассивный каркас Negotiation Core v1 без переключения существующих игр на новый runtime.
+- Зафиксирован единый CKM_Negotiation_Runtime_Interface: create_session, get_state, get_available_actions, submit_player_message, handle_ai_turn, advance_phase, evaluate_turn, check_completion, finish_session, restore_session.
+- Добавлен реестр runtime и общий state template с state_version, voice generation, timer, available_actions и runtime_state.
+- Добавлены четыре новые таблицы нового слоя: ckm_negotiation_sessions, ckm_negotiation_turns, ckm_negotiation_events, ckm_negotiation_requests.
+- Добавлены индексы event_seq и client_request_id для будущей последовательности событий и идемпотентности.
+- DB schema version повышена до 0.3.14.10, чтобы dbDelta создал новые таблицы при обновлении.
+- Маршрутизация Negotiation Core по умолчанию выключена. Текущие negotiation_duel_v1, persuade_me_v1, оплаты и старые сессии не переназначаются.
+- Добавлен regression smoke-test negotiation-core-skeleton-test.php.

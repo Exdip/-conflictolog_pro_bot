@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.495-dev.527-SALES-WHATSAPP-CHANNEL
+
+- Реальный WhatsApp Cloud API для партнёрских ИИ-продавцов.
+- Graph API v26.0; tenant-scoped Phone Number ID, WABA ID, Access Token и App Secret.
+- Подключение: проверка номера -> подписка приложения на WABA -> WABA-level override callback.
+- GET webhook verification возвращает raw hub.challenge; POST проверяет X-Hub-Signature-256 по App Secret.
+- Входящие текстовые сообщения идут в общий AI seller brain и Inbox/CRM.
+- Ответы ИИ, оператора и сценариев возвращаются в WhatsApp.
+- WhatsApp-подключение назначается конкретному ИИ-продавцу из Partner Integration Hub.
+- SIP остаётся tenant-scoped заготовкой для следующего провайдерного слоя.

@@ -1,0 +1,3 @@
+Version: 0.3.23.512-dev.544-SALES-DISCOVERY-CARDS
+- Effective Sales customer-picture UI now shows only fully revealed facts (reveal_level >= 2).
+- Partial discovery states remain in the session snapshot for internal stage/progress logic.

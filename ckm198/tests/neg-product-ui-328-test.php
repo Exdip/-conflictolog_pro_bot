@@ -1,0 +1,31 @@
+<?php
+require_once __DIR__ . '/support/plugin-release.php';
+$root=dirname(__DIR__);
+$catalog=file_get_contents($root.'/includes/games-catalog.php');
+$page=file_get_contents($root.'/modules/negotiation-master/public/player-page.php');
+$product=file_get_contents($root.'/modules/negotiation-master/public/product-catalog.php');
+$meta=file_get_contents($root.'/modules/negotiation-master/content/public-product-meta.php');
+$js=file_get_contents($root.'/modules/negotiation-master/assets/negotiation-session.js');
+$css=file_get_contents($root.'/modules/negotiation-master/assets/negotiation-session.css');
+$plugin=file_get_contents($root.'/ckm-quiz-pro.php');
+$checks=[];
+function t328(&$c,$name,$ok){$c[]=$name;if(!$ok){fwrite(STDERR,"FAIL: $name\n");exit(1);}}
+t328($checks,'version',ckm_test_current_plugin_release($plugin));
+t328($checks,'product catalogue class',str_contains($product,'final class ProductCatalog'));
+t328($checks,'three product scenarios',str_contains($meta,"'contract-supply'")&&str_contains($meta,"'project-under-pressure'")&&str_contains($meta,"'difficult-colleague'"));
+t328($checks,'catalog does not select hidden opponent fields',!str_contains($product,'opponent_hidden_interests_json')&&!str_contains($product,'opponent_constraints_json')&&!str_contains($product,'opponent_walkaway_json')&&!str_contains($product,'reveal_rules_json'));
+t328($checks,'catalog route when no scenario',str_contains($page,'return $library ? self::renderLibrary($library) : self::renderCatalog()'));
+t328($checks,'scenario grid',str_contains($page,'ckm-neg-scenario-grid'));
+t328($checks,'attempt history',str_contains($page,'Мои попытки')&&str_contains($page,'ProductCatalog::attempts'));
+t328($checks,'result deep link',str_contains($page,"'neg_session'=>(int)\$latest['id']"));
+t328($checks,'auto resume config',str_contains($page,"'autoResume' => \$requested !== null")&&str_contains($js,'if(cfg.autoResume)resume()'));
+t328($checks,'catalog return after pause',str_contains($js,'window.location.href=String(cfg.catalogUrl)'));
+t328($checks,'mobile task state controls',str_contains($page,'ckm-neg-mobile-task')&&str_contains($page,'ckm-neg-mobile-state')&&str_contains($js,'toggleMobilePanel'));
+t328($checks,'mobile responsive css',str_contains($css,'.ckm-neg-mobile-tools')&&str_contains($css,'.is-mobile-open'));
+t328($checks,'master card',str_contains($catalog,"'negotiation_master_v1'")&&str_contains($catalog,"'negotiation_master'=>true"));
+t328($checks,'master uses existing entitlement',substr_count($catalog,"'product'=>'negotiation_duel_v1'")>=4);
+t328($checks,'master opens scenarios',str_contains($catalog,"'label'=>'Открыть сценарии'"));
+t328($checks,'visible business negotiation group',str_contains($catalog,"'title'=>'Деловые переговоры'")&&str_contains($catalog,"'keys'=>['express_round_v1','sales_v1','persuade_me_v1','negotiation_master_v1']"));
+t328($checks,'express rename',str_contains($catalog,"'title'=>'Экспресс-раунд'"));
+t328($checks,'no new payment provider in product metadata',!str_contains($product,'YooKassa')&&!str_contains($product,'T-Bank'));
+echo 'PASS '.count($checks)."/".count($checks)."\n";

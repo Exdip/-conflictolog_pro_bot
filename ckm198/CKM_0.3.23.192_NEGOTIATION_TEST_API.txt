@@ -1,0 +1,25 @@
+CKM Quiz Pro 0.3.23.192-dev.224-NEGOTIATION-TEST-API
+
+Added a closed test-only REST adapter for negotiation_core_v1 + negotiation_express_v1.
+
+Safety:
+- disabled by default;
+- enable explicitly with CKM_NEGOTIATION_TEST_API_ENABLED=true or the ckm_negotiation_test_api_enabled filter;
+- manage_options required;
+- only TEST-API-* session IDs are accepted;
+- only negotiation_express_v1 can be created;
+- tenant_id=0 and game_id=0 are forced;
+- no legacy negotiation_duel_v1 routing is changed.
+
+Test-only endpoints under /wp-json/ckm-quiz-pro/v1:
+POST /negotiation-test/start
+GET  /negotiation-test/state
+POST /negotiation-test/voice-finished
+POST /negotiation-test/submit
+POST /negotiation-test/evaluate
+POST /negotiation-test/next
+POST /negotiation-test/finish
+
+All mutating commands after start require expected_version and client_request_id.
+The adapter uses the persistence service, including persisted request replay and state conflict protection.
+The evaluate endpoint may accept mock_evaluation only because this adapter is test-only.

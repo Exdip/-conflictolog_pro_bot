@@ -1,0 +1,473 @@
+{
+  "libraries": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "tenant_id": "bigint unsigned NULL",
+      "slug": "varchar(191) NOT NULL",
+      "title": "varchar(255) NOT NULL",
+      "description": "longtext NULL",
+      "status": "varchar(32) NOT NULL DEFAULT 'draft'",
+      "visibility": "varchar(32) NOT NULL DEFAULT 'public'",
+      "cover_image_url": "longtext NULL",
+      "sort_order": "int NOT NULL DEFAULT 0",
+      "access_type": "varchar(32) NOT NULL DEFAULT 'free'",
+      "product_key": "varchar(191) NULL",
+      "created_by": "bigint unsigned NOT NULL",
+      "created_at": "datetime NOT NULL",
+      "updated_at": "datetime NOT NULL"
+    },
+    "unique": {
+      "tenant_slug": [
+        "tenant_id",
+        "slug"
+      ]
+    },
+    "indexes": {
+      "status": [
+        "status"
+      ],
+      "access_type": [
+        "access_type"
+      ],
+      "sort_order": [
+        "sort_order"
+      ]
+    }
+  },
+  "scenarios": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "tenant_id": "bigint unsigned NULL",
+      "library_id": "bigint unsigned NULL",
+      "slug": "varchar(191) NOT NULL",
+      "title": "varchar(255) NOT NULL",
+      "status": "varchar(32) NOT NULL DEFAULT 'draft'",
+      "source_scenario_id": "bigint unsigned NULL",
+      "current_version_id": "bigint unsigned NULL",
+      "created_by": "bigint unsigned NOT NULL",
+      "created_at": "datetime NOT NULL",
+      "updated_at": "datetime NOT NULL"
+    },
+    "unique": {
+      "tenant_slug": [
+        "tenant_id",
+        "slug"
+      ]
+    },
+    "indexes": {
+      "status": [
+        "status"
+      ],
+      "owner": [
+        "created_by"
+      ],
+      "library": [
+        "library_id"
+      ]
+    }
+  },
+  "scenario_versions": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "scenario_id": "bigint unsigned NOT NULL",
+      "version_number": "int unsigned NOT NULL",
+      "status": "varchar(32) NOT NULL DEFAULT 'draft'",
+      "player_role": "longtext NULL",
+      "player_situation": "longtext NULL",
+      "player_task": "longtext NULL",
+      "player_known_facts_json": "longtext NULL",
+      "player_ideal_result_json": "longtext NULL",
+      "player_target_result_json": "longtext NULL",
+      "player_alternative_json": "longtext NULL",
+      "player_red_lines_json": "longtext NULL",
+      "opponent_name": "varchar(255) NOT NULL DEFAULT ''",
+      "opponent_role": "longtext NULL",
+      "opponent_persona_json": "longtext NULL",
+      "opponent_external_position_json": "longtext NULL",
+      "opponent_hidden_interests_json": "longtext NULL",
+      "opponent_constraints_json": "longtext NULL",
+      "opponent_alternative_json": "longtext NULL",
+      "opponent_concession_space_json": "longtext NULL",
+      "opponent_walkaway_json": "longtext NULL",
+      "mechanics_json": "longtext NULL",
+      "created_at": "datetime NOT NULL",
+      "published_at": "datetime NULL"
+    },
+    "unique": {
+      "scenario_version": [
+        "scenario_id",
+        "version_number"
+      ]
+    },
+    "indexes": {}
+  },
+  "hidden_facts": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "scenario_version_id": "bigint unsigned NOT NULL",
+      "code": "varchar(64) NOT NULL DEFAULT ''",
+      "title": "varchar(255) NOT NULL DEFAULT ''",
+      "content": "longtext NULL",
+      "importance": "decimal(10,4) NOT NULL DEFAULT 1",
+      "initial_level": "int unsigned NOT NULL DEFAULT 0",
+      "reveal_rules_json": "longtext NULL",
+      "sort_order": "int NOT NULL DEFAULT 0"
+    },
+    "unique": {
+      "version_code": [
+        "scenario_version_id",
+        "code"
+      ]
+    },
+    "indexes": {}
+  },
+  "items": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "scenario_version_id": "bigint unsigned NOT NULL",
+      "code": "varchar(64) NOT NULL DEFAULT ''",
+      "title": "varchar(255) NOT NULL DEFAULT ''",
+      "value_type": "varchar(64) NOT NULL DEFAULT ''",
+      "unit": "varchar(64) NOT NULL DEFAULT ''",
+      "player_target_json": "longtext NULL",
+      "player_boundary_json": "longtext NULL",
+      "opponent_target_json": "longtext NULL",
+      "opponent_boundary_json": "longtext NULL",
+      "player_preference_direction": "varchar(64) NOT NULL DEFAULT ''",
+      "opponent_preference_direction": "varchar(64) NOT NULL DEFAULT ''",
+      "required_for_agreement": "tinyint unsigned NOT NULL DEFAULT 0",
+      "reopen_policy": "varchar(64) NOT NULL DEFAULT ''",
+      "importance_weight": "decimal(10,4) NOT NULL DEFAULT 1",
+      "config_json": "longtext NULL",
+      "sort_order": "int NOT NULL DEFAULT 0"
+    },
+    "unique": {
+      "version_code": [
+        "scenario_version_id",
+        "code"
+      ]
+    },
+    "indexes": {}
+  },
+  "rules": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "scenario_version_id": "bigint unsigned NOT NULL",
+      "code": "varchar(64) NOT NULL DEFAULT ''",
+      "rule_type": "varchar(64) NOT NULL DEFAULT ''",
+      "priority": "int NOT NULL DEFAULT 0",
+      "condition_json": "longtext NULL",
+      "action_json": "longtext NULL",
+      "is_active": "tinyint unsigned NOT NULL DEFAULT 1"
+    },
+    "unique": {
+      "version_code": [
+        "scenario_version_id",
+        "code"
+      ]
+    },
+    "indexes": {}
+  },
+  "evaluation_rules": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "scenario_version_id": "bigint unsigned NOT NULL",
+      "code": "varchar(64) NOT NULL DEFAULT ''",
+      "title": "varchar(255) NOT NULL DEFAULT ''",
+      "weight": "decimal(10,4) NOT NULL DEFAULT 1",
+      "evaluation_type": "varchar(64) NOT NULL DEFAULT ''",
+      "rubric_json": "longtext NULL",
+      "config_json": "longtext NULL",
+      "sort_order": "int NOT NULL DEFAULT 0"
+    },
+    "unique": {
+      "version_code": [
+        "scenario_version_id",
+        "code"
+      ]
+    },
+    "indexes": {}
+  },
+  "assignments": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "tenant_id": "bigint unsigned NOT NULL",
+      "scenario_id": "bigint unsigned NOT NULL",
+      "scenario_version_id": "bigint unsigned NOT NULL",
+      "created_by": "bigint unsigned NOT NULL",
+      "title": "varchar(255) NOT NULL",
+      "assignment_mode": "varchar(32) NOT NULL DEFAULT 'individual'",
+      "mode": "varchar(32) NOT NULL DEFAULT 'training'",
+      "difficulty": "varchar(32) NOT NULL DEFAULT 'medium'",
+      "max_attempts": "int unsigned NOT NULL DEFAULT 1",
+      "voice_enabled": "tinyint unsigned NOT NULL DEFAULT 1",
+      "result_visibility": "varchar(32) NOT NULL DEFAULT 'immediate'",
+      "deadline_at": "datetime NULL",
+      "status": "varchar(32) NOT NULL DEFAULT 'draft'",
+      "created_at": "datetime NOT NULL",
+      "updated_at": "datetime NOT NULL"
+    },
+    "unique": {},
+    "indexes": {
+      "tenant_creator": [
+        "tenant_id",
+        "created_by"
+      ],
+      "scenario_version": [
+        "scenario_version_id"
+      ],
+      "status_deadline": [
+        "status",
+        "deadline_at"
+      ]
+    }
+  },
+  "assignment_participants": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "assignment_id": "bigint unsigned NOT NULL",
+      "user_id": "bigint unsigned NOT NULL",
+      "display_name": "varchar(255) NOT NULL",
+      "team_key": "varchar(96) NULL",
+      "team_name": "varchar(255) NULL",
+      "status": "varchar(32) NOT NULL DEFAULT 'assigned'",
+      "last_session_id": "bigint unsigned NULL",
+      "created_at": "datetime NOT NULL",
+      "updated_at": "datetime NOT NULL"
+    },
+    "unique": {
+      "assignment_user": [
+        "assignment_id",
+        "user_id"
+      ]
+    },
+    "indexes": {
+      "assignment_team": [
+        "assignment_id",
+        "team_key"
+      ],
+      "user_status": [
+        "user_id",
+        "status"
+      ]
+    }
+  },
+  "sessions": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "tenant_id": "bigint unsigned NOT NULL",
+      "scenario_id": "bigint unsigned NOT NULL",
+      "scenario_version_id": "bigint unsigned NOT NULL",
+      "participant_key": "varchar(191) NOT NULL",
+      "assignment_id": "bigint unsigned NULL",
+      "session_kind": "varchar(32) NOT NULL DEFAULT 'player'",
+      "mode": "varchar(64) NOT NULL DEFAULT ''",
+      "difficulty": "varchar(32) NOT NULL DEFAULT 'medium'",
+      "status": "varchar(32) NOT NULL DEFAULT 'created'",
+      "processing_status": "varchar(32) NOT NULL DEFAULT 'idle'",
+      "processing_lock_token": "varchar(96) NULL",
+      "processing_lock_expires_at": "datetime NULL",
+      "active_client_id": "varchar(96) NULL",
+      "writer_lock_expires_at": "datetime NULL",
+      "state_revision": "bigint unsigned NOT NULL DEFAULT 1",
+      "state_json": "longtext NULL",
+      "started_at": "datetime NULL",
+      "last_activity_at": "datetime NULL",
+      "completed_at": "datetime NULL",
+      "final_agreement_id": "bigint unsigned NULL",
+      "evaluation_status": "varchar(32) NOT NULL DEFAULT 'pending'",
+      "created_at": "datetime NOT NULL",
+      "updated_at": "datetime NOT NULL"
+    },
+    "unique": {},
+    "indexes": {
+      "tenant_participant": [
+        "tenant_id",
+        "participant_key"
+      ],
+      "scenario_version": [
+        "scenario_version_id"
+      ],
+      "status": [
+        "status"
+      ],
+      "processing_lock_expires_at": [
+        "processing_lock_expires_at"
+      ],
+      "writer_lock_expires_at": [
+        "writer_lock_expires_at"
+      ],
+      "session_kind": [
+        "session_kind"
+      ]
+    }
+  },
+  "messages": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "session_id": "bigint unsigned NOT NULL",
+      "sequence_no": "bigint unsigned NOT NULL",
+      "turn_no": "int unsigned NOT NULL DEFAULT 0",
+      "channel": "varchar(64) NOT NULL DEFAULT ''",
+      "actor": "varchar(64) NOT NULL DEFAULT ''",
+      "input_type": "varchar(64) NOT NULL DEFAULT ''",
+      "client_message_id": "varchar(96) NULL",
+      "reply_to_message_id": "bigint unsigned NULL",
+      "coach_level": "varchar(32) NULL",
+      "related_message_id": "bigint unsigned NULL",
+      "content": "longtext NULL",
+      "analysis_status": "varchar(32) NOT NULL DEFAULT 'pending'",
+      "created_at": "datetime NOT NULL"
+    },
+    "unique": {
+      "session_sequence": [
+        "session_id",
+        "sequence_no"
+      ],
+      "session_client": [
+        "session_id",
+        "client_message_id"
+      ],
+      "session_channel_reply": [
+        "session_id",
+        "channel",
+        "reply_to_message_id"
+      ]
+    },
+    "indexes": {
+      "session_coach_related": [
+        "session_id",
+        "channel",
+        "related_message_id"
+      ]
+    }
+  },
+  "events": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "session_id": "bigint unsigned NOT NULL",
+      "message_id": "bigint unsigned NOT NULL",
+      "sequence_no": "bigint unsigned NOT NULL",
+      "event_key": "varchar(64) NOT NULL DEFAULT ''",
+      "event_type": "varchar(64) NOT NULL DEFAULT ''",
+      "actor": "varchar(64) NOT NULL DEFAULT ''",
+      "target_type": "varchar(64) NOT NULL DEFAULT ''",
+      "target_id": "bigint unsigned NULL",
+      "confidence": "decimal(6,5) NULL",
+      "payload_json": "longtext NULL",
+      "arbiter_version": "varchar(64) NOT NULL DEFAULT ''",
+      "created_at": "datetime NOT NULL"
+    },
+    "unique": {
+      "session_message_event": [
+        "session_id",
+        "message_id",
+        "event_key"
+      ],
+      "session_sequence": [
+        "session_id",
+        "sequence_no"
+      ]
+    },
+    "indexes": {}
+  },
+  "item_state": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "session_id": "bigint unsigned NOT NULL",
+      "item_id": "bigint unsigned NOT NULL",
+      "status": "varchar(32) NOT NULL DEFAULT 'open'",
+      "current_value_json": "longtext NULL",
+      "proposed_by": "varchar(64) NOT NULL DEFAULT ''",
+      "bundle_key": "varchar(64) NOT NULL DEFAULT ''",
+      "updated_at": "datetime NOT NULL"
+    },
+    "unique": {
+      "session_item": [
+        "session_id",
+        "item_id"
+      ]
+    },
+    "indexes": {}
+  },
+  "discovered_facts": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "session_id": "bigint unsigned NOT NULL",
+      "hidden_fact_id": "bigint unsigned NOT NULL",
+      "reveal_level": "int unsigned NOT NULL DEFAULT 0",
+      "confidence": "decimal(6,5) NULL",
+      "first_discovered_message_id": "bigint unsigned NULL",
+      "updated_at": "datetime NOT NULL"
+    },
+    "unique": {
+      "session_fact": [
+        "session_id",
+        "hidden_fact_id"
+      ]
+    },
+    "indexes": {}
+  },
+  "agreements": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "session_id": "bigint unsigned NOT NULL",
+      "proposal_no": "int unsigned NOT NULL",
+      "status": "varchar(32) NOT NULL DEFAULT 'proposed'",
+      "package_json": "longtext NULL",
+      "created_by": "varchar(64) NOT NULL DEFAULT ''",
+      "created_at_message_id": "bigint unsigned NULL",
+      "php_validation_json": "longtext NULL",
+      "state_revision": "bigint unsigned NOT NULL DEFAULT 1",
+      "created_at": "datetime NOT NULL",
+      "responded_at": "datetime NULL"
+    },
+    "unique": {
+      "session_proposal": [
+        "session_id",
+        "proposal_no"
+      ]
+    },
+    "indexes": {}
+  },
+  "evaluations": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "session_id": "bigint unsigned NOT NULL",
+      "evaluation_version": "varchar(64) NOT NULL DEFAULT ''",
+      "status": "varchar(32) NOT NULL DEFAULT 'pending'",
+      "final_score": "decimal(12,4) NULL",
+      "result_type": "varchar(64) NOT NULL DEFAULT ''",
+      "red_line_breached": "tinyint unsigned NOT NULL DEFAULT 0",
+      "summary_json": "longtext NULL",
+      "created_at": "datetime NOT NULL",
+      "completed_at": "datetime NULL"
+    },
+    "unique": {
+      "session": [
+        "session_id"
+      ]
+    },
+    "indexes": {}
+  },
+  "evaluation_scores": {
+    "columns": {
+      "id": "bigint unsigned NOT NULL AUTO_INCREMENT",
+      "evaluation_id": "bigint unsigned NOT NULL",
+      "evaluation_rule_id": "bigint unsigned NOT NULL",
+      "raw_score": "decimal(12,4) NULL",
+      "weighted_score": "decimal(12,4) NULL",
+      "source": "varchar(64) NOT NULL DEFAULT ''",
+      "confidence": "decimal(6,5) NULL",
+      "explanation": "longtext NULL",
+      "evidence_json": "longtext NULL"
+    },
+    "unique": {
+      "evaluation_rule": [
+        "evaluation_id",
+        "evaluation_rule_id"
+      ]
+    },
+    "indexes": {}
+  }
+}

@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.457-dev.489-SALES-NEXT-STEP-VALIDATOR-FIX
+
+SALES live full-cycle hotfix:
+- fixed opponent validator false-positive that rejected a first-person client acceptance solely because it repeated the phrase «следующий шаг»;
+- explicit SALES acceptance such as «Да, такой следующий шаг мне подходит…» now passes validation;
+- actual coach-style replies remain rejected;
+- no database/content migration; scenario content remains unchanged.

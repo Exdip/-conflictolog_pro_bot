@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.274-dev.306-MANUAL-REVIEW-TRANSPORT
+
+- Added isolated T-Bank internet-acquiring provider.
+- Added encrypted TerminalKey/Password storage in universal partner payment-methods table.
+- Added T-Bank connection check using a non-payment CheckOrder probe.
+- Added T-Bank Init/GetState adapter and webhook token verification.
+- Added partner-cabinet T-Bank settings UI for owners.
+- Existing YooKassa checkout remains unchanged in this release.
+- Universal payment-provider registry now exposes YooKassa and T-Bank.
+- Partner schema version: 1.4.0.

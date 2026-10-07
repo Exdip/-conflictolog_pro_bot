@@ -1,0 +1,6 @@
+NEG-BUILDER-RESPONSIVE-GRID 405
+Version: 0.3.23.373-dev.405-NEG-BUILDER-RESPONSIVE-GRID
+Scenario builder layout normalized for desktop, tablet and mobile with stable one/two-column grids.
+Typography remains 14px and dark builder theme is preserved.
+UI only; builder data/save/publish logic and negotiation mechanics are unchanged.
+No verification run by user request.

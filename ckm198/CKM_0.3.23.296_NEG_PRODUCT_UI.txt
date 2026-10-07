@@ -1,0 +1,11 @@
+CKM Quiz Pro 0.3.23.296-dev.328-NEG-PRODUCT-UI
+
+- Added the product catalogue for «Мастер переговоров» with the three NEG-MVP scenarios.
+- Added scenario cards, categories, difficulty, duration, active-attempt status and last result.
+- Added per-scenario attempt history and read-only result deep links.
+- Added safe auto-resume for explicit session links and catalogue return flow.
+- Added responsive mobile task/state panels.
+- Integrated «Мастер переговоров» into the visible «Деловые переговоры» group using the existing negotiation_duel_v1 entitlement.
+- Visible negotiation products are now: «Экспресс-раунд», «Эффективный продажник», «Переговори другого», «Мастер переговоров».
+- Legacy negotiation business runtime remains intact but is no longer exposed as a duplicate «Мастер переговоров» card.
+- No new payment provider or payment flow was introduced.

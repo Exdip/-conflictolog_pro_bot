@@ -1,0 +1,12 @@
+0.3.23.186-dev.218-SEQUENTIAL-VOICE-TIMER-GATE
+
+Voice-first timer gate — stage 1.
+
+Enabled for AI-host sequential formats:
+- classic_quiz (Классический квиз)
+- solution_price (Управленческая игра "Ваш выбор")
+- negotiation_duel (Переговорный поединок)
+
+The server stores question_deadline_at=NULL while the host speaks. Actual playback completion starts the authoritative deadline. Duplicate acknowledgements cannot extend it; participant answer controls and server submission are blocked before timer start. If AI message publication fails, the timer starts immediately as a safety fallback.
+
+CHGK keeps its existing dedicated voice-first bridge. Jeopardy, multi-stage «Переговори другого», and human-host live microphone gating are intentionally left for the next iterations.

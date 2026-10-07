@@ -1,0 +1,6 @@
+NEG-RESULT-REVISIT-14PX 411
+Version: 0.3.23.379-dev.411-NEG-RESULT-REVISIT-14PX
+Post-game/revisited result view aligned with the 14px dark app UI.
+Agreement summary, evaluation, criteria, feedback and replay/back actions are visually unified.
+UI only; scoring, history, replay and negotiation mechanics are unchanged.
+No verification run by user request.

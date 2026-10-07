@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.489-dev.521-SALES-ANALYTICS-GOALS
+
+- Primary sales goal for each AI seller.
+- Automatic dialog outcome: active / successful / unsuccessful / stalled.
+- Conversion, AI/operator response time, average messages per dialog.
+- Analytics dashboard inside AI seller workspace.
+- CSV export for management reporting.
+- Existing Pleep-core, MAX, Inbox/CRM and completion sound retained.

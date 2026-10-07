@@ -1,0 +1,4 @@
+Version: 0.3.23.507-dev.539-SALES-HISTORY-PLATFORM-FIX
+- Unified organizer history now supports platform tenant_id=0 on ckkm.ru.
+- Only invalid tenant scope (<0) is rejected.
+- Effective Sales sessions stored with tenant_id=0 can now appear in organizer History.

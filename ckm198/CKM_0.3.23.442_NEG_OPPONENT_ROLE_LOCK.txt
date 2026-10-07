@@ -1,0 +1,12 @@
+NEG-OPPONENT-ROLE-LOCK 474
+Version: 0.3.23.442-dev.474-NEG-OPPONENT-ROLE-LOCK
+Database schema: 1.8.0
+Content pack: 1.47.0
+Live .473 verification confirmed the six-item package extraction fix works correctly.
+Residual defect: opponent could still address its own persona by name (example: «Антон, я понимаю, что у вас…»), which means role inversion despite first-person wording.
+Fix: generic validator rejects responses that begin by addressing the opponent's own full name or first name.
+Prompt explicitly states that the persona name is the opponent's own identity and must never be used as an addressee.
+Strict retry explicitly requires first-person opponent role and forbids self-address/coaching.
+No scenario-specific PHP branches were added.
+Package parsing from .473 is unchanged.
+Content pack remains 1.47.0.

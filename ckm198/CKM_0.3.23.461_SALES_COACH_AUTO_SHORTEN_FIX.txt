@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.461-dev.493-SALES-COACH-AUTO-SHORTEN-FIX
+
+SALES / NEG coach hardening:
+- a coach draft rejected by the response validator is regenerated once with an explicit shorter format;
+- strict retry asks for 1 sentence for attention/direction, one short utterance <=260 chars for example, and <=2 sentences for review;
+- if the second generated draft still violates coach format, the engine returns a short deterministic Russian fallback instead of exposing a validator error to the player;
+- deterministic fallback is validated by the same CoachResponseValidator before it is saved;
+- existing coach level limits remain unchanged.
+
+No database migration. No scenario/content migration.

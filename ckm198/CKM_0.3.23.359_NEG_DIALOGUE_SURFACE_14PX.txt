@@ -1,0 +1,5 @@
+NEG-DIALOGUE-SURFACE-14PX 391
+Version: 0.3.23.359-dev.391-NEG-DIALOGUE-SURFACE-14PX
+Unified opponent header, message list, player/opponent bubbles and empty state at 14px.
+UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

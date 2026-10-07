@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.237-dev.269-PERSUADE-ME-TURN-ORDER
+
+- Two-team «Переговори другого» dialogue now has strict alternating turns.
+- starterRole is authored per Round 1 challenge; Round 2 has its own starterRole.
+- Default Round 1 starter: opponent; default Round 2 starter: active speaker.
+- Only the current team sees the message composer; server rejects out-of-turn messages.
+- Host and participants see who speaks first / whose turn it is.
+- AI host announces the first team and role when dialogue opens.
+- Legacy three-team rooms keep previous free-dialogue compatibility.
+- Existing communicate templates are normalized and Ready Game QA is invalidated for retest.

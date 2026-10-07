@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.314-dev.346-NEG-OPPONENT-FIELDS
+
+- Raw JSON controls removed from the AI-opponent builder card.
+- Persona style and traits, hidden priorities, no-deal alternative and walkaway rules now use normal Russian fields.
+- Opponent opening position and concession choices are edited per negotiation item.
+- Legacy unknown keys are retained during round-trip saves.
+- Database schema and content pack are unchanged.

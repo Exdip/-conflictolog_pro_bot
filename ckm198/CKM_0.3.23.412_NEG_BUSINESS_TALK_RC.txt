@@ -1,0 +1,8 @@
+NEG-BUSINESS-TALK-RC 444
+Version: 0.3.23.412-dev.444-NEG-BUSINESS-TALK-RC
+Content pack: 1.26.0
+Closed «Разговор по делу» as a complete library.
+Static seed validation: 10 published scenarios, 0 draft stubs, unique slugs, component manifests consistent, evaluation weight 100 for every scenario, supported rule action types only.
+Administrative library diagnostics now enforce exact expected scenario counts for completed libraries: price-question=10 and business-talk=10.
+No scenario-specific runtime branches were added.
+No live-site verification was run.

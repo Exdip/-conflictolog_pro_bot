@@ -1,0 +1,9 @@
+0.3.23.184-dev.216-PERSUADE-STT-CONTEXT-GUARD
+
+Persuade Me / negotiation show STT context guard.
+
+- Keeps an active participant dictation session alive across ordinary polling renders and temporary showBusy/canMessage flicker while round/attempt/stage/role context is unchanged.
+- Stores a dedicated negotiation-show STT context key (round, attempt, stage, hard question index, story question index, participant role title).
+- Aborts dictation only when the negotiation context really changes, instead of treating every transient disabled render as a session boundary.
+- Keeps the active STT control mounted during a same-context transient disable so the session is not silently destroyed.
+- Preserves 183 microphone acquisition timeout/fallback, 182 handshake diagnostics, 181 session generation guard, and 180 AI -> manual takeover guard.

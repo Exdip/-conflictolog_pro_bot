@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.121-dev.153-VOICE-GATE-SMOKE-PACKAGING-FIX
+
+Base: 0.3.23.119-dev.151-EIGHT-FORMAT-SMOKE
+
+Changes:
+- Fixes false FAIL in Voice-gate AI host smoke contract by matching literal $hostEvent markers.
+- No runtime/gameplay changes.
+- Packaged under the canonical WordPress plugin directory: ckm-quiz-pro/.

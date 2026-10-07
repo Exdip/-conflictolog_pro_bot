@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Квизы — табло</title>
+  <link rel="stylesheet" href="assets/theme-tokens.css?v=2.19.0-alpha.87.0.2">
+  <link rel="stylesheet" href="assets/quiz-ui.css?v=2.19.0-alpha.87.0.2">
+  <script defer src="assets/quiz-common.js?v=2.19.0-alpha.87.0.2"></script>
+  <script defer src="assets/quiz-scoreboard.js?v=2.19.0-alpha.87.0.2"></script>
+  <script defer src="assets/quiz-voice-client.js?v=2.19.0-alpha.87.0.2"></script>
+</head>
+<body>
+  <main class="quiz-shell quiz-shell--wide quiz-scoreboard" id="scoreboardRoot">
+    <header class="quiz-topbar">
+      <div class="quiz-brand">
+        
+        <span class="quiz-brand__text"><strong>Публичное табло</strong><span id="scoreGameCode">Квиз</span></span>
+      </div>
+      <div class="quiz-toolbar">
+        <span class="quiz-badge quiz-badge--test" data-test-badge hidden>Тестовая игра</span>
+        <span class="quiz-badge" id="scorePhaseBadge">Ожидание</span>
+        <button class="quiz-btn" type="button" id="projectorToggle">Режим проектора</button>
+        <button class="quiz-btn" type="button" data-theme-toggle>Тёмная тема</button>
+      </div>
+    </header>
+
+    <section class="quiz-scoreboard__head">
+      <div class="quiz-scoreboard__context" id="scoreChgkContext" hidden>
+        <span class="quiz-badge" id="scoreRoundBadge">Раунд</span>
+        <span class="quiz-badge quiz-badge--warning" id="scoreDiscussionBadge">Обсуждение</span>
+      </div>
+      <span class="quiz-kicker" id="scoreQuestionCounter">Ожидание старта</span>
+      <h1 id="scoreTitle">Подключение к игре…</h1>
+      <p class="quiz-scoreboard__question" id="scoreQuestionText">Табло синхронизируется с сервером.</p>
+      <div class="quiz-question__media quiz-question__media--scoreboard" id="scoreQuestionMedia" hidden></div>
+      <div class="quiz-timer" id="scoreTimerWrap"><span id="scoreTimerLabel">Осталось</span><strong id="scoreTimer">0:00</strong></div>
+    </section>
+
+    <section class="quiz-chgk-scoreboard__host" id="scoreChgkHost" hidden aria-live="polite">
+      <span class="quiz-kicker">ИИ-ВЕДУЩИЙ</span>
+      <p id="scoreChgkHostMessage">Ожидаем реплику ведущего.</p>
+    </section>
+
+    <section class="quiz-chgk-scoreboard__arbitration" id="scoreChgkArbitration" hidden aria-live="polite">
+      <div class="quiz-chgk-scoreboard__section-head">
+        <div>
+          <span class="quiz-kicker">АРБИТРАЖ</span>
+          <h2>Результат вопроса</h2>
+        </div>
+        <span class="quiz-badge" id="scoreArbitrationStatus">Ожидается</span>
+      </div>
+      <div class="quiz-chgk-scoreboard__arbitration-grid" id="scoreArbitrationGrid"></div>
+    </section>
+
+    <section class="quiz-chgk-scoreboard__host" id="scoreChgkAnalysis" hidden aria-live="polite">
+      <span class="quiz-kicker">СРАВНИТЕЛЬНЫЙ АНАЛИЗ</span>
+      <p id="scoreChgkAnalysisText">Сравнительный вывод появится после завершённого разбора.</p>
+    </section>
+
+    <section class="quiz-scoreboard__result" id="scoreFinalResult" hidden aria-live="polite">
+      <span class="quiz-kicker">ИТОГ ИГРЫ</span>
+      <h2 id="scoreWinnerText">Победитель определяется…</h2>
+      <p id="scoreWinnerMeta"></p>
+    </section>
+
+    <section class="quiz-jeopardy-scoreboard" id="scoreJeopardyCard" hidden>
+      <div class="quiz-jeopardy-scoreboard__head">
+        <div><span class="quiz-kicker">Интеллектуальный батл</span><h2>Игровая доска</h2></div>
+        <span class="quiz-badge" id="scoreJeopardyStatus">Ожидание выбора</span>
+      </div>
+      <div class="quiz-jeopardy-board quiz-jeopardy-board--scoreboard" id="scoreJeopardyBoard" hidden></div>
+      <div class="quiz-jeopardy-buzzer quiz-jeopardy-buzzer--scoreboard" id="scoreJeopardyBuzzer" hidden><strong id="scoreBuzzStatus">Кнопка свободна</strong><span id="scoreBuzzTimer"></span></div>
+      <div class="quiz-jeopardy-cat quiz-jeopardy-cat--scoreboard" id="scoreJeopardyCat" hidden><strong>Секретная передача</strong><span id="scoreCatStatus">—</span></div>
+      <div class="quiz-jeopardy-ai quiz-jeopardy-ai--scoreboard" id="scoreJeopardyAi" hidden><strong>ИИ · арбитр</strong><span id="scoreJeopardyAiStatus">—</span></div>
+      <div class="quiz-jeopardy-final quiz-jeopardy-final--scoreboard" id="scoreJeopardyFinal" hidden><strong>Финальный раунд</strong><span id="scoreFinalStatus">—</span><div id="scoreFinalRows"></div></div>
+    </section>
+
+    <section class="quiz-scoreboard__teams" id="scoreTeams"></section>
+    <div class="quiz-scoreboard__message" id="scoreMessage">—</div>
+  </main>
+  <div class="quiz-connection" id="quizConnection">Подключение…</div>
+</body>
+</html>

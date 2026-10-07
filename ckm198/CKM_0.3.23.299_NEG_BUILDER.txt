@@ -1,0 +1,12 @@
+CKM Quiz Pro 0.3.23.299-dev.331-NEG-BUILDER
+
+NEG-BUILDER:
+- keeps NEG DB version 1.5.0 and NEG content version 1.4.0; no new storage table is required;
+- adds a frontend scenario constructor for tenant-owned «Мастер переговоров» scenarios;
+- supports blank scenario creation, system-template duplication after entitlement check, draft editing, publish validation, version forking and archive;
+- builder has five sections: situation, participant, AI opponent/hidden facts, negotiation items, rules/evaluation;
+- published scenario versions are not rewritten: editing forks a new draft and switches current_version_id only on publish;
+- system scenarios remain immutable and paid-library hidden content is never exposed merely by opening the builder catalogue;
+- tenant-published custom scenarios are playable through the same generic NEG runtime and appear in the normal catalogue;
+- no new checkout/payment provider, STT/voice change, legacy game refactor, or scenario-specific runtime branch is introduced;
+- draft test launch and dedicated builder SKU remain deferred.

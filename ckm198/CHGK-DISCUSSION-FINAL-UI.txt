@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.57-dev.89-CHGK-DISCUSSION-FINAL-UI
+
+- Participant UI now follows server formatRuntime.phase for chgk_v1.
+- During discussion the final-answer box and STT controls are hidden.
+- During final_answer_open the box appears as “Окончательный ответ команды” with “Зафиксировать ответ”.
+- Participant status text differentiates discussion from final-answer entry.
+- Human-host close button is “Завершить обсуждение” during discussion and “Закрыть приём ответов” during final-answer window.
+- No changes to classic quiz, jeopardy, solution price, or negotiation duel runtime behavior.

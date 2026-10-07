@@ -1,0 +1,5 @@
+Version: 0.3.23.508-dev.540-SALES-START-NAV-FIX
+- Sales start navigation no longer waits for speech synthesis.
+- After session creation the browser navigates immediately to the new session.
+- The ready voice cue is played once on the loaded in-progress session via sales_ready=1.
+- The one-shot marker is removed from the URL after consumption.

@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.224-dev.256 — ORGANIZER E2E FLOW HARDENING
+
+- Registration and ordinary organizer login now land directly on Base Games.
+- Successful payment returns to My Games with an explicit activation notice.
+- Own-game creation still returns to My Games with a creation notice.
+- Administrator wording now reflects the platform-wide constructor entitlement: any active payment unlocks new-game creation in supported formats.
+- Existing ready-game snapshots, 304-point scoring, participant finish-dialogue flow and admin-only history remain unchanged.

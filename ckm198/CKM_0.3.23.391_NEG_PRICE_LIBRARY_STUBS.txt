@@ -1,0 +1,7 @@
+NEG-PRICE-LIBRARY-STUBS 423
+Version: 0.3.23.391-dev.423-NEG-PRICE-LIBRARY-STUBS
+Content pack: 1.7.0
+The «Цена вопроса» library now contains 10 visible scenario cards: one published playable scenario and nine draft «Скоро» placeholders.
+Added public-safe descriptions for all ten commercial negotiation scenarios.
+No scenario-specific runtime branches were added.
+No live-site verification was run.

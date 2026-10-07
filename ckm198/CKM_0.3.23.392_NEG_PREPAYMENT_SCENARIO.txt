@@ -1,0 +1,8 @@
+NEG-PREPAYMENT-SCENARIO 424
+Version: 0.3.23.392-dev.424-NEG-PREPAYMENT-SCENARIO
+Content pack: 1.8.0
+Promoted «Скидка за предоплату» from a draft stub to a published playable scenario in «Цена вопроса».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario teaches the player to value prepayment economically, exchange concessions conditionally, and negotiate a package instead of a single price.
+No scenario-specific PHP branches were added.
+No live-site verification was run.

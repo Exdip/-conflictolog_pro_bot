@@ -1,0 +1,12 @@
+CKM Quiz Pro 0.3.23.236-dev.268-PERSUADE-ME-ROOM-TWO-TEAMS-FIX
+
+- New «Переговори другого» rooms use exactly 2 teams.
+- Observer role is removed from new rooms; the AI arbiter performs the external-observer function.
+- Four rounds are preserved; maximum remains 76 per round / 304 per team.
+- Pairwise rounds rotate A↔B so each team is speaker and opponent once.
+- Round 3 gives each team its own three difficult questions.
+- Round 4 uses one storyteller and one opposing checker/voter; one vote completes the check.
+- Existing 3-team live rooms remain backward compatible and can finish under their original contract.
+- Migration changes communicate templates to min=max=2 and invalidates old Ready Game QA/test markers.
+- Ready Game QA fingerprint now includes the technical team/settings contract, so a 3→2 team change requires a fresh test before publishing a new release.
+- Dedicated dev.267 regression test covers two-team start, role rotation, scoring, final vote, 304 ceiling, and legacy compatibility.

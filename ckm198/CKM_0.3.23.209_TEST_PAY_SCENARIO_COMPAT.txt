@@ -1,0 +1,6 @@
+0.3.23.209-dev.241 — compatibility for paid Persuade Me scenarios in test payment.
+
+The external test-payment server 0.1.0 predates scenario SKUs and rejects them with HTTP 400.
+For TEST PAYMENT ONLY, a single 990-RUB scenario is transported as the legacy 990-RUB classic_quiz SKU.
+The local order retains the requested scenario key and grants only that scenario after signed verification.
+Scenario packs must be purchased one at a time in the legacy test contour. Live payment adapters are unchanged.

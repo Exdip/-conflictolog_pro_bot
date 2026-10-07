@@ -1,0 +1,5 @@
+NEG-CATALOG-CARDS-14PX 409
+Version: 0.3.23.377-dev.409-NEG-CATALOG-CARDS-14PX
+Scenario catalog/library cards, hero, metadata, state blocks and lock notice aligned with the 14px dark app UI.
+UI only; catalog access, pricing, launch and negotiation mechanics are unchanged.
+No verification run by user request.

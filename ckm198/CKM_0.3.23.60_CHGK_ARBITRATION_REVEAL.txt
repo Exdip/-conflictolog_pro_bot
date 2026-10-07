@@ -1,0 +1,2 @@
+CKM Quiz Pro 0.3.23.60-dev.92-CHGK-ARBITRATION-REVEAL
+Explicit CHGK flow: answers_closed -> arbitration -> answer_reveal.

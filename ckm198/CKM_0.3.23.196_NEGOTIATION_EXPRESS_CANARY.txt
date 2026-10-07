@@ -1,0 +1,14 @@
+CKM Quiz Pro 0.3.23.196-dev.228-NEGOTIATION-EXPRESS-CANARY
+
+Canary boundary
+- negotiation_duel_v1 remains authoritative for all real/commercial games.
+- negotiation_express_v1 is mirrored only for a one-team AI-host test_mode room created from built-in quiz slug demo-negotiation-express.
+- no catalog, entitlement, payment or legacy runtime mapping is changed.
+
+Mirrored real browser events
+- real AI-host voice playback completion -> Negotiation Core voice_finished;
+- real participant text/STT reply -> submit_answer, preserving input_mode=text|voice;
+- saved legacy arbitration -> evaluate_turn;
+- legacy question advance/finish -> next_case / finish_session.
+
+The standalone state exposes negotiationExpressCanary diagnostics so a live browser can verify phase/version/position/timer parity while the legacy engine remains the safety authority.

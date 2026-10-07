@@ -1,0 +1,10 @@
+CKM 0.3.23.499-dev.531-SALES-CARTESIA-PHONE-GATEWAY
+
+- Removed Marin/GPT-Live as the active telephone voice path from the sales UI.
+- Telephone voice is now the existing CKM Sergey/Cartesia voice, shared with browser/game voice.
+- Added SalesPhoneGatewayService with worker auth, heartbeat, DID routing, phone turns, Sergey voice tickets/speak, call state and command queue.
+- Phone channel is accepted by the same AI-seller external-session core and therefore lands in the shared Inbox/CRM.
+- Added long-lived Node phone-media-gateway worker using Asterisk AudioSocket + Deepgram Nova-3 ru + existing CKM Voice Gateway.
+- Cartesia API key / Voice ID stay server-side in the existing Voice Gateway; partner UI never sees them.
+- WordPress never handles or stores telephone audio.
+- Outbound originate is intentionally not claimed ready in 531; it remains PBX/provider-specific.

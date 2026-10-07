@@ -1,0 +1,3 @@
+0.3.23.179-dev.211-TEAM-MIC-RECORDER-FALLBACK-FIX
+
+Participant voice dictation now retries MediaRecorder with browser-default and explicit WebM/Opus fallbacks, checks for a live audio track, and exposes the real recorder error instead of a generic failure.

@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.197-dev.229-NEGOTIATION-EXPRESS-CANARY-LAUNCH-FIX
+
+- Adds explicit admin-only ckm_express_canary=1 launch path for the built-in express demo.
+- Creates test_mode=1 only for one-team AI-host demo-negotiation-express.
+- Normal/commercial games remain on negotiation_duel_v1.
+- Express Round Hub default aligned with demo copy: 60 seconds, not 240.
+- Fixes organizer note that incorrectly called every one-team mini-game «Управленческая игра "Ваш выбор"».

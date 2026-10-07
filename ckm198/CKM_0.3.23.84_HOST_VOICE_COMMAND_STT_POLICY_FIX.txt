@@ -1,0 +1,9 @@
+0.3.23.84-dev.116-HOST-VOICE-COMMAND-STT-POLICY-FIX
+
+Fix: host voice command recognition used a host role token for /stt.
+Some Gateway builds accept /stt only for participant-like tokens and close the socket with code 1008.
+
+Now WordPress validates the host link, then mints a short-lived participant-compatible STT ticket bound to the first active team only for speech recognition.
+This does not submit an answer and is used only to get the recognized command text back to the host browser.
+
+Also improves the visible message for WebSocket close 1008.

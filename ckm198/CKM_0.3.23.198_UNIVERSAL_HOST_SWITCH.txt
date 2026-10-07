@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.198-dev.230-UNIVERSAL-HOST-SWITCH
+
+- Makes AI ↔ human host switching available in every standalone game format.
+- Removes the old client restriction that exposed the switch only for CHGK.
+- Adds a server-side universal host switch for classic_quiz, solution_price, negotiation_duel and jeopardy; CHGK retains its stricter phase-safe switch implementation.
+- Preserves current question/round/state when switching to a human host.
+- Stops stale AI browser automation on AI → human takeover.
+- Restarts the proper AI autopilot from current state on human → AI takeover.
+- Keeps Persuade Me on its existing dedicated switch path, with the same user-facing wording.
+- Button wording in AI mode: “Переключить на ведущего-человека”.

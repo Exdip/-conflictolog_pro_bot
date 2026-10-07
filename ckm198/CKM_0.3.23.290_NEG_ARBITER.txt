@@ -1,0 +1,20 @@
+CKM Quiz Pro 0.3.23.290-dev.322-NEG-ARBITER
+
+Base: 0.3.23.289-dev.321-NEG-OPPONENT
+
+Added isolated Negotiation Master arbiter runtime:
+- server-side ArbiterService using the existing AI Puffer connector;
+- strict JSON parser/validator with one retry for malformed output;
+- semantic events, deal updates, hidden-fact updates and advisory dialogue state;
+- PHP-owned item/fact/rule/event services;
+- deterministic event idempotency;
+- validated state passed to the opponent context before reply generation;
+- right-panel state now reflects formal item/fact state;
+- explicit willingness vs acceptance protection;
+- PHP-derived concession and red-line candidate events;
+- player-visible partial fact summaries do not expose hidden fact IDs/codes.
+
+NEG DB schema stays 1.1.0; no tables or columns were added.
+NEG content version stays 1.1.0; no scenario seed was changed.
+
+Not included yet: coach, final agreement/no-deal, /100 evaluation, recovery state machine.

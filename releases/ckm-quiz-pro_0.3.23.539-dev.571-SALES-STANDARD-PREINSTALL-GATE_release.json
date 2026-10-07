@@ -1,0 +1,10 @@
+{
+  "version": "0.3.23.539-dev.571-SALES-STANDARD-PREINSTALL-GATE",
+  "zip": "/workspace/shared/downloads/ckm-quiz-pro_0.3.23.539-dev.571-SALES-STANDARD-PREINSTALL-GATE.zip",
+  "bytes": 2309787,
+  "sha256": "34bd764fc9f5bdc2aac21476b46327e6e8deecf443fd17c4bb8f391b1901f840",
+  "files": 1040,
+  "crc": "PASS",
+  "archive_matches_working_tree": "PASS",
+  "preserved_570_zip": "PASS"
+}

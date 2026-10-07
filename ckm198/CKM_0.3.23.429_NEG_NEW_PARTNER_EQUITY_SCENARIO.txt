@@ -1,0 +1,8 @@
+NEG-NEW-PARTNER-EQUITY-SCENARIO 461
+Version: 0.3.23.429-dev.461-NEG-NEW-PARTNER-EQUITY-SCENARIO
+Content pack: 1.42.0
+Promoted «Новый партнёр входит в капитал» from a draft card to a published playable scenario in «Доля влияния».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains equity calibration, vesting, performance-linked ownership and alignment of ownership with management authority.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

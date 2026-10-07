@@ -1,0 +1,5 @@
+NEG-BUILDER-HEADER-APPSTYLE 406
+Version: 0.3.23.374-dev.406-NEG-BUILDER-HEADER-APPSTYLE
+Builder header, description, tabs, version marker and service navigation aligned with the app UI.
+Typography remains 14px. UI only; builder data/save/publish logic and negotiation mechanics are unchanged.
+No verification run by user request.

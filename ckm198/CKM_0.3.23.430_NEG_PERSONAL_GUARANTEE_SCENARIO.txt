@@ -1,0 +1,8 @@
+NEG-PERSONAL-GUARANTEE-SCENARIO 462
+Version: 0.3.23.430-dev.462-NEG-PERSONAL-GUARANTEE-SCENARIO
+Content pack: 1.43.0
+Promoted «Личные гарантии — общий риск?» from a draft card to a published playable scenario in «Доля влияния».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains proportional compensation of personal guarantee risk, temporary governance rights, debt-specific protections and a defined exit from the guarantee.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

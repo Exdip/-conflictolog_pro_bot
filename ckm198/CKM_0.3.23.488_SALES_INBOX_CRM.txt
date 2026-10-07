@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.488-dev.520-SALES-INBOX-CRM
+
+- Unified Inbox/CRM inside AI seller workspace.
+- Lead card: name/company, contact, pipeline stage.
+- Full conversation thread.
+- Human takeover and return to AI.
+- Human operator replies delivered to the public client via polling.
+- Existing Web/Voice/PSTN/Telegram/WhatsApp/MAX channel plan retained.

@@ -1,0 +1,15 @@
+0.3.23.180-dev.212-AI-TO-HUMAN-MANUAL-GUARD
+
+Base: 0.3.23.179-dev.211-TEAM-MIC-RECORDER-FALLBACK-FIX
+
+Fix scope: AI -> manual host takeover.
+
+- Cancels pending browser AI autostart timer immediately when manual takeover is requested.
+- Re-checks current hostMode before delayed AI start can fire.
+- Requires the switch_human response to confirm hostMode=human.
+- Cancels queued browser AI speech and hides AI-host output after manual takeover.
+- Re-checks authoritative host mode before CHGK AI phase ticks and before continuing after judging.
+- Blocks stale ai_host mutations in shared open-next/reveal/finish paths once manual mode is active.
+- Re-checks host mode after slow AI message composition before publishing the message.
+- Re-checks host mode in the «Переговори другого» session before any automatic AI dialogue transition.
+- Keeps all team voice dictation / MediaRecorder fallback changes from 0.3.23.179.

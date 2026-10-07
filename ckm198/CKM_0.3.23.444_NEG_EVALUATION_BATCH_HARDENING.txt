@@ -1,0 +1,12 @@
+NEG-EVALUATION-BATCH-HARDENING 476
+Version: 0.3.23.444-dev.476-NEG-EVALUATION-BATCH-HARDENING
+Database schema: 1.8.0
+Content pack: 1.47.0
+Evaluation version: neg-eval-1.8
+Live .475 retry still failed at AI evaluation. Batch transport worked, but retained single-criterion limits: 700 completion tokens and 22 seconds.
+Output budget now scales with criterion count, capped at 2200 tokens; request timeout is 35 seconds.
+Reasons are constrained to one short sentence (<=240 characters) and at most 3 evidence IDs.
+A partial first batch is preserved; strict retry requests only the missing criteria.
+At most two AI requests are used for the whole evaluation.
+No scenario content changed; content pack remains 1.47.0.
+No scenario-specific PHP branches were added.

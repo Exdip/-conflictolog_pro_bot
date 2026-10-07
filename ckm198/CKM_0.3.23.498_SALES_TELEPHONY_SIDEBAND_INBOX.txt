@@ -1,0 +1,15 @@
+CKM Quiz Pro 0.3.23.498-dev.530-SALES-TELEPHONY-SIDEBAND-INBOX
+
+- Adds a platform-owned sideband worker contract for Direct SIP GPT-Live sessions.
+- Uses current Live sideband attach URL: /v1/live/sessions/{session_id}/attach.
+- Stores session.input_transcript.delta and session.output_transcript.delta in the existing Inbox/CRM as phone messages.
+- Keeps SIP audio on the provider <-> OpenAI media path; the sideband worker receives events, not partner RTP.
+- Adds shared-secret authenticated claim/event/heartbeat endpoints for the platform worker.
+- Adds worker heartbeat/online status to the admin integration screen.
+- Adds partner-specific live-operator transfer target to Direct SIP and explicit Refer/Hangup controls in phone dialogs.
+- Records call status/usage and finalizes the Inbox dialog on session.closed or transport failure.
+- Includes a Node sideband worker reference implementation under modules/effective-sales/workers/live-sideband.
+- OpenAI API key remains platform-owned; partner SIP credentials remain tenant-scoped and encrypted.
+
+Deployment boundary:
+The long-lived sideband WebSocket must run as a platform process (systemd/Supervisor/Docker/existing realtime gateway). PHP-FPM is intentionally not used as a long-lived WebSocket worker.

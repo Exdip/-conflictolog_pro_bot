@@ -1,0 +1,5 @@
+NEG-WP-DEFAULT-CLEANUP 398
+Version: 0.3.23.366-dev.398-NEG-WP-DEFAULT-CLEANUP
+Normalized remaining browser/WordPress defaults for margins, lists, forms, details, cursors and focus states.
+Typography remains forced to 14px. UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

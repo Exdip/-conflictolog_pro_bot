@@ -1,0 +1,8 @@
+NEG-QUALITY-SHIPMENT-SCENARIO 452
+Version: 0.3.23.420-dev.452-NEG-QUALITY-SHIPMENT-SCENARIO
+Content pack: 1.34.0
+Promoted «Качество останавливает отгрузку» from a draft card to a published playable scenario in «На стыке интересов».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains defect segmentation, safe partial release, evidence-based risk decisions and corrective action on root causes.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

@@ -1,0 +1,7 @@
+NEG-HEADER-OUTER-LEFT-UBUNTU20 420
+Version: 0.3.23.388-dev.420-NEG-HEADER-OUTER-LEFT-UBUNTU20
+Fixed the outer header element itself: width/max-width/margins/transforms are reset so the whole header starts at the left edge.
+Header brand, navigation and organizer link now use Ubuntu at exactly 20px for a clearly visible font change.
+Navigation items retain max-content sizing and horizontal overflow protection so edge buttons are not clipped.
+UI only; navigation routes and mechanics are unchanged.
+No verification run by user request.

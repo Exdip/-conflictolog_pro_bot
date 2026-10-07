@@ -1,0 +1,7 @@
+NEG-PRICE-VOLUME-SCENARIO 422
+Version: 0.3.23.390-dev.422-NEG-PRICE-VOLUME-SCENARIO
+Publishes «Цена вопроса» and adds playable «Скидка в обмен на объём».
+5 items; 4 hidden facts; 6 rules; 6 evaluation rules; total evaluation weight 100.
+Generic draft->published library promotion added for existing installs; no scenario-specific PHP runtime branch.
+Header from .421 preserved.
+No live/browser verification run.

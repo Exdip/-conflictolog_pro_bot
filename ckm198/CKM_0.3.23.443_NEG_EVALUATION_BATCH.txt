@@ -1,0 +1,12 @@
+NEG-EVALUATION-BATCH 475
+Version: 0.3.23.443-dev.475-NEG-EVALUATION-BATCH
+Database schema: 1.8.0
+Content pack: 1.47.0
+Evaluation version: neg-eval-1.7
+Live .474 end-to-end verification passed session start, six-item package extraction, opponent role behavior, agreement draft and final acceptance.
+The remaining live failure was post-game evaluation: six non-PHP criteria were evaluated sequentially, each with up to two AI attempts, causing the HTTP request to exceed the live relay budget and finish as evaluation_status=failed.
+AiEvaluator now sends the whole criterion set in one request and uses at most one strict retry, accumulating valid criterion rows across attempts.
+Each criterion is still validated and scored independently server-side; only transport batching changed.
+Maximum AI calls for one evaluation is now 2 instead of up to 2 x criterion count.
+No scenario content changed. Content pack remains 1.47.0.
+No scenario-specific PHP branches were added.

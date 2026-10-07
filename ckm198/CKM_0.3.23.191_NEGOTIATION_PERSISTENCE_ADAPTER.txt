@@ -1,0 +1,22 @@
+CKM Quiz Pro 0.3.23.191-dev.223 — NEGOTIATION PERSISTENCE ADAPTER
+
+Добавлен persistence/repository adapter для Negotiation Core v1.
+
+Важно:
+- публичные REST/AJAX маршруты не добавлены;
+- реальные игры и legacy negotiation_duel_v1 не переназначены;
+- adapter используется только программно/в smoke-test до отдельного этапа подключения.
+
+Реализовано:
+- authoritative state_json snapshot для восстановления после F5;
+- runtime_state_json остаётся отдельным runtime-specific snapshot;
+- запись сессии в ckm_negotiation_sessions;
+- нормализованная история реплик в ckm_negotiation_turns с message_seq;
+- append-only события в ckm_negotiation_events;
+- client_request_id и сохранённый response_json в ckm_negotiation_requests;
+- server-side state_version conflict guard;
+- persisted request replay без повторного изменения state;
+- persisted service create/state/apply для тестового runtime;
+- безопасная очистка только test_/TEST- сессий.
+
+Схема БД: 0.3.14.11.

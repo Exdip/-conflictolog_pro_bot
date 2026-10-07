@@ -1,0 +1,3 @@
+Version: 0.3.23.511-dev.543-SALES-STAGE-SYNC
+- Sales stage 2 recognizes natural Russian outcome forms such as 'окупают' and 'даёт/дает'.
+- This prevents stages 3-4 from remaining visually locked after a valid value argument.

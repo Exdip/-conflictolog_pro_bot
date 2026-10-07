@@ -1,0 +1,8 @@
+NEG-INTERSECTION-START 445
+Version: 0.3.23.413-dev.445-NEG-INTERSECTION-START
+Content pack: 1.27.0
+Published the «На стыке интересов» library.
+Added 10 public scenario cards: one published playable scenario «Продажи обещали — производство исполняй» and nine draft «Скоро» cards.
+The playable scenario contains 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

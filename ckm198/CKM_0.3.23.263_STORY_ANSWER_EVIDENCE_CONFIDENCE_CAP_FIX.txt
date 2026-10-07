@@ -1,0 +1,11 @@
+CKM Quiz Pro 0.3.23.264-dev.296-FINAL-WINNER-EXACT-TOP-FIX
+
+Story-seven evidence confidence cap
+
+- Applies only to final round “Проверь историю”.
+- For respect, objections, emotional_control, only evidence from storyteller answer messages is admissible.
+- Story/main evidence for those interactional criteria is discarded.
+- If a model returns 7–10 points but all evidence for one of those criteria is discarded, the server caps that criterion at 6 instead of rejecting the entire review.
+- A valid answer-message citation preserves the original 7–10 score.
+- Other criteria and ordinary two-party negotiation reviews remain unchanged.
+- No synthetic quote is created and no quote is reassigned to a different text.

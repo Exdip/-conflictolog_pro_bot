@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.479-dev.511-SALES-REPLY-SOUND-HARDENING
+
+Minimal changes from .510:
+- completion-signal.js: recover closed/interrupted AudioContext and resume any non-running context.
+- SALES only: fully revealed hidden facts no longer hijack later turns; explicit direct re-questions remain allowed.
+- SALES prompt: do not repeat reveal_level=2 facts verbatim unless directly re-asked.
+- Effective Sales / no-need: publish scenario version 2 with consistent 15-minute next-step wording.
+- Content pack 1.50.0; DB schema version unchanged (1.8.0).

@@ -1,0 +1,2 @@
+CKM Quiz Pro 0.3.23.67-dev.99-CHGK-DIRECT-FINAL-ANSWER
+CHGK final answer is submitted directly; draft/version flow disabled.

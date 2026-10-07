@@ -1,0 +1,5 @@
+NEG-STATUS-BADGES-14PX 393
+Version: 0.3.23.361-dev.393-NEG-STATUS-BADGES-14PX
+Unified stage/status/counter/badge typography and visual states at 14px.
+UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

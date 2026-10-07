@@ -1,0 +1,30 @@
+CKM Quiz Pro 0.3.23.492-dev.524-SALES-TELEGRAM-CHANNEL
+
+SALES / AI seller — Telegram external channel
+
+Added:
+- official Telegram Bot API connection via BotFather token;
+- token verification with getMe;
+- secure webhook registration with secret_token and opaque hook id;
+- AES-256-GCM encrypted Bot Token storage;
+- private text messages -> existing AI seller brain, script, knowledge base and corrections;
+- Telegram leads and transcripts -> shared Inbox/CRM and analytics;
+- AI replies, operator replies and scenario/follow-up messages -> Telegram;
+- human takeover pauses AI replies;
+- background scenario processing via WP-Cron (~1 minute best effort);
+- Telegram connection/disconnection UI and safe status display;
+- MAX and WhatsApp remain target channels; Instagram is not used.
+
+Checks:
+- sales-518 regression: 12/12
+- sales-519 MAX: 7/7
+- sales-520 Inbox/CRM: 11/11
+- sales-521 analytics/goals: 12/12
+- sales-522 scenarios/followups: 14/14
+- sales-523 scenario chains: 20/20
+- sales-524 Telegram channel: 21/21
+- full PHP lint: 412 files, no syntax errors
+- effective-sales JavaScript: node --check passed
+- completion sound module: byte-identical to .523
+
+Live end-to-end Telegram test requires installation of .524 and a real BotFather token.

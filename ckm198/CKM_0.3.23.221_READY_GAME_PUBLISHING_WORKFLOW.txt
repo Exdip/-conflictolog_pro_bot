@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.221 / dev.253
+
+Ready-game publishing workflow:
+- Draft / Published / Hidden statuses.
+- New catalogue games start as Draft.
+- Only Published games are visible to new buyers.
+- Hidden/Draft games cannot be purchased by new users, including direct checkout URLs.
+- Existing purchasers retain access and renewal for non-public games.
+- Administrator preview is available before publication.
+- Catalogue product data is sourced from administrator-managed ready games.

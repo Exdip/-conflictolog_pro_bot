@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Квизы — комната участника</title>
+  <link rel="stylesheet" href="assets/theme-tokens.css?v=2.19.0-alpha.87.0.2">
+  <link rel="stylesheet" href="assets/quiz-ui.css?v=2.19.0-alpha.87.0.2">
+  <script defer src="assets/quiz-common.js?v=2.19.0-alpha.87.0.2"></script>
+  <script defer src="assets/quiz-room.js?v=2.19.0-alpha.87.0.2"></script>
+  <script defer src="assets/quiz-voice-client.js?v=2.19.0-alpha.87.0.2"></script>
+</head>
+<body>
+  <div class="quiz-jeopardy-help-intro" id="roomJeopardyHelpIntro" role="dialog" aria-modal="true" aria-labelledby="roomJeopardyHelpIntroTitle" hidden>
+    <div class="quiz-jeopardy-help-intro__panel">
+      <span class="quiz-kicker">Интеллектуальный батл · правила за 10 секунд</span>
+      <h2 id="roomJeopardyHelpIntroTitle">Выберите → нажмите → ответьте</h2>
+      <p class="quiz-jeopardy-help-intro__lead"><strong>Выберите вопрос → первым нажмите «ОТВЕЧАЕМ!» → дайте ответ.</strong></p>
+      <p>Правильный ответ приносит номинал вопроса. После игрового поля — финальный вопрос на <strong>500 баллов</strong>.</p>
+      <p class="quiz-jeopardy-help-intro__note"><strong>«Секретная передача»</strong> — специальный вопрос, который отвечает другая команда.</p>
+      <div class="quiz-jeopardy-help-intro__actions">
+        <button class="quiz-btn quiz-btn--primary" type="button" id="roomJeopardyHelpDismiss">Понятно, начинаем</button>
+        <button class="quiz-btn" type="button" id="roomJeopardyHelpOpen30">Правила за 30 секунд</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="quiz-shell" id="roomShell">
+    <header class="quiz-topbar">
+      <div class="quiz-brand">
+        
+        <span class="quiz-brand__text"><strong>Комната участника</strong><span id="roomGameCode">Квиз</span></span>
+      </div>
+      <div class="quiz-toolbar">
+        <span class="quiz-badge quiz-badge--test" data-test-badge hidden>Тестовая игра</span>
+        <span class="quiz-badge quiz-badge--team" id="roomTeamBadge">Команда</span>
+        <button class="quiz-btn" type="button" id="roomRulesButton" hidden>Правила</button>
+        <button class="quiz-btn" type="button" data-theme-toggle>Тёмная тема</button>
+      </div>
+    </header>
+
+    <section class="quiz-hero">
+      <span class="quiz-kicker" id="roomPhase">Ожидание</span>
+      <h1 class="quiz-title" id="roomTitle">Подключение к игре…</h1>
+      <p class="quiz-subtitle" id="roomSubtitle">Состояние комнаты синхронизируется с сервером.</p>
+      <div class="quiz-team-identity" id="roomTeamIdentity"><span>Вы играете за</span><strong id="roomTeamIdentityName">Команда</strong></div>
+    </section>
+
+    <details class="participant-guide participant-guide--quiz" id="roomParticipantGuide" open>
+      <summary>Как играть — 6 простых шагов</summary>
+      <ol>
+        <li><strong>Проверьте свою команду.</strong><span>Название команды видно вверху страницы. Убедитесь, что открыта именно ваша комната.</span></li>
+        <li><strong>Дождитесь вопроса.</strong><span>Вопрос и таймер появятся автоматически. Отсчёт идёт по серверному времени.</span></li>
+        <li><strong>Обсудите ответ.</strong><span>Сначала договоритесь внутри команды, какой вариант отправлять.</span></li>
+        <li><strong>Подготовьте и зафиксируйте ответ.</strong><span>В Битва знатоков командный черновик сохраняется отдельно. Официальным ответом он становится только после явной финальной фиксации уполномоченным участником или командным экраном.</span></li>
+        <li><strong>Следуйте правилам формата.</strong><span>В классическом квизе может действовать бонус скорости. В Битва знатоков идёт общее время обсуждения, после чего финальный ответ передаётся арбитру.</span></li>
+        <li><strong>Следите за счётом.</strong><span>После 0:00 ответ фиксируется. В конце игры табло покажет основные баллы, бонус скорости, итог и победителя.</span></li>
+      </ol>
+      <p class="participant-guide__note"><strong>Важно:</strong> после окончания времени изменить ответ уже нельзя.</p>
+    </details>
+
+    <details class="participant-guide participant-guide--full" id="roomJeopardyFullRules" hidden>
+      <summary>Полные правила «Интеллектуального батла»</summary>
+      <div class="participant-guide__full">
+        <h3>1. Команды и цель</h3><p>В игре участвуют 2–10 команд. Побеждает команда с наибольшим итоговым счётом.</p>
+        <h3>2. Игровое поле</h3><p>Поле состоит из категорий и номиналов. Сыгранную ячейку повторно выбрать нельзя.</p>
+        <h3>3. Выбор вопроса</h3><p>Команда с правом выбора называет ведущему категорию и номинал. Ведущий открывает ячейку, после чего запускается серверный таймер.</p>
+        <h3>4. Право ответа</h3><p>На обычном вопросе команды нажимают «ОТВЕЧАЕМ!». Сервер фиксирует первое нажатие, и только эта команда получает поле ответа.</p>
+        <h3>5. Ответ</h3><p>Команда отправляет один итоговый ответ до окончания времени. Неотправленный ответ не засчитывается.</p>
+        <h3>6. Арбитраж</h3><p>Ответ оценивает ИИ, голосовой ведущий или оба в гибридном режиме. В гибридном режиме рекомендация AI приватна до решения ведущего.</p>
+        <h3>7. Баллы</h3><p>Правильный ответ приносит номинал вопроса. Неправильный ответ приносит 0 баллов. Обычных рискованных ставок нет.</p>
+        <h3>8. Следующий выбор</h3><p>После правильного ответа право выбора следующей ячейки получает ответившая команда. Ручная передача ведущим — резервная функция.</p>
+        <h3>9. «Секретная передача»</h3><p>Специальная ячейка не раскрывается заранее. После выбора в режиме ИИ команда-источник сама назначает другую команду; она отвечает без buzzer. За верный ответ получает номинал, за неверный — 0.</p>
+        <h3>10. Финал</h3><p>После основного поля все команды получают один закрытый финальный вопрос. Ответы скрыты до общего раскрытия. Верный финальный ответ даёт 500 баллов, неверный — 0. Ставок в финале нет.</p>
+        <h3>11. ИИ</h3><p>ИИ может вести игру и рекомендовать решение, но счёт меняет только серверный runtime через журнал начислений.</p>
+        <h3>12. Табло и приватность</h3><p>Табло показывает поле, таймер, команды и счёт, но не показывает незавершённые ответы и приватные AI-рекомендации.</p>
+        <h3>13. Победитель</h3><p>После завершения основного поля и финала побеждает команда с наибольшим количеством баллов.</p>
+      </div>
+    </details>
+
+    <section class="quiz-card quiz-membership-conflict" id="roomMembershipConflict" hidden>
+      <div class="quiz-card__head"><h2>Эта учётная запись уже участвует в игре</h2></div>
+      <p class="quiz-help" id="roomMembershipConflictText"></p>
+      <div class="quiz-membership-conflict__actions">
+        <a class="quiz-btn quiz-btn--primary" id="roomOwnTeamLink" href="#" hidden>Открыть свою команду</a>
+        <span class="quiz-help">Для проверки другой команды используйте другую учётную запись или другой профиль браузера.</span>
+      </div>
+    </section>
+
+    <section class="quiz-card quiz-chgk-lobby" id="roomChgkLobby" hidden>
+      <div class="quiz-card__head">
+        <div><span class="quiz-kicker">Лобби «Битвы знатоков»</span><h2>Готовность команды</h2></div>
+        <span class="quiz-badge quiz-badge--warning" id="roomLobbyBadge">Ожидание</span>
+      </div>
+      <p class="quiz-help" id="roomLobbySummary">Ожидайте подключения и готовности команд.</p>
+      <div class="quiz-lobby-progress"><strong id="roomLobbyReadyCount">0 / 0</strong><span>команд готовы</span></div>
+      <p class="quiz-status-line" id="roomLobbyAuthority"></p>
+      <button class="quiz-btn quiz-btn--primary" type="button" id="roomReadyToggle">Мы готовы</button>
+      <p class="quiz-status-line" id="roomReadyStatus"></p>
+    </section>
+
+    <section class="quiz-card quiz-live-host" id="roomLiveHost" hidden>
+      <div class="quiz-card__head">
+        <div><h2>Живой ведущий</h2><p class="quiz-help">Видео и голос через Jitsi Meet</p></div>
+        <span class="quiz-badge quiz-badge--success">Онлайн</span>
+      </div>
+      <p class="quiz-help">Подключитесь к видеокомнате. Во время обсуждения можно держать микрофон выключенным и включить его, когда команда отвечает ведущему.</p>
+      <div class="quiz-live-host__actions">
+        <button class="quiz-btn quiz-btn--primary" type="button" id="roomJoinLiveHost">Подключить видео и голос</button>
+        <a class="quiz-btn" id="roomLiveHostLink" href="#" target="_blank" rel="noopener noreferrer">Открыть отдельно</a>
+      </div>
+      <div class="quiz-live-host__frame" id="roomLiveHostFrame"></div>
+    </section>
+
+    <section class="quiz-card quiz-jeopardy-card" id="roomJeopardyCard" hidden>
+      <div class="quiz-card__head">
+        <div><span class="quiz-kicker">Интеллектуальный батл</span><h2>Игровая доска</h2></div>
+        <span class="quiz-card__meta" id="roomJeopardyStatus">Ожидание выбора</span>
+      </div>
+      <p class="quiz-help" id="roomJeopardyHint">Следите за доступными категориями и номиналами.</p>
+      <div class="quiz-jeopardy-ai" id="roomJeopardyAi" hidden>
+        <strong>ИИ · арбитр</strong><span id="roomJeopardyAiStatus">Ожидание ответа.</span>
+        <p class="quiz-help" id="roomJeopardyAiComment">Решение появится после ответа команды.</p>
+      </div>
+      <div class="quiz-jeopardy-board" id="roomJeopardyBoard" hidden></div>
+      <div class="quiz-jeopardy-buzzer" id="roomJeopardyBuzzer" hidden>
+        <button class="quiz-btn quiz-btn--primary quiz-jeopardy-buzzer__button" type="button" id="roomBuzzButton">ОТВЕЧАЕМ!</button>
+        <div><strong id="roomBuzzStatus">Кнопка свободна</strong><span id="roomBuzzTimer"></span></div>
+      </div>
+      <div class="quiz-jeopardy-cat" id="roomJeopardyCat" hidden>
+        <strong>Секретная передача</strong><span id="roomCatStatus">Ожидание назначения команды-получателя.</span>
+        <div class="participant-guide__actions" id="roomCatTargets"></div>
+      </div>
+      <div class="quiz-jeopardy-final" id="roomJeopardyFinal" hidden>
+        <div><strong>Финальный раунд</strong><span id="roomFinalStatus">Ожидание финала.</span></div>
+        <span class="quiz-help" id="roomFinalHint">Один закрытый ответ от команды. Верный ответ даёт 500 баллов.</span>
+      </div>
+    </section>
+
+    <div class="quiz-grid">
+      <section class="quiz-stack">
+        <article class="quiz-card">
+          <div class="quiz-card__head">
+            <div>
+              <div class="quiz-question__counter" id="roomQuestionCounter">Вопрос ещё не открыт</div>
+              <h2>Текущая ситуация</h2>
+            </div>
+            <div class="quiz-timer" id="roomTimerWrap"><span id="roomTimerLabel">Осталось</span><strong id="roomTimer">0:00</strong></div>
+          </div>
+          <div class="quiz-question" id="roomQuestionBox">
+            <p class="quiz-question__text" id="roomQuestionText">Ожидайте старта ведущего.</p>
+            <div class="quiz-question__media" id="roomQuestionMedia" hidden></div>
+            <div class="quiz-options" id="roomOptions"></div>
+            <div class="quiz-answer-box" id="roomAnswerBox">
+              <label class="quiz-field-label quiz-chgk-only" id="roomFinalAnswerLabel" for="roomAnswerText" hidden>Финальный ответ команды</label>
+              <div class="quiz-jeopardy-answer-buzz" id="roomAnswerBuzz" hidden>
+                <button class="quiz-btn quiz-btn--primary" type="button" id="roomAnswerBuzzButton">ОТВЕЧАЕМ!</button>
+                <span class="quiz-help" id="roomAnswerBuzzHint">Сначала зафиксируйте право ответа серверной кнопкой.</span>
+              </div>
+              <textarea id="roomAnswerText" placeholder="Окончательный ответ команды"></textarea>
+              <label class="quiz-field-label quiz-chgk-only" id="roomArgumentationLabel" for="roomArgumentation" hidden>Аргументация</label>
+              <textarea id="roomArgumentation" placeholder="Почему команда считает этот ответ правильным?" hidden></textarea>
+              <div class="quiz-chgk-lock-note quiz-chgk-only" id="roomChgkLockNote" hidden>
+                <strong>Проверьте формулировку перед фиксацией.</strong> После нажатия кнопки финальный ответ «Битвы знатоков» изменить нельзя.
+              </div>
+              <div class="quiz-chgk-team-flow quiz-chgk-only" id="roomChgkTeamFlow" hidden>
+                <div><strong id="roomChgkRole">Один окончательный ответ</strong><span id="roomChgkMode">—</span></div>
+                <span class="quiz-status-line" id="roomDraftStatus" hidden></span>
+              </div>
+              <p class="quiz-help" id="roomAnswerHelp">Ответ можно менять до окончания времени. В зачёт идёт последний сохранённый вариант.</p>
+              <button class="quiz-btn quiz-btn--primary" type="button" id="roomSubmit">Сохранить ответ</button>
+              <p class="quiz-status-line" id="roomAnswerStatus"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="quiz-card quiz-chgk-host-card" id="roomChgkHostCard" hidden>
+          <div class="quiz-card__head">
+            <div><span class="quiz-kicker">ИИ-ведущий</span><h2>Реплика ведущего</h2></div>
+            <span class="quiz-badge" id="roomChgkHostBadge">ИИ</span>
+          </div>
+          <p class="quiz-chgk-host-message" id="roomChgkHostMessage">Ожидайте сообщения ведущего.</p>
+        </article>
+
+        <article class="quiz-card quiz-chgk-arbitration" id="roomChgkArbitration" hidden>
+          <div class="quiz-card__head">
+            <div><span class="quiz-kicker">Арбитраж</span><h2 id="roomChgkArbitrationTitle">Статус ответа</h2></div>
+            <span class="quiz-badge quiz-badge--warning" id="roomChgkArbitrationBadge">Ожидание</span>
+          </div>
+          <div class="quiz-chgk-arbitration__summary" id="roomChgkArbitrationSummary">Ответ ещё не зафиксирован.</div>
+          <dl class="quiz-chgk-result" id="roomChgkResult" hidden>
+            <div><dt>Вердикт</dt><dd id="roomChgkVerdict">—</dd></div>
+            <div><dt>Баллы</dt><dd id="roomChgkPoints">0</dd></div>
+            <div><dt>Арбитр</dt><dd id="roomChgkJudge">—</dd></div>
+          </dl>
+          <div class="quiz-chgk-comment" id="roomChgkJudgeComment" hidden></div>
+        </article>
+
+        <article class="quiz-card quiz-chgk-arbitration" id="roomNegotiationReview" hidden>
+          <div class="quiz-card__head">
+            <div><span class="quiz-kicker">ИИ-разбор</span><h2>Переговорный ход</h2></div>
+            <span class="quiz-badge quiz-badge--warning" id="roomNegotiationBadge">Ожидание</span>
+          </div>
+          <div class="quiz-chgk-arbitration__summary"><strong id="roomNegotiationMode">Эффективный продажник</strong> · <span id="roomNegotiationSummary">Разбор появится после вашей реплики.</span></div>
+          <dl class="quiz-chgk-result" id="roomNegotiationResult" hidden>
+            <div><dt>Вердикт</dt><dd id="roomNegotiationVerdict">—</dd></div>
+            <div><dt>Баллы</dt><dd id="roomNegotiationPoints">0</dd></div>
+            <div><dt>Арбитр</dt><dd id="roomNegotiationJudge">—</dd></div>
+          </dl>
+          <div class="quiz-chgk-comment" id="roomNegotiationComment" hidden></div>
+        </article>
+
+        <article class="quiz-card quiz-card--flat">
+          <div class="quiz-card__head"><h2>Сообщения ведущего</h2></div>
+          <div class="quiz-event-feed" id="roomMessages"><p class="quiz-empty">Сообщений пока нет.</p></div>
+        </article>
+      </section>
+
+      <aside class="quiz-stack">
+        <article class="quiz-card">
+          <div class="quiz-card__head"><h2>Счёт</h2><span class="quiz-card__meta" id="roomSyncMeta">—</span></div>
+          <div class="quiz-team-list" id="roomTeams"></div>
+        </article>
+        <article class="quiz-card" id="roomResultCard" hidden>
+          <div class="quiz-card__head"><div><span class="quiz-kicker">Итог</span><h2>Результат игры</h2></div><span class="quiz-badge quiz-badge--success">Финиш</span></div>
+          <p class="quiz-help" id="roomResultWinner">—</p>
+          <div class="quiz-team-list" id="roomResultStandings"></div>
+        </article>
+        <article class="quiz-card quiz-card--flat">
+          <div class="quiz-card__head"><h3>Статус команды</h3></div>
+          <p class="quiz-help" id="roomTeamStatus">Подключение…</p>
+        </article>
+      </aside>
+    </div>
+  </main>
+  <div class="quiz-connection" id="quizConnection">Подключение…</div>
+</body>
+</html>

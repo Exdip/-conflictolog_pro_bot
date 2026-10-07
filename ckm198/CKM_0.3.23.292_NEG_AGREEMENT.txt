@@ -1,0 +1,4 @@
+CKM Quiz Pro 0.3.23.292-dev.324-NEG-AGREEMENT
+
+Adds the two terminal branches for Negotiation Master: exact final agreement and confirmed no-deal completion.
+No legacy games, payments, STT or voice flows are intentionally refactored by this build.

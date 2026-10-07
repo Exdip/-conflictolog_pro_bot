@@ -1,0 +1,5 @@
+NEG-TYPOGRAPHY-HARD-GUARD 396
+Version: 0.3.23.364-dev.396-NEG-TYPOGRAPHY-HARD-GUARD
+Hard guard: all Negotiation Master text, headings, controls, labels and inline font-size overrides are forced to 14px.
+UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

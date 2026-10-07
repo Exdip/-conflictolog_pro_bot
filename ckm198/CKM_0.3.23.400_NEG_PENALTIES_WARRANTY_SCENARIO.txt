@@ -1,0 +1,8 @@
+NEG-PENALTIES-WARRANTY-SCENARIO 432
+Version: 0.3.23.400-dev.432-NEG-PENALTIES-WARRANTY-SCENARIO
+Content pack: 1.16.0
+Promoted «Штрафы и гарантии» from the final draft card to a published playable scenario in «Цена вопроса».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+All 10 scenarios in «Цена вопроса» are now published and playable.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

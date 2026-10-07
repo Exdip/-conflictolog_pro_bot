@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.167-dev.199-PERSUADE-EMPTY-REVIEW-RECOVERY-FIX
+
+- Live-session recovery for a failed review of an empty current dialogue.
+- Host gets “Повторить испытание”; it resets only the current broken attempt to 30-second preparation and preserves earlier scores/reviews.
+- Legacy manual-review recommendation “Обсудите оценку ведущего перед переходом.” is never rendered.
+- Normal single-advance flow and one-time readiness remain unchanged.

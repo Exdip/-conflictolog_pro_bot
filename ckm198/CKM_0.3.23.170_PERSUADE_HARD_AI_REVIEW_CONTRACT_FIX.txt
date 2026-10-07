@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.170-dev.202-PERSUADE-HARD-AI-REVIEW-CONTRACT-FIX
+
+- Round 3 / «Неудобный вопрос»: AI review now uses robust JSON extraction, harmless representation normalization, strict schema diagnostics, and one strict automatic retry.
+- Accepts equivalent wrappers, numeric-string rubric values, common reason/evidence aliases, and whitespace-only quote differences without inventing evidence or changing semantic scores.
+- Validation errors now identify the exact answer/contract violation.
+- Existing deterministic 0/0/0 fallback for three timed-out empty answers remains unchanged.

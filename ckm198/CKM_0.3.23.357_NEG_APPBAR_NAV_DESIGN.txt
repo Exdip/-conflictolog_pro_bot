@@ -1,0 +1,5 @@
+NEG-APPBAR-NAV-DESIGN 389
+Version: 0.3.23.357-dev.389-NEG-APPBAR-NAV-DESIGN
+Compact 14px application header/navigation, consistent active/hover/focus states and mobile navigation.
+UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

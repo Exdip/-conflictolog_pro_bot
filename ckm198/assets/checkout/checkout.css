@@ -1,0 +1,17 @@
+/* Layout only. Typography, colours and controls belong to the active theme. */
+.ckm-checkout {
+    --ckm-checkout-gap: var(--wp--style--block-gap, 1.5rem);
+    --ckm-checkout-padding: var(--wp--preset--spacing--40, 1.5rem);
+}
+.ckm-checkout .ckm-checkout__catalog {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--ckm-checkout-gap);
+}
+.ckm-checkout .ckm-checkout__card {
+    min-width: 0;
+    padding: var(--ckm-checkout-padding);
+    border: 1px solid currentColor;
+}
+.ckm-checkout .ckm-checkout__title { overflow-wrap: anywhere; }
+.ckm-checkout .ckm-checkout__status[hidden] { display: none; }

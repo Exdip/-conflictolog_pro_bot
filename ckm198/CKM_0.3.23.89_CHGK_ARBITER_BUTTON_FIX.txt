@@ -1,0 +1,1 @@
+CHGK arbiter button fix: show human arbitration controls during questionFlow arbitration phase even when legacy game.phase is still question_open.

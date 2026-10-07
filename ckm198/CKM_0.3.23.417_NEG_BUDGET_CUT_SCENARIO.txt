@@ -1,0 +1,8 @@
+NEG-BUDGET-CUT-SCENARIO 449
+Version: 0.3.23.417-dev.449-NEG-BUDGET-CUT-SCENARIO
+Content pack: 1.31.0
+Promoted «Проект есть, бюджета меньше» from a draft card to a published playable scenario in «На стыке интересов».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains scope-budget alignment, stage financing, transparent risk reserves and prioritization by business effect.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

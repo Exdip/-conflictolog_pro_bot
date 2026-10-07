@@ -1,0 +1,5 @@
+NEG-GAME-GRID-ALIGNMENT 392
+Version: 0.3.23.360-dev.392-NEG-GAME-GRID-ALIGNMENT
+Unified game grid, column widths, vertical rhythm, dialogue height and responsive layout.
+Typography remains 14px. UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

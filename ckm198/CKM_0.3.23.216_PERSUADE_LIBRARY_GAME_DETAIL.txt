@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.216-dev.248-PERSUADE-LIBRARY-GAME-DETAIL
+
+- Added a dedicated detail view inside «Библиотека игр».
+- «Двойка, которой не было» now exposes the situation, roles, four-round flow and the unified 304-point scoring model before purchase/launch.
+- Added a «Подробнее» secondary action to library cards.
+- Reused one action resolver for purchase, renewal and create-game states to keep card/detail behavior consistent.
+- The game remains outside the main catalog.

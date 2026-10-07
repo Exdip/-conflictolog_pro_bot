@@ -1,0 +1,5 @@
+CKM Quiz Pro 0.3.23.103-dev.135-WPADMIN-LOCALSTORAGE-RETURN-FIX
+
+- Added browser-side post-payment return memory in checkout.js.
+- Added wp-admin dashboard JavaScript safety net to leave WordPress console after payment provider returns to /wp-admin/.
+- Improved dashboard detection using $pagenow and REQUEST_URI in addition to SCRIPT_NAME/PHP_SELF.

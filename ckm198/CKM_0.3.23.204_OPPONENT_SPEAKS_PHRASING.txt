@@ -1,0 +1,5 @@
+CKM Quiz Pro 0.3.23.207-dev.239-PERSUADE-ME-SCHOOL-PLOT
+
+- Express Round prompt prefix changed from “Оппонент:” to “Оппонент говорит:”.
+- Existing built-in demo-negotiation-express question rows are upgraded once on admin_init.
+- Organizer-authored/custom negotiation text is not modified.

@@ -1,0 +1,9 @@
+NEG-MINORITY-PROTECTION-SCENARIO 465
+Version: 0.3.23.433-dev.465-NEG-MINORITY-PROTECTION-SCENARIO
+Content pack: 1.46.0
+Promoted «Миноритарий требует защиты» from the final draft card to a published playable scenario in «Доля влияния».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+All 10 scenarios in «Доля влияния» are now published and playable.
+The scenario trains precise minority protections, information rights, related-party governance and balance between protection and company manageability.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.494-dev.526-SALES-MAX-CHANNEL
+
+- Реальный MAX Bot API для партнёрских ИИ-продавцов.
+- API base: https://platform-api2.max.ru; Authorization header.
+- Подключение: GET /me -> POST /subscriptions (message_created + secret).
+- Tenant-scoped encrypted token, webhook secret, проверка и удаление подписки.
+- Входящие личные сообщения MAX идут в общий AI seller brain и Inbox/CRM.
+- Ответы ИИ, оператора и сценариев возвращаются в MAX.
+- MAX-подключение назначается конкретному ИИ-продавцу из Partner Integration Hub.
+- WhatsApp/SIP остаются безопасными tenant-scoped заготовками для следующих коннекторов.

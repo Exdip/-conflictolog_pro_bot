@@ -1,0 +1,417 @@
+{
+  "fixtureKey": "ckm_demo_jeopardy_v1",
+  "fixtureVersion": 3,
+  "title": "ЦКМ — демо «Интеллектуальный батл»",
+  "slug": "ckm-demo-intellectual-battle",
+  "shortDescription": "Готовый демонстрационный «Интеллектуальный батл»: 4 категории × 3 номинала, buzzer, «Секретная передача» и простой финальный вопрос на 500 баллов.",
+  "instructions": "Команда, имеющая право выбора, открывает ячейку. Для обычного вопроса команды борются за право ответа кнопкой «ОТВЕЧАЕМ!». Победившая команда отправляет ответ, ИИ или ведущий выносит вердикт. Одна специальная ячейка использует «Секретную передачу». После основного поля проводится закрытый финальный вопрос без ставок: верный ответ даёт 500 баллов.",
+  "status": "published",
+  "minTeams": 2,
+  "maxTeams": 10,
+  "defaultTeams": 3,
+  "hostMode": "ai",
+  "judgeMode": "hybrid",
+  "secondsPerQuestion": 90,
+  "formatSettings": {
+    "categoryCount": 4,
+    "categoryTitles": [
+      "Логика",
+      "Наука",
+      "Технологии",
+      "Бизнес"
+    ],
+    "questionValues": [
+      100,
+      200,
+      300
+    ],
+    "buzzerSeconds": 60,
+    "judgeMode": "hybrid",
+    "victoryMode": "points"
+  },
+  "settings": {
+    "demo": true,
+    "purpose": "jeopardy-full-live-demo",
+    "defaultTeamCount": 3,
+    "textOnlyAiHost": true,
+    "pageEyebrow": "ЦКМ · демо «Интеллектуальный батл»",
+    "pageMetaTemplate": "{min}–{max} команд · 4 категории × 3 номинала · 90 с на вопрос · 60 с после buzzer · «Секретная передача» · финал 500"
+  },
+  "questions": [
+    {
+      "key": "jeopardy_demo_logic_100",
+      "position": 1,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Логика",
+      "value": 100,
+      "specialType": "",
+      "type": "text",
+      "text": "Все квадраты — прямоугольники. Некоторые прямоугольники красные. Следует ли отсюда, что некоторые квадраты красные?",
+      "correctAnswers": [
+        "Нет"
+      ],
+      "points": 100,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Нет"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Нет. Из того, что часть прямоугольников красная, не следует, что среди этой части есть квадраты.",
+      "hostScript": "Категория «Логика», 100."
+    },
+    {
+      "key": "jeopardy_demo_logic_200",
+      "position": 2,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Логика",
+      "value": 200,
+      "specialType": "",
+      "type": "text",
+      "text": "У Маши вдвое больше карандашей, чем у Иры. Вместе у них 18 карандашей. Сколько карандашей у Маши?",
+      "correctAnswers": [
+        "12"
+      ],
+      "points": 200,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "12"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Если у Иры x, у Маши 2x. Тогда 3x = 18, x = 6, у Маши 12.",
+      "hostScript": "Категория «Логика», 200."
+    },
+    {
+      "key": "jeopardy_demo_logic_300",
+      "position": 3,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Логика",
+      "value": 300,
+      "specialType": "cat_in_bag",
+      "type": "text",
+      "text": "В комнате четыре угла. В каждом углу сидит кошка. Напротив каждой кошки сидят три кошки. Сколько кошек в комнате?",
+      "correctAnswers": [
+        "4"
+      ],
+      "points": 300,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "4",
+          "четыре"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Четыре кошки сидят по одной в каждом углу и видят остальных трёх.",
+      "hostScript": "Категория «Логика», 300. Спецмеханика будет раскрыта после выбора."
+    },
+    {
+      "key": "jeopardy_demo_science_100",
+      "position": 4,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Наука",
+      "value": 100,
+      "specialType": "",
+      "type": "text",
+      "text": "Как называется планета Солнечной системы, ближайшая к Солнцу?",
+      "correctAnswers": [
+        "Меркурий"
+      ],
+      "points": 100,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Меркурий"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Ближайшая к Солнцу планета — Меркурий.",
+      "hostScript": "Категория «Наука», 100."
+    },
+    {
+      "key": "jeopardy_demo_science_200",
+      "position": 5,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Наука",
+      "value": 200,
+      "specialType": "",
+      "type": "text",
+      "text": "Какой газ составляет наибольшую долю земной атмосферы?",
+      "correctAnswers": [
+        "Азот"
+      ],
+      "points": 200,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Азот"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Около 78% земной атмосферы составляет азот.",
+      "hostScript": "Категория «Наука», 200."
+    },
+    {
+      "key": "jeopardy_demo_science_300",
+      "position": 6,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Наука",
+      "value": 300,
+      "specialType": "",
+      "type": "text",
+      "text": "Как называется переход вещества из твёрдого состояния сразу в газообразное, минуя жидкое?",
+      "correctAnswers": [
+        "Сублимация"
+      ],
+      "points": 300,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Сублимация"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Такой фазовый переход называется сублимацией.",
+      "hostScript": "Категория «Наука», 300."
+    },
+    {
+      "key": "jeopardy_demo_tech_100",
+      "position": 7,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Технологии",
+      "value": 100,
+      "specialType": "",
+      "type": "text",
+      "text": "Что означает аббревиатура URL в веб-технологиях?",
+      "correctAnswers": [
+        "Uniform Resource Locator"
+      ],
+      "points": 100,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Uniform Resource Locator",
+          "унифицированный указатель ресурса"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "URL расшифровывается как Uniform Resource Locator — унифицированный указатель ресурса.",
+      "hostScript": "Категория «Технологии», 100."
+    },
+    {
+      "key": "jeopardy_demo_tech_200",
+      "position": 8,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Технологии",
+      "value": 200,
+      "specialType": "",
+      "type": "text",
+      "text": "Какой протокол обычно обеспечивает шифрованную передачу веб-страниц между браузером и сервером?",
+      "correctAnswers": [
+        "HTTPS"
+      ],
+      "points": 200,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "HTTPS"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "HTTPS — защищённый вариант HTTP с криптографической защитой соединения.",
+      "hostScript": "Категория «Технологии», 200."
+    },
+    {
+      "key": "jeopardy_demo_tech_300",
+      "position": 9,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Технологии",
+      "value": 300,
+      "specialType": "",
+      "type": "text",
+      "text": "Как называется структура данных, работающая по принципу «последним пришёл — первым вышел»?",
+      "correctAnswers": [
+        "Стек"
+      ],
+      "points": 300,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Стек",
+          "stack"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Стек реализует принцип LIFO: last in, first out.",
+      "hostScript": "Категория «Технологии», 300."
+    },
+    {
+      "key": "jeopardy_demo_business_100",
+      "position": 10,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Бизнес",
+      "value": 100,
+      "specialType": "",
+      "type": "text",
+      "text": "Как называется разница между выручкой и всеми расходами бизнеса за период, если она положительна?",
+      "correctAnswers": [
+        "Прибыль"
+      ],
+      "points": 100,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Прибыль"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Положительная разница между выручкой и расходами — прибыль.",
+      "hostScript": "Категория «Бизнес», 100."
+    },
+    {
+      "key": "jeopardy_demo_business_200",
+      "position": 11,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Бизнес",
+      "value": 200,
+      "specialType": "",
+      "type": "text",
+      "text": "Как называется точка, в которой выручка бизнеса равна его совокупным расходам?",
+      "correctAnswers": [
+        "Точка безубыточности"
+      ],
+      "points": 200,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Точка безубыточности",
+          "безубыточность",
+          "break-even point"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "В точке безубыточности прибыль равна нулю: выручка покрывает все расходы.",
+      "hostScript": "Категория «Бизнес», 200."
+    },
+    {
+      "key": "jeopardy_demo_business_300",
+      "position": 12,
+      "roundNo": 1,
+      "roundTitle": "Основное поле",
+      "questionStage": "main",
+      "category": "Бизнес",
+      "value": 300,
+      "specialType": "",
+      "type": "text",
+      "text": "Компания продаёт товар за 1 000 рублей при переменных затратах 600 рублей на единицу. Какова маржинальная прибыль на единицу?",
+      "correctAnswers": [
+        "400 рублей"
+      ],
+      "points": 300,
+      "timeLimitSeconds": 90,
+      "scoringRule": {
+        "acceptedVariants": [
+          "400",
+          "400 рублей"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [],
+        "arbitrationRules": "Засчитать ответ, совпадающий по смыслу с эталоном; не требовать дословного совпадения.",
+        "argumentationCriteria": "Для короткого фактического вопроса достаточно однозначного ответа."
+      },
+      "explanation": "Маржинальная прибыль на единицу равна цене минус переменные затраты: 1000 − 600 = 400 рублей.",
+      "hostScript": "Категория «Бизнес», 300. Спецмеханика будет раскрыта после выбора."
+    },
+    {
+      "key": "jeopardy_demo_final",
+      "position": 13,
+      "roundNo": 2,
+      "roundTitle": "Финал",
+      "questionStage": "final",
+      "category": "",
+      "value": 0,
+      "specialType": "",
+      "type": "text",
+      "text": "Как называется принцип, согласно которому при прочих равных предпочтительнее объяснение, не вводящее лишних сущностей?",
+      "correctAnswers": [
+        "Бритва Оккама"
+      ],
+      "points": 0,
+      "timeLimitSeconds": 60,
+      "scoringRule": {
+        "acceptedVariants": [
+          "Бритва Оккама",
+          "принцип Оккама",
+          "Occam's razor",
+          "Ockham's razor"
+        ],
+        "rejectedVariants": [],
+        "keyClues": [
+          "Не умножать сущности без необходимости"
+        ],
+        "arbitrationRules": "Засчитать «Бритва Оккама» и очевидные эквивалентные формулировки.",
+        "argumentationCriteria": "Достаточно правильно назвать принцип."
+      },
+      "explanation": "Это бритва Оккама: при равной объяснительной силе предпочтение отдаётся более простому объяснению без лишних допущений.",
+      "hostScript": "Финальный вопрос. Ответы команд остаются закрытыми до общего раскрытия. Верный ответ даёт 500 баллов."
+    }
+  ]
+}

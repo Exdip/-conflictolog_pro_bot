@@ -1,0 +1,8 @@
+CKM Quiz Pro — .517 SALES SESSION HISTORY DEDUP
+Version: 0.3.23.485-dev.517-SALES-SESSION-HISTORY-DEDUP
+
+Scope: effective-sales opponent replies only.
+- Generated/fact replies are checked against the full opponent reply history of the current SALES session.
+- Direct re-questions for the same scenario fact remain allowed.
+- Neutral loop/fallback phrases still rotate only across the last four client replies, so the finite fallback set cannot be exhausted by full-session dedup.
+- No schema changes. No NEG-CORE behavior changes for non-sales sessions. Completion sound unchanged.

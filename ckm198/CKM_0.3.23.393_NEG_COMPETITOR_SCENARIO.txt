@@ -1,0 +1,8 @@
+NEG-COMPETITOR-SCENARIO 425
+Version: 0.3.23.393-dev.425-NEG-COMPETITOR-SCENARIO
+Content pack: 1.9.0
+Promoted «У конкурента дешевле» from a draft card to a published playable scenario in «Цена вопроса».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains comparison of total commercial packages rather than automatic price matching.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

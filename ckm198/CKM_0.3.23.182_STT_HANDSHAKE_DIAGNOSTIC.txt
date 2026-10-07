@@ -1,0 +1,14 @@
+0.3.23.182-dev.214-STT-HANDSHAKE-DIAGNOSTIC
+
+Base: 0.3.23.181-dev.213-TEAM-STT-SESSION-GUARD
+
+Diagnostic fix for participant/team STT handshake.
+- Adds a 12-second timeout for join -> joined/ready and joined -> ready.
+- Unexpected WebSocket close is now surfaced even before MediaRecorder starts.
+- Shows WebSocket close code and sanitized close reason.
+- Code 1008 / stt_auth_failed gets a dedicated authorization message.
+- Gateway type=error messages now include detail/code/reason.
+- WebSocket error during connection no longer leaves an unexplained permanent "Подключаем распознавание…" state.
+- Existing 181 STT session-generation guard and 180 AI -> manual takeover guard are preserved.
+
+This build is diagnostic: it does not change the Gateway authentication protocol or secrets.

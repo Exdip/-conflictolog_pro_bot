@@ -1,0 +1,10 @@
+NEG-RUNTIME-REGRESSION-TESTS 470
+Version: 0.3.23.438-dev.470-NEG-RUNTIME-REGRESSION-TESTS
+Content pack: 1.47.0
+Added a standalone CLI regression suite for Negotiation Master runtime rule semantics.
+The suite requires no WordPress, MySQL or SQLite database.
+It tests require, require_any, require_all, require_items and composite numeric conditions in RuleEngine, AgreementValidator and ZopaService.
+It audits all 53 published scenarios, verifies zero stubs, globally unique slugs, evaluation weight 100, required item references, rule item references and executor assignment for every rule action.
+Expected catalog executor totals are asserted: server=313, AI opponent=5, player-side pseudo-actions=0.
+No scenario content was changed.
+No live-site verification was run.

@@ -1,0 +1,14 @@
+{
+    "schema": "ckm.update-manifest.v1",
+    "key_id": "ckm-dev-2026-09-15-03",
+    "payload": {
+        "plugin_slug": "ckm-quiz-pro",
+        "version": "0.3.5",
+        "package_url": "https://api.centr-razvitia-uma.ru/v1/plugin/package/0.3.5.zip",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "issued_at": "2026-09-15T12:00:00Z",
+        "valid_until": "2030-01-01T00:00:00Z",
+        "request_nonce": "dev-nonce"
+    },
+    "signature": "LS1wIOfl2zIT-BtmcPPgcFvq0cHxlRFtViPW9B396H6Xwy0V0YTEvOBjR2UYJzBdPzS3gICKXGG1ez17Kq-4DQ"
+}

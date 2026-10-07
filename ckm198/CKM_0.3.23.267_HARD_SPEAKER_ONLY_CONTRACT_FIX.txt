@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.270-dev.302-STORY-EVIDENCE-CONFIDENCE-CAP-FIX
+
+- Round 3 «Неудобный вопрос» is now explicitly a single-speaker AI contract: only the answering team is scored.
+- AI Puffer responses may be wrapped as participants.speaker, speaker, participant, or a flat criteria object.
+- The system no longer requires a fabricated opponent assessment for system-generated questions.
+- Ordinary two-party rounds remain strict and still require both speaker and opponent.
+- Evidence remains grounded to real speaker messages; foreign/fabricated quotes are rejected.

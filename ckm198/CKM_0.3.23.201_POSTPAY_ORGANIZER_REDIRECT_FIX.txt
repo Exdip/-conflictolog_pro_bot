@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.201-dev.233-POSTPAY-ORGANIZER-REDIRECT-FIX
+
+- Payment returns may never strand an organizer on /wp-admin/.
+- admin_init now uses, in order: one-shot buyer memory, signed preview-organizer memory, recent own payment order.
+- Administrator preview payments remember the represented organizer separately from the browser user.
+- Checkout localStorage keeps signed preview parameters for the post-payment organizer/library URL.
+- Successful payment opens the purchased format in the organizer library; pending confirmation opens the payment status screen.
+- Existing commercial game/runtime behavior is unchanged.

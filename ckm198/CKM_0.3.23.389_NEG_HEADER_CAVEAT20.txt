@@ -1,0 +1,5 @@
+NEG-HEADER-CAVEAT20 421
+Version: 0.3.23.389-dev.421-NEG-HEADER-CAVEAT20
+Restored the original Caveat handwritten font for the brand, top navigation and Organizer Cabinet button.
+Header size remains 20px; left alignment and edge-clipping protection from .420 are preserved.
+UI only; navigation routes and mechanics are unchanged.

@@ -1,0 +1,5 @@
+NEG-HEADER-LEFT-BIGSAFE 418
+Version: 0.3.23.386-dev.418-NEG-HEADER-LEFT-BIGSAFE
+Header moved left by widening the inner container and anchoring it closer to the left edge. Header typography was enlarged again. Edge protection was added with safe inner padding, overflow visibility and max-content sizing so the left and right buttons are not clipped.
+UI only; navigation targets and mechanics are unchanged.
+No verification run by user request.

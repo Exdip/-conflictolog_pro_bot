@@ -1,0 +1,6 @@
+NEG-BUILDER-WP-ISOLATION 404
+Version: 0.3.23.372-dev.404-NEG-BUILDER-WP-ISOLATION
+Scenario builder isolated from WordPress/theme defaults for headings, forms, lists, links and focus states.
+Typography remains 14px and dark builder palette is preserved.
+UI only; builder save/publish logic and negotiation mechanics are unchanged.
+No verification run by user request.

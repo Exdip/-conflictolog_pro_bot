@@ -1,0 +1,6 @@
+Version: 0.3.23.500-dev.532-SALES-DIALOGUE-EVAL-FIX
+- Direct diagnostic questions take precedence over generic progress replies.
+- Sales stage progress requires evidence of actual value and objection movement.
+- Sales final feedback always contains actionable growth points.
+- Finish button leaves busy state after completion.
+- Training start plays a short readiness sound and says: Клиент готов. Начинайте разговор.

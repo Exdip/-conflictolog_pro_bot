@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.468-dev.500-SALES-TENANT-REST-TEAM-AUTH-FIX
+
+- REST and navigation URLs in Effective Sales are normalized to the current tenant/subdomain origin.
+- Signed team links take precedence over any organizer WordPress login cookie already present in the browser.
+- Stateless team REST calls do not send X-WP-Nonce, avoiding REST cookie nonce failures.
+- Fixes competition waiting/launch errors on tenant subdomains, including “Проверка куки не удалась”, “Failed to fetch”, and false “Это соревнование не назначено текущей команде”.

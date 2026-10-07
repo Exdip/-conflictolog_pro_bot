@@ -1,0 +1,8 @@
+NEG-HIRING-SCENARIO 450
+Version: 0.3.23.418-dev.450-NEG-HIRING-SCENARIO
+Content pack: 1.32.0
+Promoted «Человек нужен вчера» from a draft card to a published playable scenario in «На стыке интересов».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains realistic hiring acceleration through profile prioritization, market-aligned compensation, process compression and manager response SLA.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

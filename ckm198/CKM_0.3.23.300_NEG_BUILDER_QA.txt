@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.300-dev.332-NEG-BUILDER-QA
+
+- Autosave for negotiation scenario drafts.
+- Isolated draft test-launch before publication.
+- NEG DB 1.6.0 adds sessions.session_kind (player / builder_test).
+- Builder test sessions are excluded from normal player progress/history.
+- Existing games, payments, STT and voice are not refactored.

@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.153-dev.185-GAME-HISTORY-BULK-TRASH-FIX
+
+- Исправлено массовое перемещение отмеченных игр в корзину.
+- DB schema version повышена до 0.3.14.9, чтобы WordPress гарантированно выполнил dbDelta после добавления history_trash/history_audit/history_reports.
+- Перед операциями корзины добавлена самопроверка history_trash и history_audit с безопасным досозданием отсутствующих таблиц.
+- Сохранены ограничения: только WordPress administrator (manage_options), tenant scope, nonce, подтверждение УДАЛИТЬ.

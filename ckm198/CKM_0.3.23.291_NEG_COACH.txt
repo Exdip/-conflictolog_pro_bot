@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.291-dev.323-NEG-COACH
+
+Base: 0.3.23.290-dev.322-NEG-ARBITER
+Negotiation DB: 1.2.0
+Negotiation content: 1.1.0
+
+Adds the on-demand Training-mode AI coach with four help levels, a player-safe context boundary,
+separate coach message channel/history and server-side Exam-mode denial. No existing game/payment/
+STT/voice/organizer mechanics are refactored.

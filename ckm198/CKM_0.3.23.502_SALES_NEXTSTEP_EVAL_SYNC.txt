@@ -1,0 +1,3 @@
+Version: 0.3.23.502-dev.534-SALES-NEXTSTEP-EVAL-SYNC
+- Final sales evaluation now recognizes explicit client acceptance of a concrete next step.
+- Phrases such as 'давайте подготовим', proposed meeting options, and 'какой день и время' count as confirmation only when tied to a concrete next-step reply.

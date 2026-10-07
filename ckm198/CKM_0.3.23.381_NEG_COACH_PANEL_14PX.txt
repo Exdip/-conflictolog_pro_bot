@@ -1,0 +1,5 @@
+NEG-COACH-PANEL-14PX 413
+Version: 0.3.23.381-dev.413-NEG-COACH-PANEL-14PX
+In-game AI coach/help panel, counters, choices and coach message history aligned with the 14px dark app UI.
+UI only; coach availability, API calls and negotiation mechanics are unchanged.
+No verification run by user request.

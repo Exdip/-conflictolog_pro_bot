@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.262-dev.294-STORY-EVIDENCE-PUNCTUATION-GROUNDING-FIX
+
+- Story-seven summary/recommendation normalization now also unwraps canonical fields when AI Puffer returns them as objects/arrays.
+- Adds harmless aliases such as conclusion/verdict/result_summary and advice/next_steps/recommendation_text.
+- The server never invents summary or advice: only non-empty text actually returned by the model is reused.
+- Strict seven-criteria scoring and evidence grounding remain unchanged.

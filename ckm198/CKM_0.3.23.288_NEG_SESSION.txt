@@ -1,0 +1,26 @@
+CKM Quiz Pro 0.3.23.288-dev.320-NEG-SESSION
+
+NEG-SESSION adds the first playable server-side session shell for the isolated
+modules/negotiation-master module. It does not add AI opponent/arbiter/coach.
+
+Added:
+- Session start/resume/pause REST endpoints.
+- Player message endpoint with client_message_id idempotency.
+- Runtime sessions start as in_progress and pin scenario_version_id.
+- Four item_state rows are initialized as not_discussed from scenario data.
+- Active-session protection and explicit restart -> abandoned old attempt.
+- Player-safe session snapshot builder with strict public projections.
+- Standalone /ckm-negotiation-master/ page + [ckm_negotiation_master] shortcode.
+- Three-column dark UI and mobile fallback.
+- Refresh/resume restores the same session and messages.
+- Partial hidden facts never expose full content; hidden facts are absent.
+
+Not included yet:
+- AI opponent, arbiter, coach.
+- Hidden-fact automatic reveal.
+- Agreement/no-deal flow.
+- Final evaluation.
+- Product catalog integration.
+
+Existing games, payments, STT/voice implementation, organizer cabinet, legacy
+runtime and checkout were not refactored.

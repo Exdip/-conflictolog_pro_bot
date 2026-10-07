@@ -1,0 +1,2 @@
+CKM Quiz Pro 0.3.22 CHECKOUT PAGE
+Added checkout form and payment start hook ckm_game_payment_start.

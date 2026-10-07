@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.454-dev.486-SALES-FACT-GROUNDING-FIX
+
+- SALES fact-discovery turns now use grounded scenario replies before LLM generation.
+- Broad discovery questions return partial replies without hidden quantities.
+- Concrete probes can reveal the full scenario fact.
+- SALES arbiter no longer promotes a fact to revealed from topic match alone.
+- Numeric facts require a matching scenario number in the client reply before full reveal.
+- NEG behavior is unchanged.

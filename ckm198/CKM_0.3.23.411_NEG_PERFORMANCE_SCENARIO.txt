@@ -1,0 +1,9 @@
+NEG-PERFORMANCE-SCENARIO 443
+Version: 0.3.23.411-dev.443-NEG-PERFORMANCE-SCENARIO
+Content pack: 1.26.0
+Promoted «Результат ниже ожиданий» from the final draft card to a published playable scenario in «Разговор по делу».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+All 10 scenarios in «Разговор по делу» are now published and playable.
+The scenario trains measurable performance-improvement agreements based on diagnosis, support and accountability.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

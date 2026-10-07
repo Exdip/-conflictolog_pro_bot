@@ -1,0 +1,30 @@
+<?php
+require_once __DIR__ . '/support/plugin-release.php';
+$root=dirname(__DIR__);
+$cat=file_get_contents($root.'/includes/games-catalog.php');
+$org=file_get_contents($root.'/includes/standalone-organizer.php');
+$admin=file_get_contents($root.'/includes/standalone-admin.php');
+$main=file_get_contents($root.'/ckm-quiz-pro.php');
+$checks=[];
+function ck210(&$c,$n,$ok){$c[]=[$n,(bool)$ok]; if(!$ok) fwrite(STDERR,"FAIL: $n\n");}
+ck210($checks,'version',ckm_test_current_plugin_release($main));
+ck210($checks,'education route helper',str_contains($cat,"view'=>'education-library'"));
+ck210($checks,'subject registry',str_contains($cat,'ckm_quiz_pro_education_subject_registry'));
+ck210($checks,'math subject',str_contains($cat,"'title'=>'Математика'"));
+ck210($checks,'russian subject',str_contains($cat,"'title'=>'Русский язык'"));
+ck210($checks,'history subject',str_contains($cat,"'title'=>'История'"));
+ck210($checks,'classic mode',str_contains($cat,"'title'=>'Классический квиз'"));
+ck210($checks,'battle mode',str_contains($cat,"'title'=>'Интеллектуальный батл'"));
+ck210($checks,'learning mode',str_contains($cat,"'title'=>'Обучающий формат'"));
+ck210($checks,'learning phrasing',str_contains($cat,'вопрос на понимание → пояснение → следующий вопрос на применение знания'));
+ck210($checks,'hierarchy phrase',str_contains($cat,'предмет → класс → тема → режим'));
+ck210($checks,'organizer allow route',str_contains($org,"'education-library'"));
+ck210($checks,'organizer dispatch',str_contains($org,'$view === \'education-library\''));
+ck210($checks,'builder hidden education mode',str_contains($org,'name="education_mode"'));
+ck210($checks,'builder learning guidance',str_contains($org,'базовый вопрос → пояснение после ответа → следующий вопрос на применение'));
+ck210($checks,'save education mode',str_contains($admin,'$formatSettings[\'educationMode\']=$educationMode'));
+ck210($checks,'save education subject',str_contains($admin,'$formatSettings[\'educationSubject\']=$educationSubject'));
+ck210($checks,'save education grade',str_contains($admin,'$formatSettings[\'educationGrade\']=$educationGrade'));
+ck210($checks,'save education theme',str_contains($admin,'$formatSettings[\'educationTheme\']=$educationTheme'));
+ck210($checks,'ready-game catalogue remains separate',str_contains($cat,"'scenarios'=>['label'=>'Каталог готовых игр'") && str_contains($cat,'ckm_quiz_pro_persuade_library_url()'));
+$pass=count(array_filter($checks,fn($x)=>$x[1])); echo "$pass/".count($checks)." PASS\n"; exit($pass===count($checks)?0:1);

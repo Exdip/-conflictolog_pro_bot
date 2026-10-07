@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.129-dev.161-NEGOTIATION-LIVE-UX-GUIDANCE
+
+- Added a prominent participant-specific “Сейчас” action hint for every negotiation-show phase.
+- Waiting buttons now show confirmed state instead of remaining as ambiguous disabled actions.
+- Round transitions and review confirmations explicitly show that the local team has confirmed and is waiting for others.
+- Hard-question observers see which team is answering.
+- Story-final participants get specific guidance for storyteller, questioner, answerer and voter states.
+- No scoring, timers, arbitration or state-machine rules changed.

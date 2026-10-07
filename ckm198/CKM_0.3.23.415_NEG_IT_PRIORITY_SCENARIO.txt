@@ -1,0 +1,8 @@
+NEG-IT-PRIORITY-SCENARIO 447
+Version: 0.3.23.415-dev.447-NEG-IT-PRIORITY-SCENARIO
+Content pack: 1.29.0
+Promoted «Поставьте нас первыми в разработку» from a draft card to a published playable scenario in «На стыке интересов».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains value-based IT prioritization, MVP discipline, shared delivery responsibility and transparent queue rules.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

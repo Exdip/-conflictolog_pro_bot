@@ -1,0 +1,8 @@
+NEG-FOUNDER-CEO-SCENARIO 460
+Version: 0.3.23.428-dev.460-NEG-FOUNDER-CEO-SCENARIO
+Content pack: 1.41.0
+Promoted «Основатель и наёмный CEO» from a draft card to a published playable scenario in «Доля влияния».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains separation of ownership control and executive authority, elimination of dual command, owner visibility and mandate review by results.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

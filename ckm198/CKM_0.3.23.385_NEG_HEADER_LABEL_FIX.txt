@@ -1,0 +1,5 @@
+NEG-HEADER-LABEL-FIX 417
+Version: 0.3.23.385-dev.417-NEG-HEADER-LABEL-FIX
+The first top navigation item was renamed from "Мастер переговоров" to "Сценарии" to remove the duplicate header text next to the brand. The handwritten top-bar font was enlarged again, and explicit minimum widths were added so the "Назначения" tab no longer clips.
+UI only; navigation routes and mechanics are unchanged.
+No verification run by user request.

@@ -1,0 +1,2 @@
+CKM Quiz Pro 0.3.23.271-dev.303-PARTNER-SELF-CONNECT
+Connected organizer can purchase/activate the partner mode for the tenant. Tenant owner remains the only user allowed to configure YooKassa and manage child organizers.

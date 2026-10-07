@@ -1,0 +1,31 @@
+CKM Quiz Pro integration build
+Version: 0.3.23.26-dev.87.2-SUBDOMAIN-DECISION-PRICE-VOICE-DIAGNOSTICS
+
+BASE:
+- 0.3.23.25-dev.87.2-MIGRATION-TABLE-MAP-FIX
+- tenant/subdomain registration, tenant scoping, payment return, tenant diagnostics
+- migration/table-map fixes retained
+
+MERGED FEATURE SET FROM alpha.70.3.9:
+- «Управленческая игра "Ваш выбор"» format (solution_price runtime)
+- paid product key decision_price_v1 with solution_price -> decision_price_v1 access alias
+- demo-solution-price template, 5 text stages, 1-team mini-game default
+- automatic stage flow and AI/local review
+- AI voice provider switcher: browser speech or Sergey/Cartesia via Gateway
+- voice connection diagnostics: WordPress, token, WebSocket, Gateway, Cartesia/Sergey
+
+SUBDOMAIN/TENANT FEATURES RETAINED:
+- tenant registration page /ckm-register/
+- reserved first-level subdomain from organizer login
+- tenant pages and organizer links
+- tenant content/data scoping and migration table-map fix
+
+MERGE NOTES:
+- New-game query combines tenant content scope with solution-price fields slug/min_teams/max_teams.
+- Paid-format access aliases solution_price to decision_price_v1.
+- Existing tenant/migration modules were preserved, not replaced by the older alpha branch.
+
+VALIDATION:
+- PHP syntax: 52/52 PASS
+- JS syntax: PASS
+- no Git conflict markers

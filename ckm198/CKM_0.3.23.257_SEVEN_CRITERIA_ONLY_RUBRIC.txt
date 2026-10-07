@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.257-dev.289-SEVEN-CRITERIA-ONLY-RUBRIC
+
+- Removed all negotiation bonuses and penalties from AI contracts, server validation, scoring, and UI.
+- All four “Переговори другого” rounds now use only seven criteria scored 0–10.
+- New maximum: 70 points per round and 280 points per game.
+- Existing historical completed reviews remain readable with their stored totals; new reviews use rubricVersion 3.
+- Speaker-only story evaluation keeps evidence grounding and harmless summary/recommendation alias normalization.

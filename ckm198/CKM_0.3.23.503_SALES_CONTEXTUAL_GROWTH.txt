@@ -1,0 +1,4 @@
+Version: 0.3.23.503-dev.535-SALES-CONTEXTUAL-GROWTH
+- Sales growth advice for customer understanding is now based on actual scenario facts.
+- Missing or partially revealed facts are named directly.
+- The evaluator no longer recommends asking for metrics that do not exist in the scenario.

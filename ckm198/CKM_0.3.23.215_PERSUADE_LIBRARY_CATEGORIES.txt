@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.215 — Persuade library categories
+
+- «Библиотека игр» is now grouped by categories instead of one flat grid.
+- Added category navigation chips and scalable rendering from the scenario registry.
+- Categories: Базовые игры, Школьные ситуации, Для студентов, Для руководителей, Семейные ситуации.
+- «Двойка, которой не было» remains only in «Школьные ситуации» and is not added to the main catalog.
+- Future games only need a category in the registry to appear in the corresponding section.
+- Existing access/payment/runtime behavior is unchanged.

@@ -1,0 +1,16 @@
+CKM Quiz Pro 0.3.23.208-dev.240-PERSUADE-ME-SCENARIO-LIBRARY
+
+- «Переговори другого» remains one game mechanic; story variants are separated into a dedicated Scenario Library.
+- Added paid scenario products (separate 30-day entitlements):
+  * Переговори другого — для школьников
+  * Переговори другого — для студентов
+  * Переговори другого — для руководителей
+  * Переговори другого — Семейные ситуации
+- Default price for each additional scenario pack: 990 ₽ / 30 days. Business scenario stays inside the existing «Переговорные поединки» product.
+- Added full four-round authored content for student, leader and family variants; school pack retained.
+- Added dedicated organizer route «Библиотека сценариев» and moved add-on scenarios out of the generic game-launch selector.
+- Main «Переговори другого» catalog card now opens the Scenario Library.
+- Added «Сценарий под заказ» form; it emails the WordPress administrator address.
+- Added a separate «Образовательные игры» direction for future subject-based school learning games; it is intentionally separate from «Переговори другого» story packs.
+- Added scenario-specific access guards, launch runtime mapping, payment products, canonical labels and history labels.
+- Existing mechanics, four rounds, three-team contract, scoring and AI/human host behavior are unchanged.

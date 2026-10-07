@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.272-dev.304-PAYMENT-PROVIDER-ABSTRACTION
+
+Step 1 of multi-provider partner payments.
+- Added a universal partner payment-provider contract.
+- Wrapped the existing YooKassa client-payment implementation in YooKassaProvider.
+- Added a provider registry keyed by yookassa.
+- No checkout, webhook, credentials, or payment behaviour changed.
+- T-Bank and Sber adapters are intentionally not enabled yet.

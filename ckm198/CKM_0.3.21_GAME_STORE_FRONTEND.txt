@@ -1,0 +1,1 @@
+Game store frontend: catalog and checkout shortcodes.

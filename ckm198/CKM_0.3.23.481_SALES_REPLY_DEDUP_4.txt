@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.481-dev.513-SALES-REPLY-DEDUP-4
+
+Minimal SALES-only follow-up to .512.
+- Duplicate window expanded from 2 to 4 previous client replies.
+- Direct explicit re-question of the same scenario fact remains allowed.
+- NEG-CORE, database schema, sound module and scenario content are unchanged.

@@ -1,0 +1,9 @@
+NEG-SHARED-KPI-SCENARIO 454
+Version: 0.3.23.422-dev.454-NEG-SHARED-KPI-SCENARIO
+Content pack: 1.36.0
+Promoted «Общий результат, разные KPI» from the final draft card to a published playable scenario in «На стыке интересов».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+All 10 scenarios in «На стыке интересов» are now published and playable.
+The scenario trains diagnosis of incentive conflicts, shared KPI design, economic balance, service standardization and anti-gaming rules.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

@@ -1,0 +1,12 @@
+CKM Quiz Pro 0.3.23.474-dev.506-SALES-SCRIPTS-WORKSPACE
+
+SALES-505
+- Content pack 1.49.0.
+- 12 sales-situation classes represented by 12 playable scenarios in «Эффективный продажник».
+- 11 new published sales scenarios added; «Дорого. И точка» is promoted to published version 2 so its taxonomy metadata is stored in mechanics without rewriting version 1 used by old sessions.
+- Every sales scenario now carries situation_class, deal_stage and primary_skill metadata.
+- Public scenario cards show class, stage and primary skill.
+- The 12-class taxonomy on the sales home page is interactive: selecting a class filters the scenario cards; «Все» restores the full catalog.
+- Generic sales client fallback extended for data-driven reveal rules and scenario-specific progress replies.
+- Evaluation cues broadened beyond price/ROI; expert anti-sale can be recognized as a valid high-quality outcome (sales_fit_correct).
+- Existing competition/training modes, team links, host flow, coach restrictions and completion signal behavior are preserved.

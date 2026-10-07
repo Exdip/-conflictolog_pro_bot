@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.455-dev.487-SALES-FULL-CYCLE-FIX
+
+- Sales fact topic routing hardened: process, decision and past CRM experience no longer cross-unlock each other.
+- Sales client now has deterministic grounded reactions to a value/ROI argument and to a concrete next step, so dialogue progresses beyond discovery.
+- Sales degraded evaluation reads the full transcript, uses criterion-specific evidence and detects value arguments / concrete next steps.
+- Evaluation version bumped to neg-eval-2.3 so completed sales attempts can be recalculated under the corrected full-cycle logic.
+- Negotiation-domain behavior and database schema are unchanged.

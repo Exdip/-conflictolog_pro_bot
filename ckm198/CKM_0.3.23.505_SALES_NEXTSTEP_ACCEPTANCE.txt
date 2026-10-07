@@ -1,0 +1,4 @@
+Version: 0.3.23.505-dev.537-SALES-NEXTSTEP-ACCEPTANCE
+- Front-end and final evaluator use synchronized next-step acceptance logic.
+- Client self-commitment plus concrete next-step object plus timing/scheduling cue counts as explicit acceptance.
+- Example: client says they will prepare the calculation, organize the meeting, and asks for a convenient time.

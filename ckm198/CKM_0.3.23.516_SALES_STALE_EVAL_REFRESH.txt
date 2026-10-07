@@ -1,0 +1,3 @@
+Version: 0.3.23.516-dev.548-SALES-STALE-EVAL-REFRESH
+- GET sales session result now passes through EvaluationService::evaluate().
+- Same-version completed evaluations are returned unchanged; stale evaluator versions are recalculated automatically.

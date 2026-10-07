@@ -1,0 +1,16 @@
+CKM Quiz Pro 0.3.23.496-dev.528-SALES-TELEPHONY-ADAPTER-CORE
+
+SALES / PARTNER TELEPHONY ADAPTER CORE
+
+- Partner-owned telephony remains tenant-scoped and encrypted.
+- Replaces the single generic SIP form with provider adapters:
+  * MANGO OFFICE API VATC
+  * UIS / CoMagic Call API v4.0
+  * custom SIP/API provider
+- MANGO credentials are remotely verified with the read-only /vpbx/config/users/request endpoint.
+- UIS credentials are remotely verified with login.user/logout.user; UI warns about Call API rights and IP allowlist.
+- Provider connection can be tested after save and assigned to a concrete AI seller.
+- Call-control primitives are prepared for MANGO /vpbx/commands/callback and UIS start.simple_call.
+- The UI explicitly does NOT claim PSTN AI voice is complete: realtime phone audio still requires the next SIP/RTP media bridge layer.
+- Existing Web, browser Voice, Telegram, MAX, WhatsApp, Inbox/CRM, analytics and scenario chains are preserved.
+- Completion-signal PHP/CSS/JS files are byte-identical to .527.

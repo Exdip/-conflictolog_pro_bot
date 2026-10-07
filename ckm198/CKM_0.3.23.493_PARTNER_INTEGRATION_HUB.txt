@@ -1,0 +1,21 @@
+CKM Quiz Pro 0.3.23.493-dev.525-PARTNER-INTEGRATION-HUB
+
+PARTNER-INTEGRATION-HUB
+
+- Added tenant-scoped sales integration storage for partner-owned channels.
+- Secrets are encrypted with AES-256-GCM and never rendered back to HTML after save.
+- Only tenant owner / platform administrator can create, test, delete or assign secret-bearing integrations.
+- Tenant organizers can see connection status in read-only mode without seeing credentials.
+- Added dedicated Sales -> Integrations workspace.
+- Telegram Bot API connection is now created once for the tenant and then assigned to an AI seller.
+- Added encrypted credential forms for MAX, WhatsApp Cloud API and SIP/IP telephony; provider connectors remain explicitly marked as not yet active where applicable.
+- Added agent binding by integration_id; Bot Token is no longer entered in the AI-seller card.
+- Telegram webhook resolves the tenant integration and assigned AI seller.
+- External Telegram sessions retain the exact integration_id so later operator replies and follow-ups cannot jump to another bot after reassignment.
+- Legacy per-agent Telegram configuration remains a backward-compatible fallback.
+
+Tests:
+- Sales .518-.525: 118/118 checks passed.
+- PHP lint: 414 files, no syntax errors.
+- JS syntax: sales-ai-seller.js and sales-session.js passed node --check.
+- Completion sound JS is byte-identical to .524.

@@ -1,0 +1,8 @@
+NEG-PAYMENT-DELAY-SCENARIO 429
+Version: 0.3.23.397-dev.429-NEG-PAYMENT-DELAY-SCENARIO
+Content pack: 1.13.0
+Promoted «Отсрочка платежа» from a draft card to a published playable scenario in «Цена вопроса».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains valuation of payment terms, cash-flow discovery and conditional exchange of financing concessions.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

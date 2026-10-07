@@ -1,0 +1,9 @@
+NEG-CATALOG-RC 467
+Version: 0.3.23.435-dev.467-NEG-CATALOG-RC
+Content pack: 1.46.0
+Full negotiation scenario catalog release-candidate hardening.
+Administrative diagnostics now enforce exact counts for all six published libraries: basic=3, conflict-negotiation=10, price-question=10, business-talk=10, intersection-of-interests=10, share-of-influence=10.
+Static validation confirms 53 published scenarios, 0 draft stubs, globally unique scenario slugs, unique component codes, expected component manifests, evaluation weight 100 for every scenario, required-item references and hidden-fact references.
+No content scenarios were added or removed in this RC step.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

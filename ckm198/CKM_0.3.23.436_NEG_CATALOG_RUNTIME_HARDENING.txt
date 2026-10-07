@@ -1,0 +1,11 @@
+NEG-CATALOG-RUNTIME-HARDENING 468
+Version: 0.3.23.436-dev.468-NEG-CATALOG-RUNTIME-HARDENING
+Content pack: 1.46.0
+Runtime compatibility hardening for all 53 Negotiation Master scenarios.
+Generic formal support added for require_all and require_items in RuleEngine, AgreementValidator and ZopaService.
+AgreementValidator now enforces require_items during package validation.
+ZopaService now includes item references declared through action.items.
+Opponent AI context now receives active scenario rules. Generic process actions are interpreted from rule_type/process, condition.event and action.description without scenario-specific PHP branches.
+Static audit: 53 published scenarios, 0 stubs, every rule action type classified, every item reference valid.
+Content pack unchanged: no scenario content was rewritten.
+No live-site verification was run.

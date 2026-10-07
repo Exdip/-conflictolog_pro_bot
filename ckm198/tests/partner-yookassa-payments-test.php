@@ -1,0 +1,34 @@
+<?php
+require_once __DIR__ . '/support/plugin-release.php';
+$root=dirname(__DIR__);
+$main=file_get_contents($root.'/ckm-quiz-pro.php');
+$schema=file_get_contents($root.'/includes/partner/schema.php');
+$loader=file_get_contents($root.'/includes/partner/loader.php');
+$front=file_get_contents($root.'/includes/partner/frontend.php');
+$pay=file_get_contents($root.'/includes/partner/payments.php');
+$c=[];
+function yk275(&$c,$ok,$name){$c[]=$ok;echo ($ok?'PASS':'FAIL')." $name\n";}
+yk275($c,ckm_test_current_plugin_release($main),'version marker');
+yk275($c,str_contains($schema,"'payment_settings'") && str_contains($schema,"'payment_orders'"),'tenant payment tables registered');
+yk275($c,str_contains($schema,'secret_cipher longtext') && str_contains($schema,'webhook_token char(64)'),'encrypted secret and webhook schema');
+yk275($c,str_contains($pay,"aes-256-gcm") && str_contains($pay,"wp_salt('auth')"),'secret encrypted with authenticated cipher and WP salt');
+yk275($c,!preg_match('/value=["\'][^"\']*secret_cipher/i',$pay),'secret cipher never rendered into form');
+yk275($c,str_contains($pay,'https://api.yookassa.ru/v3/') && str_contains($pay,"'Authorization' => 'Basic '"),'YooKassa API uses server-side Basic Auth');
+yk275($c,str_contains($pay,"'Idempotence-Key'") && str_contains($pay,"'ckm-' . (string)\$order['order_id']"),'stable idempotence key for payment create');
+yk275($c,str_contains($pay,"ckm_quiz_pro_partner_yk_test_connection") && str_contains($pay,"'GET', 'me'"),'shop connection verified via /v3/me');
+yk275($c,str_contains($pay,"fiscalization_enabled") && str_contains($pay,"'receipt'") && str_contains($pay,"'vat_code'"),'receipt data added when fiscalization is enabled');
+yk275($c,str_contains($loader,"rest_api_init") && str_contains($loader,"ckm_quiz_pro_partner_yk_register_routes"),'webhook REST route booted');
+yk275($c,str_contains($pay,"payment.succeeded") && str_contains($pay,"payment.canceled"),'supported webhook payment events');
+yk275($c,str_contains($pay,'Never grant access from the webhook body alone') && str_contains($pay,'ckm_quiz_pro_partner_yk_fetch_payment'),'webhook re-fetches payment before access grant');
+yk275($c,str_contains($pay,"amount_mismatch") && str_contains($pay,"recipient") && str_contains($pay,"mode_mismatch"),'reconcile validates amount recipient and test/live mode');
+yk275($c,str_contains($pay,"mode_missing") && str_contains($pay,"authoritative YooKassa response"),'reconcile rejects missing merchant/mode fields');
+yk275($c,str_contains($pay,"ckm_quiz_pro_partner_member_create") && str_contains($pay,"access_status' => 'active'"),'successful payment activates organizer inside tenant');
+yk275($c,str_contains($pay,"public_token") && str_contains($pay,"/ckm-partner-pay/"),'unguessable public payment link');
+yk275($c,str_contains($front,"save_tbank") && str_contains($front,"create_payment_request"),'partner cabinet handles T-Bank actions');
+yk275($c,str_contains($front,"ckm_quiz_pro_partner_tbank_render_owner_section") && !str_contains($front,"ckm_quiz_pro_partner_yk_render_owner_section"),'partner cabinet renders T-Bank settings only');
+yk275($c,str_contains($pay,'Платёж принимает владелец этой площадки'),'public checkout states partner is merchant');
+yk275($c,!str_contains($pay,"add_filter('ckm_create_game_payment_url'") && !str_contains($pay,"add_filter('ckm_create_cart_payment_url'"),'partner cash desk does not hijack CKM central checkout');
+yk275($c,str_contains($pay,'payment_subject') && str_contains($pay,"'service'"),'receipt classifies partner charge as service');
+$fail=count(array_filter($c,fn($x)=>!$x));
+echo 'TOTAL '.count($c).' FAIL '.$fail."\n";
+exit($fail?1:0);

@@ -1,0 +1,12 @@
+NEG-OPPONENT-ROLE-GUARD 480
+Version: 0.3.23.448-dev.480-NEG-OPPONENT-ROLE-GUARD
+Database schema: 1.8.0
+Content pack: 1.47.0
+Evaluation version: neg-eval-2.1
+Live .479 evaluation check passed: session 17 completed 6/6 criteria with final_score 85.55 and transparent fallback sources.
+The final clean end-to-end session exposed one remaining opponent-role drift: the model referred to its own persona as «Антона/он» and advised the player («стоит уточнить», «полезно обсудить», «можно установить»).
+Validator now rejects any mention of the opponent's own persona name, including common inflected Russian forms using a word-start stem.
+Coach/adviser phrase detection is broadened generically.
+Prompt explicitly forbids using the persona's own name anywhere in the reply or referring to self with third-person pronouns.
+The existing two-attempt generation path remains unchanged: an invalid first draft is retried with the strict role prompt.
+No scenario-specific PHP branches were added.

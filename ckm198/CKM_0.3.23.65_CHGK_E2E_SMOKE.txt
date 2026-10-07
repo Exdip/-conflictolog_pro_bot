@@ -1,0 +1,4 @@
+CKM Quiz Pro 0.3.23.65-dev.97-CHGK-E2E-SMOKE
+
+Added an admin end-to-end smoke test for the single-team first-to-six Battle of Experts flow.
+The test creates only test_mode rooms, checks the two-team API guard, discussion/final-answer split, immutable final answer, reveal protection, 5:5 after ten questions, automatic 6:5 finish on question eleven, and required CHGK events. Temporary game data is deleted after the run.

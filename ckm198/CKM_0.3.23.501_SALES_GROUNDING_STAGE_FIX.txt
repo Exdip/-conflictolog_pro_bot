@@ -1,0 +1,6 @@
+Version: 0.3.23.501-dev.533-SALES-GROUNDING-STAGE-FIX
+- Unknown specific metrics are not substituted with adjacent scenario facts.
+- Diagnostic questions with numbers do not count as proof of value.
+- Objection resolution requires explicit client movement.
+- Next-step completion requires an explicit seller proposal.
+- Finish button is removed from completed sessions.

@@ -1,0 +1,20 @@
+CKM Quiz Pro 0.3.23.193-dev.225 — Negotiation Core Smoke Page
+
+Добавлена скрытая администраторская страница:
+/wp-admin/admin.php?page=ckm-negotiation-core-smoke
+
+Страница не выводится в меню WordPress и доступна только manage_options.
+Она на 10 минут открывает test-only REST API только для текущего администратора,
+после чего браузер автоматически проходит реальный REST-сценарий negotiation_express_v1:
+start -> Voice/Timer Gate -> F5 restore -> submit -> evaluate -> next -> второй кейс -> finish.
+
+Дополнительно проверяются:
+- запрет ответа до Voice -> Timer Gate;
+- идемпотентный повтор voice-finished;
+- идемпотентный повтор submit;
+- state_conflict для устаревшего expected_version;
+- идемпотентный повтор next;
+- запрет submit после finish;
+- очистка TEST-API-* записей после smoke.
+
+Реальные игры не переключаются. negotiation_duel_v1 и текущий Games Hub остаются без изменений.

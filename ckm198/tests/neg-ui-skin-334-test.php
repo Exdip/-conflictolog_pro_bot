@@ -1,0 +1,30 @@
+<?php
+require_once __DIR__ . '/support/plugin-release.php';
+$root=dirname(__DIR__);$checks=[];
+function a334(&$c,$ok,$name){$c[]=[$ok,$name];echo($ok?'PASS ':'FAIL ').$name."\n";}
+$plugin=file_get_contents($root.'/ckm-quiz-pro.php');
+$boot=file_get_contents($root.'/modules/negotiation-master/bootstrap.php');
+$app=file_get_contents($root.'/modules/negotiation-master/public/app-shell.php');
+$tpl=file_get_contents($root.'/modules/negotiation-master/public/app-template.php');
+$css=file_get_contents($root.'/modules/negotiation-master/assets/negotiation-app.css');
+$session=file_get_contents($root.'/modules/negotiation-master/assets/negotiation-session.css');
+a334($checks,ckm_test_current_plugin_release($plugin),'plugin build');
+a334($checks,preg_match("/CKM_NEG_DB_VERSION', '([0-9.]+)'/",$boot,$dbPin)&&version_compare($dbPin[1],'1.7.0','>=')&&preg_match("/CKM_NEG_CONTENT_VERSION', '([0-9.]+)'/",$boot,$contentPin)&&str_contains(file_get_contents($root.'/modules/negotiation-master/content/system-v1.php'),'"pack_version": "'.$contentPin[1].'"'),'schema supports app shell and current seed pin matches bootstrap');
+a334($checks,str_contains($boot,"/public/app-shell.php")&&str_contains($boot,"[AppShell::class, 'template']"),'app shell bootstrapped');
+a334($checks,str_contains($boot,"[AppShell::class, 'enqueue']")&&str_contains($boot,"[AppShell::class, 'bodyClass']"),'shell assets/body hooks');
+a334($checks,str_contains($app,"ckm_neg_session_page_id")&&str_contains($app,"ckm_neg_builder_page_id")&&str_contains($app,"ckm_neg_assignment_page_id"),'only plugin-owned pages targeted');
+a334($checks,str_contains($app,'negotiation-app.css')&&str_contains($app,'negotiation-session.css'),'app and session styles loaded before head');
+a334($checks,str_contains($app,"section === 'builder'")&&str_contains($app,'negotiation-builder.css'),'builder skin dependency');
+a334($checks,str_contains($app,"section === 'assignments'")&&str_contains($app,'negotiation-assignments.css'),'assignment skin dependency');
+a334($checks,str_contains($tpl,'<!doctype html>')&&str_contains($tpl,'wp_head()')&&str_contains($tpl,'wp_footer()'),'standalone WordPress-safe app document');
+a334($checks,!str_contains($tpl,'get_header(')&&!str_contains($tpl,'get_footer('),'theme header/footer not rendered');
+a334($checks,str_contains($tpl,'ckm-neg-appbar')&&str_contains($tpl,'Мастер переговоров')&&str_contains($app,'Конструктор')&&str_contains($app,'Назначения'),'compact product navigation');
+a334($checks,str_contains($tpl,'Кабинет организатора'),'organizer return navigation');
+a334($checks,str_contains($css,'body.ckm-neg-app-document')&&str_contains($css,'#wpadminbar{display:none!important}'),'theme/admin chrome reset');
+a334($checks,str_contains($css,'.ckm-neg-appbar{position:sticky')&&str_contains($css,'backdrop-filter:blur'),'modern sticky app bar');
+a334($checks,str_contains($css,'.ckm-neg-app-main .ckm-neg-game')&&str_contains($css,'calc(100vh - 128px)'),'full-height game workspace');
+a334($checks,str_contains($css,'.ckm-neg-app-builder .ckm-neg-builder-toolbar')&&str_contains($css,'.ckm-neg-app-builder .ckm-neg-builder-tabs'),'builder workspace skin');
+a334($checks,str_contains($css,'.ckm-neg-app-assignments')&&str_contains($css,'ckm-neg-assignment-shell'),'assignments workspace skin');
+a334($checks,str_contains($css,'@media(max-width:720px)')&&str_contains($css,'@media(max-width:470px)'),'mobile skin');
+a334($checks,str_contains($session,'.ckm-neg-modal')&&str_contains($session,'.ckm-neg-catalog-hero'),'existing UI mechanics selectors retained');
+$failed=array_filter($checks,fn($x)=>!$x[0]);echo count($checks).' checks, '.count($failed)." failed\n";exit($failed?1:0);

@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.69-dev.101
+CHGK pause + host takeover
+- durable MySQL-backed pause
+- F5-safe remaining time
+- AI -> human takeover without reset
+- guarded human -> AI handoff
+- participant POST blocked while paused

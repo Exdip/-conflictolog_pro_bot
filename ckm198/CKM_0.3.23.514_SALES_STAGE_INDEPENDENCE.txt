@@ -1,0 +1,3 @@
+Version: 0.3.23.514-dev.546-SALES-STAGE-INDEPENDENCE
+- Stage 4 (next step) is evaluated independently instead of being gated by stages 2-3.
+- Completing stage 4 no longer auto-marks earlier stages; missed skills remain visible as gaps.

@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.242-dev.274-ORGANIZER-TWO-MODES
+
+- Separate organizer Education Library view enabled.
+- Education Library added to organizer sidebar.
+- Organizer can edit only quizzes they personally created in the current tenant.
+- Shared demos, ready-game snapshots, managed packages and another organizer's quizzes stay read-only.
+- Existing paid-constructor entitlement remains required for organizer editing.

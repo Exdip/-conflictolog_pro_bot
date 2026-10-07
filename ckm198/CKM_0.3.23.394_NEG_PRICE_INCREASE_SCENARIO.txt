@@ -1,0 +1,8 @@
+NEG-PRICE-INCREASE-SCENARIO 426
+Version: 0.3.23.394-dev.426-NEG-PRICE-INCREASE-SCENARIO
+Content pack: 1.10.0
+Promoted «Цена выросла» from a draft card to a published playable scenario in «Цена вопроса».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains renewal negotiations after a price increase, including guaranteed volume, payment terms and price-indexation design.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

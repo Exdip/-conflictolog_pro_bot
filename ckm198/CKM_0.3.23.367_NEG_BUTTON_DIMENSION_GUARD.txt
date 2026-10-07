@@ -1,0 +1,5 @@
+NEG-BUTTON-DIMENSION-GUARD 399
+Version: 0.3.23.367-dev.399-NEG-BUTTON-DIMENSION-GUARD
+Hard guard for uniform 40px button height, 14px font, normal weight and stable hover/active states.
+UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

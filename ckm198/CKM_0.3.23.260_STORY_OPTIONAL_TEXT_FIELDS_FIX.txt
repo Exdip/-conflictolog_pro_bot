@@ -1,0 +1,3 @@
+CKM Quiz Pro 0.3.23.262-dev.294-STORY-EVIDENCE-PUNCTUATION-GROUNDING-FIX
+
+Story-seven AI review no longer discards otherwise valid seven-criterion scores when AI omits summary or recommendation. Model-provided text is still normalized and displayed when present; no fallback text is synthesized. Two-sided dialogue reviews keep summary/recommendation mandatory.

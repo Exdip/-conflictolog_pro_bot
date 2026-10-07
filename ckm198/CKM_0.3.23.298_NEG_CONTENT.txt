@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.298-dev.330-NEG-CONTENT
+
+NEG-CONTENT:
+- keeps NEG DB version 1.5.0 and raises NEG content version to 1.4.0;
+- publishes the remaining nine scenarios of «Договориться нельзя конфликтовать» by promoting the existing draft stubs in place;
+- the paid library now contains 10 fully published, playable scenarios;
+- each newly published scenario contains 6 negotiation items, 4 hidden facts, 6 formal rules, and 7 evaluation criteria totaling 100;
+- source framing is adapted from «Незаменимых нет. 10 опасных конфликтов в бизнесе»; training-only characters, hidden motives, numeric thresholds and package mechanics are explicitly marked as trainer constructions;
+- no new payment provider, table, checkout, STT, voice, organizer or legacy-game refactor is introduced;
+- existing published NEG scenarios are preserved unchanged so upgrades from .329 remain immutable-safe.

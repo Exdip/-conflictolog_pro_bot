@@ -1,0 +1,5 @@
+CKM Quiz Pro 0.3.23.256-dev.288-STORY-AUXILIARY-CANONICALIZATION-FIX
+
+- Round 4 «Проверь историю»: repairs a wrong neighbouring messageId even when it points to the checker/opponent, but only when the quoted text is found unambiguously in exactly one real speaker message.
+- No semantic evidence is invented: ambiguous or ungrounded quotes still fail strict validation.
+- Keeps the .254 story review pipeline and bonus/penalty container normalization fixes.

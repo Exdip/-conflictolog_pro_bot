@@ -1,0 +1,8 @@
+NEG-DEADLINES-SCENARIO 437
+Version: 0.3.23.405-dev.437-NEG-DEADLINES-SCENARIO
+Content pack: 1.20.0
+Promoted «Сроки снова сорваны» from a draft card to a published playable scenario in «Разговор по делу».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains cause diagnosis, realistic planning, early risk warning and recovery agreements instead of blame.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

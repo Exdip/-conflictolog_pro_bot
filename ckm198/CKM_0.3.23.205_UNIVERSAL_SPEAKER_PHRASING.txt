@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.207-dev.239-PERSUADE-ME-SCHOOL-PLOT
+
+- Universal direct-speech wording: "X:" before a quoted replica becomes "X говорит:".
+- Built-in Sales: "Клиент говорит:".
+- Built-in Business Negotiations: "Покупатель говорит:".
+- Express Round keeps "Оппонент говорит:".
+- Team dialogue log in "Переговори другого" shows "Команда X говорит:".
+- UI also normalizes quoted speaker labels in custom tasks without rewriting organizer-authored DB content.
+- AI-host TTS uses the same spoken-label wording.

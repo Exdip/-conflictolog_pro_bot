@@ -1,0 +1,7 @@
+NEG-FINAL-PRICE-SCENARIO 427
+Version: 0.3.23.395-dev.427-NEG-FINAL-PRICE-SCENARIO
+Content pack: 1.11.0
+Promoted «Назовите последнюю цену» from a draft card to a published playable scenario in «Цена вопроса».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

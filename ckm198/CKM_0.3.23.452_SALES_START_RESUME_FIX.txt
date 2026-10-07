@@ -1,0 +1,5 @@
+0.3.23.452-dev.484-SALES-START-RESUME-FIX
+
+- SALES intro: "Начать разговор" automatically opens an existing in-progress attempt instead of leaving the user on the briefing screen.
+- SALES runtime: added writer takeover endpoint and client-side recovery for stale writer leases / another-tab ownership.
+- No database migration. NEG runtime behavior unchanged.

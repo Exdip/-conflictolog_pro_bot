@@ -1,0 +1,8 @@
+NEG-FAMILY-BUSINESS-SCENARIO 464
+Version: 0.3.23.432-dev.464-NEG-FAMILY-BUSINESS-SCENARIO
+Content pack: 1.45.0
+Promoted «Семейный бизнес: работать должны все?» from a draft card to a published playable scenario in «Доля влияния».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains separation of ownership income and labor compensation, protection of passive owners, governance scope and depersonalization of family conflict.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

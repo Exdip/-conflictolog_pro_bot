@@ -1,0 +1,36 @@
+<?php
+require_once __DIR__ . '/support/plugin-release.php';
+$root=dirname(__DIR__);
+$plugin=file_get_contents($root.'/ckm-quiz-pro.php');
+$ready=file_get_contents($root.'/includes/ready-games-catalog.php');
+$catalog=file_get_contents($root.'/includes/games-catalog.php');
+$org=file_get_contents($root.'/includes/standalone-organizer.php');
+$admin=file_get_contents($root.'/includes/standalone-admin.php');
+$access=file_get_contents($root.'/includes/standalone-game-access.php');
+$pay=file_get_contents($root.'/includes/test-payment-bridge.php');
+$checks=[];
+function c249(&$c,$ok,$name){$c[]=$ok;echo ($ok?'OK ':'FAIL ').$name."\n";}
+c249($checks,ckm_test_current_plugin_release($plugin),'version');
+c249($checks,str_contains($plugin,'includes/ready-games-catalog.php'),'ready catalog included');
+c249($checks,str_contains($ready,'register_post_type(ckm_quiz_pro_ready_game_post_type()') && str_contains($ready,"'show_in_menu'=>false") && str_contains($ready,"'ckm-quiz-pro-ready-games'"),'admin catalog storage + custom UI');
+c249($checks,str_contains($ready,"'create_posts'=>'manage_options'") && str_contains($ready,"'delete_posts'=>'manage_options'"),'admin-only CRUD capabilities');
+c249($checks,str_contains($ready,'ckm_quiz_pro_ready_games_registry'),'published ready-game registry');
+c249($checks,str_contains($ready,"'price'=>990") && str_contains($ready,"'quiz_id'=>0") && str_contains($ready,"'product_key'=>''"),'catalog metadata');
+c249($checks,str_contains($ready,'persuade_school_grade_v1') && str_contains($ready,'Двойка, которой не было'),'school game seed');
+c249($checks,str_contains($ready,"add_filter('ckm_quiz_pro_game_access_products'"),'dynamic payment products');
+c249($checks,str_contains($access,'ckm_quiz_pro_ready_game_product_for_quiz'),'exact ready-game entitlement per quiz');
+c249($checks,str_contains($catalog,'ckm_quiz_pro_ready_games_registry') && str_contains($catalog,'КАТАЛОГ ГОТОВЫХ ИГР'),'organizer ready catalog');
+c249($checks,str_contains($catalog,"'label'=>\$quizId>0?'Запустить игру'") && str_contains($catalog,"['view'=>'new-game','quiz'=>\$quizId]"),'owned ready game launches exact quiz');
+c249($checks,str_contains($catalog,'БАЗОВЫЕ ИГРЫ') && !str_contains(substr($catalog,0,strpos($catalog,'function ckm_quiz_pro_persuade_scenario_registry')),"'scenario_library'=>true"),'base games no longer redirect to scenario library');
+c249($checks,str_contains($org,"ckm_quiz_pro_org_nav_link('games','Базовые игры'") && str_contains($org,"ckm_quiz_pro_org_nav_link('persuade-library','Каталог готовых игр'") && str_contains($org,"ckm_quiz_pro_org_nav_link('scenario-order','Заказать сюжет'"),'new organizer nav');
+c249($checks,str_contains($org,'ckm_quiz_pro_can_edit_owned_quiz') && str_contains($org,'if($kind===\'own\' && $cabinetActive'),'organizer edit blocked');
+c249($checks,str_contains($org,'ckm_quiz_pro_can_edit_owned_quiz') && str_contains($org,'Редактировать'),'edit action admin only');
+c249($checks,str_contains($admin,'ckm_quiz_pro_can_edit_owned_quiz') && str_contains($admin,'Можно редактировать только собственную игру'),'server save blocks organizer update');
+c249($checks,str_contains($org,"wp_safe_redirect(ckm_quiz_pro_organizer_url(['view'=>'library','created'=>1]))"),'organizer creation exits editor');
+c249($checks,str_contains($org,'Формат игры<input') && str_contains($org,'сюжет для любой игры платформы'),'order plot any format');
+c249($checks,str_contains($org,"\$legacyScenarioProducts=['persuade_school_v1','persuade_student_v1','persuade_leader_v1','persuade_family_v1']"),'legacy placeholder products hidden from sale');
+c249($checks,str_contains($pay,'ckm_quiz_pro_ready_games_registry') && str_contains($pay,"\$priceSku=[990=>'classic_quiz'"),'test payment bridge for ready games');
+c249($checks,str_contains($org,'$allowed=($isAdmin || ckm_quiz_pro_can_use_front_constructor()) ? $supported : []'),'any active payment unlocks all constructor formats');
+c249($checks,str_contains($admin,'Для создания игры нужен хотя бы один активный оплаченный доступ'),'new custom game needs any active payment');
+c249($checks,str_contains($access,"(int)(\$row['created_by_user_id'] ?? 0)===\$uid") && str_contains($access,'ckm_quiz_pro_has_paid_cabinet_access($uid)'),'owned custom game launch uses any active payment');
+$ok=count(array_filter($checks)); $total=count($checks); echo "RESULT $ok/$total\n"; exit($ok===$total?0:1);

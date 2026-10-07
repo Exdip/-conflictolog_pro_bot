@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.487-dev.519-MAX-CHANNEL
+
+- MAX added as the target messenger channel in AI seller workspace.
+- Instagram is intentionally not used in this product branch.
+- Telegram, WhatsApp, Web, browser Voice and PSTN/SIP placeholders retained.
+- No external MAX connector is falsely marked as ready; credentials/connector are still required.

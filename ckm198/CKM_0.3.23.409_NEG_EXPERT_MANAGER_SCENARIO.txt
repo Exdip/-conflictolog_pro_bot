@@ -1,0 +1,8 @@
+NEG-EXPERT-MANAGER-SCENARIO 441
+Version: 0.3.23.409-dev.441-NEG-EXPERT-MANAGER-SCENARIO
+Content pack: 1.24.0
+Promoted «Сильный специалист — новый руководитель» from a draft card to a published playable scenario in «Разговор по делу».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains transition from expert execution to management through delegation, decision rights and team development.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

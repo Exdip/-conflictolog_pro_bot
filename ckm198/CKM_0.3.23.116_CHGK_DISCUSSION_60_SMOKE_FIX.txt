@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.116-dev.148
+
+- Битва знатоков: Games Hub runtime default discussion_time_seconds = 60.
+- Диагностика 7 форматов создаёт CHGK test room с 60 сек., поэтому проверка "Время обсуждения" согласована с ожидаемым значением 60.
+- Существующий демо-шаблон demo-battle-experts при admin_init нормализуется до seconds_per_question=60 и discussionSeconds=60.
+- 5 сек. досрочного ответа и 20 сек. окончательного ответа сохранены.

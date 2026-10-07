@@ -1,0 +1,5 @@
+NEG-MODAL-DIMENSION-GUARD 401
+Version: 0.3.23.369-dev.401-NEG-MODAL-DIMENSION-GUARD
+Uniform modal/dialog width, padding, button dimensions and 14px typography with mobile layout.
+UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

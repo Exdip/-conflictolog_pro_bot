@@ -1,0 +1,23 @@
+CKM Quiz Pro 0.3.23.289-dev.321-NEG-OPPONENT
+
+NEG-OPPONENT adds the first server-side AI negotiation counterpart to the isolated
+modules/negotiation-master runtime.
+
+Added:
+- OpponentContextBuilder, OpponentPromptBuilder, OpponentResponseValidator and OpponentService.
+- Existing AI Puffer/server AI settings are reused; no browser API key exposure.
+- One player message -> at most one official opponent reply, linked by reply_to_message_id.
+- New DB unique guard (session_id, channel, reply_to_message_id); CKM_NEG_DB_VERSION -> 1.1.0.
+- Server processing states opponent_generating / opponent_failed / idle.
+- Retry endpoint: POST /wp-json/ckm/v1/negotiation/sessions/{id}/retry-opponent.
+- Failed AI generation preserves the already-saved player message.
+- Opponent context reads only negotiation/dialogue messages, never future coach-channel content.
+- Prompt-injection resistance and server-side validation for technical/system material and explicit internal-boundary leaks.
+- Player UI shows the scenario opponent name, AI waiting state and a Retry answer button.
+
+Still intentionally not included:
+- AI arbiter / formal event extraction.
+- Automatic hidden-fact reveal or item-state changes.
+- Coach, agreement/no-deal, final evaluation.
+
+No existing games, payments, checkout, STT/voice or organizer runtime was refactored.

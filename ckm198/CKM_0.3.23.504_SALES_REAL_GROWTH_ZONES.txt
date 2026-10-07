@@ -1,0 +1,4 @@
+Version: 0.3.23.504-dev.536-SALES-REAL-GROWTH-ZONES
+- Sales summary no longer manufactures three improvement items.
+- Only criteria below the real improvement threshold are shown in 'Что улучшить'.
+- Strong criteria scoring 80+ are never added as artificial weaknesses.

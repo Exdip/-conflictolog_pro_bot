@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.460-dev.492-SALES-COACH-RU-ERROR-FIX
+
+SALES-only fix:
+- an explicit past-CRM question such as «Что именно тогда произошло?» now requests the concrete stored fact;
+- a generic/partial client answer can no longer promote a hidden fact from partial to fully revealed merely because two generic topic tokens overlap;
+- full reveal still requires concrete client-side evidence from the scenario fact.
+
+No database/content migration. NEG behavior unchanged.

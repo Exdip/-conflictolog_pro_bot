@@ -1,0 +1,5 @@
+NEG-DARK-THEME-TOKENS 395
+Version: 0.3.23.363-dev.395-NEG-DARK-THEME-TOKENS
+Normalized remaining surfaces, cards, borders, radii, secondary controls and overlays to one dark theme.
+Typography remains 14px. UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.227-dev.259-READY-GAME-PUBLISH-VALIDATION
+
+- Added a publication-readiness checklist to administrator-managed ready games.
+- Publishing is blocked unless title, catalogue description, plot, category, audience, paid price, unique payment key, published game template, rounds/stages and result rules are present.
+- Failed publish attempts are saved safely as Draft and return the administrator to the editor with an explicit warning.
+- Catalogue list and preview show readiness state.
+- Public ready-games registry excludes incomplete entries even if their WordPress status was forced to Publish.
+- Added a native WordPress editor guard so the dedicated validation cannot be bypassed through the hidden CPT editor.
+- No schema changes. Existing purchased snapshots and game history are unchanged.

@@ -1,0 +1,1 @@
+Tenant-scoped payment/access checks: organizer payment UI and checkout no longer use legacy platform access or another tenant purchase to mark a game as already paid on the current площадка. Applies to all paid games.

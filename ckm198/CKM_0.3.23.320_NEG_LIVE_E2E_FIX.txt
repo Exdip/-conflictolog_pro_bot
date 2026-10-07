@@ -1,0 +1,6 @@
+NEG-LIVE-E2E-FIX — 0.3.23.320-dev.352
+
+- Builder-test and assignment player pages now initialize item/value labels before rendering.
+- Fixes the blank live player area discovered after a successful builder test launch.
+- Normal array known facts shaped as {title, content} are editable cards, not false legacy blocks.
+- Unknown nested legacy known-fact data is still preserved without destructive conversion.

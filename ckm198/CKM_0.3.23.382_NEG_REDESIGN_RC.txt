@@ -1,0 +1,6 @@
+NEG-REDESIGN-RC 414
+Version: 0.3.23.382-dev.414-NEG-REDESIGN-RC
+Final redesign release candidate based on .413.
+No new UI or mechanic changes beyond version finalization.
+Negotiation Master uses unified 14px typography and consolidated dark UI across catalog, start, game, coach, result, history and builder screens.
+No verification run by user request.

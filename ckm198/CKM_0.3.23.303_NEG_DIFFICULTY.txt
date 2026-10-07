@@ -1,0 +1,11 @@
+CKM Quiz Pro 0.3.23.303-dev.335-NEG-DIFFICULTY
+
+NEG-DIFFICULTY
+- Adds four opponent strategy levels: Мягкий / Средний / Жёсткий / Эксперт.
+- Difficulty is pinned server-side to each session and can also be forced by organizer assignments.
+- Opponent strategy changes by level; hard constraints, scenario facts, red lines and scoring do not.
+- Standalone prestart UI includes a level selector and completed-attempt history records the level.
+- Assignment UI includes the same setting and passes it to assigned sessions.
+- Scenario mechanics_json may limit allowed levels or set a default without scenario-specific PHP.
+- NEG DB version advances to 1.8.0; NEG content stays 1.4.0.
+- Existing games, payments, STT, voice and organizer mechanics are not refactored.

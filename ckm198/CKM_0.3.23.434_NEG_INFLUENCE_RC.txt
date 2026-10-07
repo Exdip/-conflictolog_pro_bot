@@ -1,0 +1,9 @@
+NEG-INFLUENCE-RC 466
+Version: 0.3.23.434-dev.466-NEG-INFLUENCE-RC
+Content pack: 1.46.0
+Release-candidate hardening for «Доля влияния».
+Scenario diagnostics now expect exactly 10 published scenarios for share-of-influence.
+Static validation confirms: 10 published scenarios, 0 stubs, unique slugs, unique component codes, required component counts, evaluation weights of 100, supported rule action types, required item references and hidden-fact references.
+Completed-library diagnostics now cover price-question=10, business-talk=10, intersection-of-interests=10 and share-of-influence=10.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

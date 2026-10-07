@@ -1,0 +1,6 @@
+NEG-BUILDER-14PX-UNIFORM 402
+Version: 0.3.23.370-dev.402-NEG-BUILDER-14PX-UNIFORM
+Negotiation Master scenario builder normalized to 14px typography and 40px controls.
+Removed oversized/extra-bold builder headings, weights, legends and remove controls.
+UI only; builder data model, save/publish flow and negotiation mechanics are unchanged.
+No verification run by user request.

@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.244-dev.276-PARTNER-MODE-NAMING
+
+- User-facing commercial mode renamed from “Аренда платформы” to “Партнёрский режим”.
+- Organizer CTA renamed to “Выбрать партнёрский тариф”.
+- Admin partner-management wording updated without changing internal table/function names.
+- YooKassa remains tenant-scoped and available only after partner mode activation.
+- Payment tables and per-tenant webhook route remain unchanged.

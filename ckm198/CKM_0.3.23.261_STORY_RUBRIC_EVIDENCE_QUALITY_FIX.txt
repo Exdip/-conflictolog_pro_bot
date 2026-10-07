@@ -1,0 +1,3 @@
+CKM Quiz Pro 0.3.23.262-dev.294-STORY-EVIDENCE-PUNCTUATION-GROUNDING-FIX
+
+Story-seven quality hardening: the AI prompt now defines all seven criteria, labels story/question/answer turns, supplies server-counted interaction facts, and requires direct relevant evidence for strong scores. Server validation rejects claims that the storyteller failed to answer when all questions have answers, requires 7–10 scores to carry evidence, and restricts respect/objections/emotional_control evidence to actual storyteller answers.

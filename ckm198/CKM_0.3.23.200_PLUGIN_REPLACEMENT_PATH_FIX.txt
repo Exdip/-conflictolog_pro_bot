@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.200-dev.232-PLUGIN-REPLACEMENT-PATH-FIX
+
+Packaging fix:
+- WordPress identifies an installed plugin by its plugin basename/path, not by Plugin Name.
+- The currently active CKM Quiz Pro installation was originally installed from a package whose root directory is ckm198.
+- Therefore this compatibility package deliberately uses the root directory ckm198/ so WordPress replaces the active plugin instead of installing a second copy.
+- Main plugin file remains ckm198/ckm-quiz-pro.php.
+- Contains all changes from 0.3.23.199-dev.231-PAID-ACCESS-OPEN-FIX.
+
+Future CKM Quiz Pro packages must keep the ckm198/ root until an explicit one-time directory normalization migration is performed.

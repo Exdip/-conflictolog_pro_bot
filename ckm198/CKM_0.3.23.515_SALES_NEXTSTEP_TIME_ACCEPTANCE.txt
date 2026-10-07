@@ -1,0 +1,3 @@
+Version: 0.3.23.515-dev.547-SALES-NEXTSTEP-TIME-ACCEPTANCE
+- Sales evaluator accepts explicit client time allocation (e.g. ready to allocate 15 minutes) as next-step confirmation.
+- Evaluator version bumped to neg-eval-2.7 so completed sessions are recalculated under the corrected rule.

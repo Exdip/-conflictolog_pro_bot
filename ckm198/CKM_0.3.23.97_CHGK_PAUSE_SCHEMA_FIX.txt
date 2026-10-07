@@ -1,0 +1,1 @@
+Fix CHGK pause/F5 smoke failures by bumping DB schema and defensively adding pause columns to existing installations.

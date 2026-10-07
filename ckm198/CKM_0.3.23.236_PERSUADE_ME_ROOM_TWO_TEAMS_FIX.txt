@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.236-dev.268-PERSUADE-ME-ROOM-TWO-TEAMS-FIX
+
+Hotfix after live acceptance test:
+- removed the legacy server-side override that forced negotiationMode=communicate rooms to 3 teams;
+- room creation now respects the quiz min_teams/max_teams contract;
+- new «Переговори другого» rooms therefore create exactly Team A + Team B;
+- existing already-created 3-team rooms are not rewritten;
+- added a regression assertion so the hidden force-to-3 line cannot return unnoticed.

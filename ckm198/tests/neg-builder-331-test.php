@@ -1,0 +1,34 @@
+<?php
+require_once __DIR__ . '/support/plugin-release.php';
+$root=dirname(__DIR__);
+$checks=[];
+function b331(&$c,$ok,$name){$c[]=[$ok,$name];echo($ok?'PASS ':'FAIL ').$name."\n";}
+$plugin=file_get_contents($root.'/ckm-quiz-pro.php');
+$boot=file_get_contents($root.'/modules/negotiation-master/bootstrap.php');
+$svc=file_get_contents($root.'/modules/negotiation-master/application/scenario-builder-service.php');
+$api=file_get_contents($root.'/modules/negotiation-master/api/builder-controller.php');
+$page=file_get_contents($root.'/modules/negotiation-master/public/builder-page.php');
+$js=file_get_contents($root.'/modules/negotiation-master/assets/negotiation-builder.js');
+$repo=file_get_contents($root.'/modules/negotiation-master/repositories.php');
+$catalog=file_get_contents($root.'/modules/negotiation-master/public/product-catalog.php');
+$player=file_get_contents($root.'/modules/negotiation-master/public/player-page.php');
+$security=file_get_contents($root.'/modules/negotiation-master/security.php');
+b331($checks,ckm_test_current_plugin_release($plugin),'plugin build');
+b331($checks,preg_match("/CKM_NEG_DB_VERSION', '([0-9.]+)'/",$boot,$dbPin)&&version_compare($dbPin[1],'1.8.0','>=')&&preg_match("/CKM_NEG_CONTENT_VERSION', '([0-9.]+)'/",$boot,$contentPin)&&str_contains(file_get_contents($root.'/modules/negotiation-master/content/system-v1.php'),'"pack_version": "'.$contentPin[1].'"'),'schema supports builder and current seed pin matches bootstrap');
+b331($checks,str_contains($boot,'scenario-builder-service.php')&&str_contains($boot,'builder-controller.php')&&str_contains($boot,'builder-page.php'),'builder wired into module');
+b331($checks,str_contains($svc,'ckm_quiz_pro_can_use_front_constructor')&&str_contains($svc,'ckm_quiz_pro_can_access_format($uid, \'negotiation_duel_v1\')'),'organizer entitlement boundary');
+b331($checks,str_contains($svc,'$row[\'tenant_id\'] === null')&&str_contains($svc,'Можно редактировать только сценарии своей площадки'),'system scenarios immutable through editor');
+b331($checks,str_contains($svc,'assertScenarioAccess($source)'),'template duplication rechecks library access');
+b331($checks,str_contains($svc,'deepCloneVersion')&&str_contains($svc,"status'=>'draft'")&&str_contains($svc,'current_version_id\'=>(int)$draft[\'id\']'),'published edits use version fork and publish switch');
+b331($checks,str_contains($svc,"Сумма весов критериев должна быть 100")&&str_contains($svc,'хотя бы один обязательный пункт соглашения'),'publish validation gate');
+b331($checks,str_contains($api,"/negotiation/builder/scenarios")&&str_contains($api,"/negotiation/builder/duplicate")&&str_contains($api,"/publish"),'builder REST routes');
+foreach(['1. Ситуация','2. Участник','3. ИИ-оппонент','4. Предметы переговоров','5. Правила и оценка'] as $label)b331($checks,str_contains($page,$label),'builder tab '.$label);
+b331($checks,str_contains($page,'Скрытые факты')&&str_contains($page,'Критерии оценки'),'hidden facts and evaluation editors');
+b331($checks,str_contains($js,"data-duplicate")&&str_contains($js,"/validate")&&str_contains($js,"/publish"),'builder client workflow');
+b331($checks,str_contains($repo,'findPublishedBySlug')&&str_contains($repo,'tenant_id=%d'),'tenant custom scenario slug resolution');
+b331($checks,str_contains($catalog,'public static function ownCards()'),'published tenant cards in product catalogue');
+b331($checks,str_contains($player,'BuilderPage::url()')&&str_contains($player,'ProductCatalog::ownCards()'),'catalog links builder and own scenarios');
+b331($checks,str_contains($svc,'Сценарий уже использовался в попытках')&&str_contains($security,"['published','archived']"),'archive/history safety guard');
+$failed=array_filter($checks,fn($x)=>!$x[0]);
+echo count($checks).' checks, '.count($failed)." failed\n";
+exit($failed?1:0);

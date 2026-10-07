@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.302-dev.334-NEG-UI-SKIN
+
+NEG-UI-SKIN
+- Theme-independent full application shell for the three Negotiation Master frontend pages.
+- Removes the WordPress theme header/footer from Negotiation Master, Builder and Assignments only.
+- New compact product navigation: Master / Builder / Assignments / Organizer cabinet.
+- Unified dark dashboard visual system for catalog, gameplay, builder and assignments.
+- Improved full-height game layout, composer, panels, cards, modals and mobile navigation.
+- No negotiation mechanics, payments, scenarios, DB schema or content changed.
+- CKM_NEG_DB_VERSION stays 1.7.0; CKM_NEG_CONTENT_VERSION stays 1.4.0.

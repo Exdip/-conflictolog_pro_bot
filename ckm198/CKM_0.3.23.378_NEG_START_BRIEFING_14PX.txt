@@ -1,0 +1,6 @@
+NEG-START-BRIEFING-14PX 410
+Version: 0.3.23.378-dev.410-NEG-START-BRIEFING-14PX
+Selected-scenario briefing/start screen aligned with the 14px dark app UI.
+Role, mission, known facts, people, launch panel and start actions are visually unified.
+UI only; scenario launch and negotiation mechanics are unchanged.
+No verification run by user request.

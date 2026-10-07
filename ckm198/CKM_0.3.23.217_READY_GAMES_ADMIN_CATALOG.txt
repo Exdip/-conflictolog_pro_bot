@@ -1,0 +1,15 @@
+CKM Quiz Pro 0.3.23.217-dev.249-READY-GAMES-ADMIN-CATALOG
+
+- Organizer navigation now follows the commercial model: Base games → Ready games catalogue → Create own game → Order a plot → My games.
+- Base games are fixed demonstration formats; the base «Переговори другого» no longer redirects to the finished-game catalogue.
+- Added administrator-managed «Каталог готовых игр» as a WordPress custom post type under «Игровая платформа».
+- Only WordPress administrators can add, edit, publish, trash or delete finished catalogue games.
+- Ready-game fields: category, subtitle, audience, price, payment key, source quiz ID, icon, roles, stages/rounds and result rules.
+- The existing «Двойка, которой не было» is seeded into the new catalogue and keeps the legacy payment key persuade_school_grade_v1.
+- Published catalogue entries are injected into the existing payment/access system automatically.
+- A ready game can point to an exact published quiz/template ID; owning its product unlocks only that template.
+- Organizers can create a new custom game after active payment, but cannot reopen/edit any saved game. Editing remains administrator-only.
+- Organizer «Мои игры» no longer renders an Edit action.
+- «Заказать сюжет» now supports any game format, not only «Переговори другого».
+- Legacy generic scenario-category products are no longer offered for new purchase, while existing owners remain compatible.
+- Test-payment bridge supports administrator-created ready games when price matches a legacy transport SKU.

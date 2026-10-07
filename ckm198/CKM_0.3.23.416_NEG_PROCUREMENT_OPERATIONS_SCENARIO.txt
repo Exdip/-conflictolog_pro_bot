@@ -1,0 +1,8 @@
+NEG-PROCUREMENT-OPERATIONS-SCENARIO 448
+Version: 0.3.23.416-dev.448-NEG-PROCUREMENT-OPERATIONS-SCENARIO
+Content pack: 1.30.0
+Promoted «Закупки экономят — эксплуатация платит» from a draft card to a published playable scenario in «На стыке интересов».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains TCO-based procurement, measurable supplier criteria, pilot validation and cross-functional metrics.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

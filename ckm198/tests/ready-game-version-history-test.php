@@ -1,0 +1,31 @@
+<?php
+require_once __DIR__ . '/support/plugin-release.php';
+$root=dirname(__DIR__);
+$catalog=file_get_contents($root.'/includes/ready-games-catalog.php');
+$adapter=file_get_contents($root.'/includes/standalone-adapter.php');
+$admin=file_get_contents($root.'/includes/standalone-admin.php');
+$org=file_get_contents($root.'/includes/standalone-organizer.php');
+$schema=file_get_contents($root.'/includes/standalone-schema.php');
+$main=file_get_contents($root.'/ckm-quiz-pro.php');
+$checks=[];
+function c258(&$a,$ok,$label){$a[]=[$ok,$label]; if(!$ok) fwrite(STDERR,"FAIL: $label\n");}
+c258($checks,ckm_test_current_plugin_release($main),'version');
+c258($checks,str_contains($schema,"ready_game_revisions"),'revision table');
+c258($checks,str_contains($adapter,"'ready_game_revisions'=>'ckm_quiz_ready_game_revisions'"),'revision table map');
+c258($checks,str_contains($schema,"catalog_revision int unsigned NOT NULL DEFAULT 1"),'snapshot catalog revision column');
+c258($checks,str_contains($schema,"0.3.14.16"),'db version bump');
+c258($checks,str_contains($catalog,'ckm_quiz_pro_ready_game_record_revision'),'record revision function');
+c258($checks,str_contains($catalog,'ckm_quiz_pro_ready_game_admin_history'),'history admin screen');
+c258($checks,str_contains($catalog,'ckm_quiz_pro_ready_game_restore_revision'),'restore function');
+c258($checks,str_contains($catalog,'admin_post_ckm_quiz_pro_ready_game_restore'),'restore endpoint');
+c258($checks,str_contains($catalog,'История версий'),'history label');
+c258($checks,str_contains($catalog,"'catalog_revision'=>ckm_quiz_pro_ready_game_current_revision"),'registry revision');
+c258($checks,str_contains($catalog,"'catalog_revision'=>max(1,(int)(\$item['catalog_revision']??1))"),'snapshot persists revision');
+c258($checks,str_contains($catalog,"if(\$key==='product_key')"),'restore protects product key');
+c258($checks,str_contains($catalog,"'restore-v'.\$revision"),'restore creates new revision');
+c258($checks,str_contains($catalog,"ckm_quiz_pro_ready_game_revision_seed_v1"),'baseline migration');
+c258($checks,str_contains($admin,"do_action('ckm_quiz_pro_quiz_saved',\$id)")&&str_contains($catalog,"template-save"),'template save creates catalogue revision');
+c258($checks,str_contains($org,"Куплена редакция каталога: v")&&str_contains($org,"catalog_revision,catalog_snapshot_json"),'My Games shows purchased revision');
+$fail=array_filter($checks,fn($x)=>!$x[0]);
+echo (count($checks)-count($fail)).'/'.count($checks)." passed\n";
+exit($fail?1:0);

@@ -1,0 +1,21 @@
+CKM Quiz Pro 0.3.23.295-dev.327-NEG-MVP
+
+Base: 0.3.23.294-dev.326-NEG-RECOVERY
+NEG DB schema: 1.4.0
+NEG content: 1.2.0
+
+Implemented:
+- Added published system scenario «Проект под давлением».
+- Added published system scenario «Трудный разговор с коллегой».
+- Existing «Контракт на поставку» v1 is kept byte-for-byte at the content-row level expected by the immutable content migration.
+- Added categorical/boolean negotiation item coverage through existing generic item-state and agreement normalization.
+- Added generic data-driven hard-constraint action `block` for final agreement validation.
+- Removed the hard-coded default `contract-supply` runtime branch from the player page.
+- Generalized final agreement quality classification so scenarios are not required to expose contract-specific evaluation criterion codes.
+- No new NEG tables; schema stays 1.4.0.
+- Existing games, payments, STT, voice and organizer code were not refactored.
+
+Acceptance focus:
+- Three scenario manifests total 15 items, 12 hidden facts, 18 rules and 18 evaluation rules.
+- Each scenario has evaluation weight 100.
+- Runtime contains no scenario slug/opponent-name literals for the three MVP scenarios.

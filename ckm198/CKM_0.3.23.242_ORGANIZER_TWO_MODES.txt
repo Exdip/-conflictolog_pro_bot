@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.242-dev.274-ORGANIZER-TWO-MODES
+
+- Organizer cabinet starts with a two-mode commercial choice.
+- Mode 1: buy individual games (existing entitlement/payment flow, 15 sessions/month per paid game).
+- Mode 2: rent the platform (Start/Business/Pro partner plans).
+- Partner owner can submit a rental-plan request from the tenant frontend.
+- Admin sees the requested plan and can activate it with the existing safe partner grant flow.
+- Active partner rental is detected automatically; the same tenant/account is preserved.
+- Paid scenario libraries/custom content remain separate from platform rental.

@@ -1,0 +1,11 @@
+CKM Quiz Pro 0.3.23.195-dev.227 — Negotiation Smoke Run Isolation
+
+Live smoke on 194 showed all current checks passing, but the table still contained the prior build's HTTP 500 row from sessionStorage, producing a misleading 20/21 summary.
+
+Fix:
+- smoke sessionStorage key is now namespaced by plugin build version;
+- failed smoke runs get explicit stage=failed;
+- a failed run is preserved for diagnosis and is not auto-replayed on ordinary reload;
+- «Запустить заново» remains the explicit reset path;
+- intended after-f5 checkpoint behavior is unchanged;
+- no real game routing changes.

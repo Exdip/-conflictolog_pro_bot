@@ -1,0 +1,5 @@
+NEG-BUILDER-SECTION-CARDS 407
+Version: 0.3.23.375-dev.407-NEG-BUILDER-SECTION-CARDS
+Unified builder section headers, inner cards, add/remove actions and empty states.
+Typography remains 14px. UI only; builder data/save/publish logic and negotiation mechanics are unchanged.
+No verification run by user request.

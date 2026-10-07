@@ -1,0 +1,6 @@
+NEG-ATTEMPT-HISTORY-14PX 412
+Version: 0.3.23.380-dev.412-NEG-ATTEMPT-HISTORY-14PX
+Attempt/history list aligned with the 14px dark app UI.
+Attempt rows, dates, statuses, scores, actions and empty state are visually unified.
+UI only; history storage, result retrieval and negotiation mechanics are unchanged.
+No verification run by user request.

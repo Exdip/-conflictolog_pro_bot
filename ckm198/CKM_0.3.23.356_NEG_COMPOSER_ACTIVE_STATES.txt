@@ -1,0 +1,5 @@
+NEG-COMPOSER-ACTIVE-STATES 388
+Version: 0.3.23.356-dev.388-NEG-COMPOSER-ACTIVE-STATES
+Unified 14px composer textarea, placeholder, focus, disabled, action-button and coach-choice states.
+UI only; no negotiation runtime, request handlers or mechanics changed.
+No verification run by user request.

@@ -1,0 +1,13 @@
+NEG-EVALUATION-CHUNKS 477
+Version: 0.3.23.445-dev.477-NEG-EVALUATION-CHUNKS
+Database schema: 1.8.0
+Content pack: 1.47.0
+Evaluation version: neg-eval-1.9
+Live .476 evaluation still failed at AI stage on the six-criterion single batch.
+Evaluation is now split into chunks of at most 3 criteria per AI call.
+Six criteria require two normal calls; seven require three normal calls.
+Only one additional strict repair call is allowed, and it requests at most the first 3 missing criteria.
+Each call has a 20-second timeout and a compact completion budget capped at 1350 tokens.
+This avoids both previous extremes: one request per criterion and one oversized request for all criteria.
+No scenario content changed. Content pack remains 1.47.0.
+No scenario-specific PHP branches were added.

@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.253-dev.285-STORY-AI-CONTRACT-NORMALIZATION-FIX
+
+- Final round AI prompt is now unambiguous: speaker-only JSON, no opponent object.
+- Speaker-only bonus/penalty false flags accept harmless scalar/boolean wrapper variants.
+- True bonus/penalty still requires grounded evidence; no points are invented.
+- Other rounds keep the strict two-participant contract.

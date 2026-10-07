@@ -1,0 +1,13 @@
+0.3.23.181-dev.213-TEAM-STT-SESSION-GUARD
+
+Base: 0.3.23.180-dev.212-AI-TO-HUMAN-MANUAL-GUARD
+
+Fix: participant/team voice dictation async session guard.
+- Each dictation start gets a generation/session id.
+- abortSttDictation() invalidates the active generation before stopping tracks/socket.
+- Pending getUserMedia / voice-token / WebSocket callbacks from an old session cannot revive or overwrite a newer session.
+- A stale WebSocket ready event cannot inspect a track that was already stopped by a newer render/abort.
+- Question polling only tears down an active dictation when the incoming question is actually different from the question captured by that dictation session.
+- Existing AI -> manual host takeover guard from 0.3.23.180 is preserved.
+
+Audio is still not stored by the WordPress plugin; only recognized text is inserted into the answer field.

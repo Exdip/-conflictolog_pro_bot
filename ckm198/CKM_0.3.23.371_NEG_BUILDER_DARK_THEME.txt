@@ -1,0 +1,5 @@
+NEG-BUILDER-DARK-THEME 403
+Version: 0.3.23.371-dev.403-NEG-BUILDER-DARK-THEME
+Scenario builder aligned with Negotiation Master dark palette: surfaces, borders, tabs, controls and interaction states.
+Typography remains 14px. UI only; builder save/publish logic and negotiation mechanics are unchanged.
+No verification run by user request.

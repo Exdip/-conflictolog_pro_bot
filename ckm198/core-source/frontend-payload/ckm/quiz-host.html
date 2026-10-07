@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Квизы — панель ведущего</title>
+  <link rel="stylesheet" href="assets/theme-tokens.css?v=2.19.0-alpha.87.0.2">
+  <link rel="stylesheet" href="assets/quiz-ui.css?v=2.19.0-alpha.87.0.2">
+  <script defer src="assets/quiz-common.js?v=2.19.0-alpha.87.0.2"></script>
+  <script defer src="assets/quiz-host.js?v=2.19.0-alpha.87.0.2"></script>
+  <script defer src="assets/quiz-voice-client.js?v=2.19.0-alpha.87.0.2"></script>
+</head>
+<body>
+  <main class="quiz-shell quiz-shell--wide">
+    <header class="quiz-topbar">
+      <div class="quiz-brand">
+        
+        <span class="quiz-brand__text"><strong id="hostRoleLabel">Панель ведущего</strong><span id="hostGameCode">Квиз</span></span>
+      </div>
+      <div class="quiz-toolbar">
+        <span class="quiz-badge quiz-badge--test" data-test-badge hidden>Тестовая игра</span>
+        <span class="quiz-badge" id="hostPhaseBadge">Ожидание</span>
+        <button class="quiz-btn" type="button" data-theme-toggle>Тёмная тема</button>
+      </div>
+    </header>
+
+    <section class="quiz-hero">
+      <span class="quiz-kicker" id="hostRoleKicker">Управление игрой</span>
+      <h1 class="quiz-title" id="hostTitle">Подключение к комнате…</h1>
+      <p class="quiz-subtitle" id="hostSubtitle">Голосовой ведущий говорит командам через микрофон и управляет фазами игры.</p>
+    </section>
+
+
+
+    <details class="participant-guide participant-guide--host participant-guide--chgk-host" id="hostChgkGuide" data-guide-marker="CHGK_HOST_GUIDE_AI_FIRST_NO_DISCUSSION_BUTTON_0_3_23_108" hidden>
+      <summary>Краткая инструкция по «Битве знатоков»</summary>
+      <div class="participant-guide__full host-chgk-guide__body">
+        <p class="participant-guide__note"><strong>Игра идёт до шести побед одной из сторон:</strong> «Знатоки» или «Игра».</p>
+
+        <h3>ИИ-ведущий</h3>
+        <ul>
+          <li>сам подключает голос Сергея;</li>
+          <li>сам ждёт готовности голоса;</li>
+          <li>сам запускает первый вопрос;</li>
+          <li>сам озвучивает этапы;</li>
+          <li>сам ведёт игру;</li>
+          <li>сам оценивает ответы;</li>
+          <li>сам переходит к следующим вопросам.</li>
+        </ul>
+
+        <h3>Ведущий-человек</h3>
+        <ul>
+          <li>сам говорит в микрофон;</li>
+          <li>сам нажимает «Задать вопрос»;</li>
+          <li>сам принимает решение арбитра;</li>
+          <li>сам нажимает «Засчитать» или «Не засчитать».</li>
+        </ul>
+
+        <p class="participant-guide__note">Человек вмешивается только при необходимости, например если надо перейти к ручному управлению.</p>
+      </div>
+    </details>
+
+    <div class="quiz-grid quiz-grid--host">
+      <section class="quiz-stack">
+        <article class="quiz-card quiz-ai-role-notice" id="hostAiRoleNotice" hidden>
+          <div class="quiz-card__head"><div><span class="quiz-kicker" id="hostAiRoleKicker">ИИ</span><h2 id="hostAiRoleTitle">Автоматический режим</h2></div><span class="quiz-badge" id="hostAiRoleBadge">ИИ</span></div>
+          <p class="quiz-help" id="hostAiRoleText">ИИ ведёт игру автоматически.</p>
+          <p class="quiz-status-line" id="hostAiRoleStatus"></p>
+        </article>
+        <article class="quiz-card quiz-chgk-lobby" id="hostChgkLobby" hidden>
+          <div class="quiz-card__head">
+            <div><span class="quiz-kicker">Лобби «Битвы знатоков»</span><h2>Готовность перед стартом</h2></div>
+            <span class="quiz-badge quiz-badge--warning" id="hostLobbyBadge">Preflight</span>
+          </div>
+          <div class="quiz-lobby-progress"><strong id="hostLobbyReadyCount">0 / 0</strong><span>команд готовы</span></div>
+          <div class="quiz-preflight-list" id="hostPreflightList"></div>
+          <p class="quiz-status-line" id="hostPreflightWarnings"></p>
+          <div class="quiz-inline-actions"><button class="quiz-btn" type="button" id="hostPreflight">Проверить готовность</button><span class="quiz-help" id="hostLobbyHint">Старт станет доступен после прохождения обязательных проверок.</span></div>
+        </article>
+
+        <article class="quiz-card" id="hostQuestionCard">
+          <div class="quiz-card__head">
+            <div>
+              <div class="quiz-question__counter" id="hostQuestionCounter">Вопрос ещё не открыт</div>
+              <h2>Вопрос</h2>
+            </div>
+            <div class="quiz-timer" id="hostTimerWrap"><span>Осталось</span><strong id="hostTimer">0:00</strong></div>
+          </div>
+          <div class="quiz-question">
+            <p class="quiz-question__text" id="hostQuestionText">Ожидайте старта.</p>
+            <div class="quiz-question__media" id="hostQuestionMedia" hidden></div>
+            <div id="hostCorrectBlock" hidden>
+              <p class="quiz-help"><strong>Правильный ответ:</strong> <span id="hostCorrectAnswer">—</span></p>
+              <p class="quiz-help" id="hostExplanation"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="quiz-card" id="hostPhaseCard">
+          <div class="quiz-card__head"><h2 id="hostPhaseTitle">Управление фазой</h2><span class="quiz-card__meta" id="hostSyncMeta">—</span></div>
+          <div class="quiz-host-actions">
+            <button class="quiz-btn quiz-btn--primary" type="button" id="hostStart">Старт</button>
+            <button class="quiz-btn" type="button" id="hostClose">Закрыть приём ответов</button>
+            <button class="quiz-btn" type="button" id="hostStartReview" hidden>Открыть разбор</button>
+            <button class="quiz-btn" type="button" id="hostFinishReview" hidden>Завершить разбор</button>
+            <button class="quiz-btn" type="button" id="hostNext">Следующий вопрос</button>
+            <button class="quiz-btn quiz-btn--danger" type="button" id="hostFinish">Завершить игру</button>
+          </div>
+          <p class="quiz-status-line" id="hostActionStatus"></p>
+        </article>
+
+        <article class="quiz-card quiz-jeopardy-card" id="hostJeopardyCard" hidden>
+          <div class="quiz-card__head">
+            <div><span class="quiz-kicker">Интеллектуальный батл</span><h2>Игровая доска</h2></div>
+            <span class="quiz-card__meta" id="hostJeopardyStatus">Ожидание выбора</span>
+          </div>
+          <details class="quiz-jeopardy-advanced">
+            <summary>Дополнительно</summary>
+            <div class="quiz-jeopardy-selector">
+              <label for="hostJeopardySelector">Передать право выбора вручную</label>
+              <div class="quiz-inline-actions">
+                <select id="hostJeopardySelector"></select>
+                <button class="quiz-btn" type="button" id="hostJeopardySetSelector">Передать право выбора</button>
+              </div>
+            </div>
+            <div class="quiz-inline-actions quiz-jeopardy-emergency-actions">
+              <button class="quiz-btn quiz-btn--danger" type="button" id="hostJeopardyEmergencyFinish">Завершить игру досрочно</button>
+            </div>
+          </details>
+          <div class="quiz-jeopardy-board" id="hostJeopardyBoard" hidden></div>
+          <p class="quiz-status-line" id="hostJeopardyBoardStatus"></p>
+          <div class="quiz-jeopardy-ai quiz-jeopardy-ai--compact" id="hostJeopardyAi" hidden>
+            <div><strong>ИИ</strong><span id="hostJeopardyAiStatus">Ожидание ответа.</span></div>
+            <details class="quiz-jeopardy-ai__why" id="hostJeopardyAiWhy">
+              <summary>Почему?</summary>
+              <p class="quiz-help" id="hostJeopardyAiComment">Ручное решение ведущего всегда остаётся доступным как резерв.</p>
+            </details>
+            <div class="quiz-inline-actions"><button class="quiz-btn" type="button" id="hostJeopardyAiEvaluate" hidden>Повторить оценку AI</button></div>
+            <p class="quiz-status-line" id="hostJeopardyAiHostMessage" hidden></p>
+          </div>
+          <div class="quiz-jeopardy-buzzer quiz-jeopardy-buzzer--host" id="hostJeopardyBuzzer" hidden>
+            <div><strong id="hostBuzzStatus">Кнопка свободна</strong><span id="hostBuzzTimer"></span></div>
+            <div class="quiz-inline-actions">
+              <button class="quiz-btn quiz-btn--primary" type="button" id="hostBuzzAccept">Верно · +номинал</button>
+              <button class="quiz-btn" type="button" id="hostBuzzReject">Неверно · открыть другим</button>
+            </div>
+          </div>
+          <div class="quiz-jeopardy-cat" id="hostJeopardyCat" hidden>
+            <div><strong>Секретная передача</strong><span id="hostCatStatus">Выберите команду-получателя.</span></div>
+            <div class="quiz-inline-actions" id="hostCatAssignControls">
+              <select id="hostCatTarget"></select>
+              <button class="quiz-btn" type="button" id="hostCatAssign">Передать и открыть вопрос</button>
+            </div>
+            <div class="quiz-inline-actions" id="hostCatResolveControls" hidden>
+              <button class="quiz-btn quiz-btn--primary" type="button" id="hostCatAccept">Верно · +номинал</button>
+              <button class="quiz-btn" type="button" id="hostCatReject">Неверно · завершить</button>
+            </div>
+          </div>
+          <p class="quiz-help quiz-jeopardy-final-waiting" id="hostFinalWaitingHint" hidden>Финал откроется после основного поля.</p>
+          <div class="quiz-jeopardy-final" id="hostJeopardyFinal" hidden>
+            <div class="quiz-jeopardy-final__head"><strong>Финальный раунд</strong><span id="hostFinalStatus">Не запущен.</span></div>
+            <div class="quiz-inline-actions" id="hostFinalStartControls" hidden><button class="quiz-btn quiz-btn--primary" type="button" id="hostFinalStart">Открыть финальный раунд</button></div>
+            <div class="quiz-inline-actions" id="hostFinalRevealControls" hidden><button class="quiz-btn" type="button" id="hostFinalReveal">Раскрыть финальные ответы</button></div>
+            <div class="quiz-jeopardy-final__rows" id="hostFinalRows"></div>
+            <div class="quiz-inline-actions" id="hostFinalFinishControls" hidden><button class="quiz-btn quiz-btn--primary" type="button" id="hostFinalFinish">Завершить игру по итогам финала</button></div>
+          </div>
+        </article>
+
+        <article class="quiz-card quiz-chgk-host-panel" id="hostChgkPanel" hidden>
+          <div class="quiz-card__head">
+            <div>
+              <span class="quiz-kicker">Битва знатоков</span>
+              <h2>Контроль обсуждения и арбитража</h2>
+            </div>
+            <span class="quiz-card__meta" id="hostChgkSummary">0 из 0 ответили</span>
+          </div>
+          <div class="quiz-inline-actions quiz-chgk-early-timer" id="hostChgkEarlyTimerControl">
+            <label for="hostChgkEarlySeconds">Кнопка «Досрочный ответ»</label>
+            <select id="hostChgkEarlySeconds">
+              <option value="10">10 секунд</option>
+              <option value="15">15 секунд</option>
+              <option value="20">20 секунд</option>
+              <option value="30">30 секунд</option>
+              <option value="45">45 секунд</option>
+              <option value="60">60 секунд</option>
+            </select>
+            <button class="quiz-btn" type="button" id="hostSaveEarlySeconds">Сохранить</button>
+            <span class="quiz-help" id="hostEarlyAnswerMeta">—</span>
+          </div>
+          <div class="quiz-chgk-host-stats" id="hostChgkStats"></div>
+          <div class="quiz-chgk-team-grid" id="hostChgkTeams"></div>
+          <div class="quiz-chgk-host-comment" id="hostChgkHostComment" hidden>
+            <strong>Последняя реплика AI-ведущего</strong>
+            <p id="hostChgkHostMessage">—</p>
+          </div>
+          <p class="quiz-status-line" id="hostChgkNextHint"></p>
+        </article>
+
+        <article class="quiz-card quiz-chgk-comparative" id="hostChgkComparative" hidden>
+          <div class="quiz-card__head"><div><span class="quiz-kicker">COMPARATIVE AI</span><h2>Сравнение способов рассуждения</h2></div><span class="quiz-card__meta" id="hostComparativeStatus">Не запускался</span></div>
+          <p class="quiz-help" id="hostComparativeSummary">Анализ появляется после завершённого разбора и не влияет на игровой счёт.</p>
+          <div class="quiz-stack" id="hostComparativeTeams"></div>
+          <div class="quiz-host-actions"><button class="quiz-btn" type="button" id="hostRunComparative">Запустить / повторить анализ</button></div>
+          <p class="quiz-status-line" id="hostComparativeMeta"></p>
+        </article>
+
+        <article class="quiz-card quiz-chgk-methodology" id="hostChgkMethodology" hidden>
+          <div class="quiz-card__head"><div><span class="quiz-kicker">МИНД / СМКМ</span><h2>Методологический анализ</h2></div><span class="quiz-card__meta" id="hostMethodologyStatus">Не запускался</span></div>
+          <p class="quiz-help" id="hostMethodologySummary">Используются только категории, найденные в формализованной базе знаний. Слой не меняет игровой счёт.</p>
+          <div class="quiz-stack" id="hostMethodologyTeams"></div>
+          <div class="quiz-host-actions"><button class="quiz-btn" type="button" id="hostRunMethodology">Запустить / повторить МИНД/СМКМ-анализ</button></div>
+          <p class="quiz-status-line" id="hostMethodologyMeta"></p>
+        </article>
+
+        <article class="quiz-card" id="hostAnswersCard">
+          <div class="quiz-card__head"><h2>Ответы команд</h2><span class="quiz-card__meta" id="hostAnswersMeta">Оценка доступна после закрытия вопроса</span></div>
+          <p class="quiz-help" id="hostArbitrationNotice" hidden></p>
+          <div class="quiz-stack" id="hostAnswers"><p class="quiz-empty">Ответов пока нет.</p></div>
+        </article>
+      </section>
+
+      <aside class="quiz-stack">
+        <article class="quiz-card" id="hostTeamsCard">
+          <div class="quiz-card__head"><h2>Команды</h2></div>
+          <div class="quiz-team-list" id="hostTeams"></div>
+        </article>
+
+        <article class="quiz-card" id="hostResultCard" hidden>
+          <div class="quiz-card__head"><div><span class="quiz-kicker">Итог</span><h2>Результат игры</h2></div><span class="quiz-badge quiz-badge--success">Финиш</span></div>
+          <p class="quiz-help" id="hostResultWinner">—</p>
+          <div class="quiz-team-list" id="hostResultStandings"></div>
+        </article>
+
+        <article class="quiz-card quiz-live-studio" id="hostLiveStudio" hidden>
+          <div class="quiz-card__head"><h2>Видеостудия ведущего</h2><span class="quiz-badge quiz-badge--success">Jitsi</span></div>
+          <p class="quiz-help">Откройте видеокомнату, чтобы команды слышали и видели вас во время квиза.</p>
+          <a class="quiz-btn quiz-btn--primary" id="hostLiveStudioLink" href="#" target="_blank" rel="noopener noreferrer">Открыть видеостудию ведущего</a>
+        </article>
+
+        <article class="quiz-card" id="hostMessageCard">
+          <div class="quiz-card__head"><h2>Сообщение ведущего</h2></div>
+          <div class="quiz-message-form">
+            <textarea id="hostMessageText" placeholder="Сообщение участникам и табло"></textarea>
+            <button class="quiz-btn quiz-btn--primary" type="button" id="hostPublishMessage">Опубликовать</button>
+            <p class="quiz-status-line" id="hostMessageStatus"></p>
+          </div>
+        </article>
+
+      </aside>
+    </div>
+  </main>
+  <div class="quiz-connection" id="quizConnection">Подключение…</div>
+</body>
+</html>

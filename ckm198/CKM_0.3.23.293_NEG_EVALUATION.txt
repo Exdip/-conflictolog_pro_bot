@@ -1,0 +1,18 @@
+CKM Quiz Pro 0.3.23.293-dev.325-NEG-EVALUATION
+
+Base: 0.3.23.292-dev.324-NEG-AGREEMENT
+
+NEG-EVALUATION adds the first official /100 post-game evaluation for Negotiation Master.
+
+Implemented:
+- server-side EvaluationService with evaluation version neg-eval-1.3;
+- reuse of existing ckm_neg_evaluations and ckm_neg_evaluation_scores tables (NEG DB stays 1.3.0);
+- PHP-authoritative global score from six scenario evaluation rules whose weights must total 100;
+- formal PHP evidence for economic result, discovered interests, concessions, boundary protection and package construction;
+- criterion-local AI evaluation for qualitative components, including argumentation;
+- AI score-band and confidence validation with strict retry; incomplete qualitative evaluation is marked failed rather than rescaled;
+- separate agreement/no-deal result type and red-line indicator;
+- player result API and completed-session result UI with criterion scores, strengths, improvements and transcript evidence navigation;
+- coach-help counts shown separately without reducing /100.
+
+No existing games, payments, STT, voice, checkout or organizer flows were refactored.

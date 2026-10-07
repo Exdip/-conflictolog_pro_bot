@@ -1,0 +1,6 @@
+Version: 0.3.23.506-dev.538-SALES-UNIFIED-HISTORY
+- Organizer History now includes individual Effective Sales training sessions from ckm_neg_sessions.
+- Sales history rows show scenario, date, participant, AI client, score, status and direct result link.
+- Sales sessions remain in native NEG tables; no duplicate rows are written to ckm_quiz_games.
+- History filters, sorting, summary counts and list CSV include Effective Sales sessions.
+- Legacy game trash/delete actions remain limited to ckm_quiz_games rows.

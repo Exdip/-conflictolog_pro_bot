@@ -1,0 +1,8 @@
+NEG-MORE-INVESTED-CONTROL-SCENARIO 458
+Version: 0.3.23.426-dev.458-NEG-MORE-INVESTED-CONTROL-SCENARIO
+Content pack: 1.39.0
+Promoted «Кто больше вложил — тот и решает?» from a draft card to a published playable scenario in «Доля влияния».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains separation of capital contribution, economic compensation, operating contribution and corporate control.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.458-dev.490-SALES-ABANDONED-RESUME-FIX
+
+- Sales page no longer opens an abandoned attempt as if it were resumable.
+- Abandoned attempt links show a Russian explanation and explicit “Начать заново” action.
+- Explicit restart abandons any newer active attempt and creates a clean training session.
+- Generic English “Session cannot be resumed.” is mapped to a Russian sales-domain error.

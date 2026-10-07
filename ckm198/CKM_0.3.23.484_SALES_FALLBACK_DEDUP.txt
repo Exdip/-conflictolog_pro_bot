@@ -1,0 +1,7 @@
+CKM Quiz Pro
+Version: 0.3.23.484-dev.516-SALES-FALLBACK-DEDUP
+
+Minimal SALES-only fix:
+- deterministic fallback replies now pass through the existing recentDuplicate guard;
+- five neutral fallback prompts rotate within the four-reply dedup window;
+- NEG-CORE, database schema, scenario data and completion sound are unchanged.

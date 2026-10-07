@@ -1,0 +1,5 @@
+CKM Quiz Pro 0.3.23.294-dev.326-NEG-RECOVERY
+
+NEG-RECOVERY adds resumable negotiation turn processing, server processing leases,
+per-tab writer leases/takeover, stale-stage recovery, and evaluation serialization.
+No existing game or payment mechanics are refactored by this build.

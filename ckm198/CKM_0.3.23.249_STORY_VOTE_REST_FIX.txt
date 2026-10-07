@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.249-dev.281-STORY-VOTE-REST-FIX
+
+- Adds a dedicated REST transport for round-4 story_vote.
+- Uses the same team token/nonce/member checks and the same ckmqp_show_session reducer.
+- Pauses participant polling briefly before story_vote, matching the story_ready recovery path.
+- Does not change scoring, voting rules, or two-team mechanics.

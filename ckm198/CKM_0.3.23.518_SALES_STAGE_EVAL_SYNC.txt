@@ -1,0 +1,4 @@
+Version: 0.3.23.518-dev.550-SALES-STAGE-EVAL-SYNC
+- Sales snapshot exposes only hidden_fact_count, never hidden fact content.
+- Stage 'Разобраться' now uses weighted discovery coverage against the total scenario fact count.
+- Includes .549 value-signal guard and neg-eval-2.8.

@@ -1,0 +1,4 @@
+NEG-UNIFORM-14PX 385
+Version: 0.3.23.353-dev.385-NEG-UNIFORM-14PX
+All Negotiation Master UI text is normalized to 14px.
+No runtime or negotiation mechanics changed.

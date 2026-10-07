@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.226-dev.258-READY-GAME-VERSION-HISTORY
+
+- Append-only revision history for administrator-managed ready games.
+- Each meaningful save records catalogue fields plus the linked technical quiz revision.
+- Saving a linked technical game template automatically creates a new catalogue revision.
+- Admin UI shows current catalogue revision and full version history.
+- Restore creates a new revision; old history is never overwritten.
+- Product keys are not rolled back, protecting existing entitlements.
+- Purchased ready-game snapshots record the catalogue revision they were created from, and My Games shows that purchased revision.
+- Existing ready games receive a baseline revision lazily in wp-admin after upgrade.

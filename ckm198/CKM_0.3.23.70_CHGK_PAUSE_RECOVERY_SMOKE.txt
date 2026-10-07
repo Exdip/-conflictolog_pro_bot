@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.70-dev.102
+CHGK pause/recovery smoke hardening
+- engine-level game_paused guard for final answer
+- smoke checks discussion pause + F5 restore
+- smoke checks final-answer pause + resume
+- smoke checks AI -> human takeover without state loss
+- smoke checks human -> AI behavior depending on AI Host availability

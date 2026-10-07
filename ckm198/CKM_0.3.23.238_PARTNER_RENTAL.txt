@@ -1,0 +1,14 @@
+CKM Quiz Pro 0.3.23.239-dev.271-TENANT-SAFE-REDIRECT-FIX
+
+Integrated partner rental module:
+- partner plans Start 30 / Business 75 / Pro 150 sessions per 30-day period;
+- ordinary organizer default 15 real starts per calendar month per each of 8 base games;
+- partner shared pool across child organizers;
+- 8 base games included through five technical entitlement keys;
+- paid scenario libraries/custom games remain separate;
+- partner-only game_access grants tracked in wp_ckmqp_partner_grants and safely revoked;
+- valid WordPress tenant owner required;
+- /ckm-partner/ owner cabinet with child organizer management;
+- admin menu CKM -> Partners and limits;
+- test_mode does not consume quota; real admin starts inside tenant do consume quota;
+- legacy WPCode partner snippets / standalone partner plugin suppress integrated boot to avoid double hooks.

@@ -1,0 +1,11 @@
+CKM Quiz Pro 0.3.23.194-dev.226-NEGOTIATION-STORAGE-SELF-HEAL
+
+Причина: живой Negotiation Core Smoke остановился на первом REST start с HTTP 500.
+
+Изменения:
+- добавлен фактический health-check таблиц ckm_negotiation_*;
+- если версия БД уже записана, но таблица/колонка/индекс отсутствует, выполняется безопасное self-heal;
+- перед test API start хранилище проверяется и при необходимости восстанавливается;
+- DB schema version: 0.3.14.12;
+- smoke-page теперь показывает code/message для первого HTTP-ошибочного ответа;
+- реальные игры и negotiation_duel_v1 не переключаются.

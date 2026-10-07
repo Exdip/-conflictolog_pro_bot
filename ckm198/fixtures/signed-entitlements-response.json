@@ -1,0 +1,34 @@
+{
+    "schema": "ckm.entitlements.v1",
+    "key_id": "ckm-dev-2026-09-15-03",
+    "payload": {
+        "license_id": "LIC-DEV-001",
+        "domain": "dev.example",
+        "installation_id": "dev-installation",
+        "issued_at": "2026-09-15T12:00:00Z",
+        "valid_until": "2030-01-01T00:00:00Z",
+        "packages": [
+            {
+                "package_id": "ckm-cloud-demo-classic",
+                "title": "Классический квиз",
+                "format_key": "classic_quiz",
+                "package_version": "1.0.0",
+                "entitlement": "owned",
+                "delivery_mode": "local_fixture",
+                "package_url": "",
+                "expires_at": ""
+            },
+            {
+                "package_id": "ckm-cloud-sales-battle",
+                "title": "Эффективный продажник: работа с возражениями",
+                "format_key": "chgk_v1",
+                "package_version": "1.0.0",
+                "entitlement": "owned",
+                "delivery_mode": "cloud_package",
+                "package_url": "https://api.centr-razvitia-uma.ru/v1/content/packages/ckm-cloud-sales-battle/download",
+                "expires_at": ""
+            }
+        ]
+    },
+    "signature": "RSRLEZb0WPAztoaqTF3yOfYAFc0vbLL7stjAm-sk6jPS5m_KBjscLrIsSL_m5S6kDh3Qvzr7W0O-nZPwgNjNCw"
+}

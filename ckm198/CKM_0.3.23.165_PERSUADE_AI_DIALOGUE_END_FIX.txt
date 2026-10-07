@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.165-dev.197-PERSUADE-AI-DIALOGUE-END-FIX
+
+- AI host no longer closes a dialogue immediately on a completion hint.
+- Natural agreement/deadlock: 10-second grace window for a final reply.
+- Silence: after 25 seconds AI host asks whether anyone wants to add something; after 15 more seconds of silence the dialogue closes and review starts.
+- Any new message cancels the silence prompt and restarts completion detection.
+- Round 2 hidden-task message cap remains the absolute hard stop.
+- AI completion logic never reads hidden tasks/scores.
+- Removed the manual-review recommendation “Обсудите оценку ведущего перед переходом.”

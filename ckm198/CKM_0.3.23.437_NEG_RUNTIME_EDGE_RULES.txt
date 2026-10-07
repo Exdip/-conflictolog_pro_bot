@@ -1,0 +1,10 @@
+NEG-RUNTIME-EDGE-RULES 469
+Version: 0.3.23.437-dev.469-NEG-RUNTIME-EDGE-RULES
+Content pack: 1.47.0
+Closed the final two legacy rule-execution edge cases in the complete Negotiation Master catalog.
+The «Цена выросла» PR4 player_reject_or_counter rule is now a formal server-side block for payment_days above the player's allowed limit.
+The opponent prompt now generically executes opponent_reject_or_counter rules with numeric item conditions, in addition to event-driven opponent behavior rules.
+Full audit confirms all rule actions across 53 published scenarios have exactly one supported executor category: formal server runtime or AI opponent behavior.
+No player_reject_or_counter actions remain.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

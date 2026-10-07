@@ -1,0 +1,3 @@
+Version: 0.3.23.517-dev.549-SALES-VALUE-SIGNAL-GUARD
+- Pure acceptance/scheduling questions such as '15 minutes ... suitable?' no longer count as value propositions.
+- Evaluator version bumped to neg-eval-2.8 for automatic recalculation.

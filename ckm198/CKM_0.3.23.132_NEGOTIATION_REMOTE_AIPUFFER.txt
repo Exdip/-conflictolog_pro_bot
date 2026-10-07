@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.132-dev.164-NEGOTIATION-REMOTE-AIPUFFER
+
+- Added Игровая платформа → ИИ-арбитр.
+- AI Puffer endpoint defaults to https://centr-razvitia-uma.ru/wp-json/aipkit/v1/generate.
+- Developer REST key is stored server-side in WordPress option ckm_quiz_pro_aipuffer_rest_key.
+- Переговори другого AI-evaluated rounds use the configured remote endpoint instead of forcing local /wp-json/aipkit/v1/generate on ckkm.ru.
+- Existing Управленческая игра "Ваш выбор" and Переговорные поединки AI Puffer calls honor the same central endpoint.
+- Final story round keeps its existing independent team-vote mechanic; no AI score was added.

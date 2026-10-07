@@ -1,0 +1,11 @@
+NEG-CONTENT-MIGRATION-147-FIX 472
+Version: 0.3.23.440-dev.472-NEG-CONTENT-MIGRATION-147-FIX
+Required database schema: 1.8.0
+Target content version: 1.47.0
+Fixes the live 1.36.0 -> 1.47.0 content migration conflict found on ckkm.ru.
+Root cause: «Цена выросла» version 1 was already published in the database, while pack 1.47.0 attempted to change PR4 inside the same immutable published version.
+Fix: the changed «Цена выросла» content is published by the seed as scenario version 2. Version 1 remains immutable; the importer inserts version 2 and then moves current_version_id to it.
+This allows the same atomic migration to promote «Доля влияния» and import all 10 of its scenarios before setting ckm_neg_content_version=1.47.0.
+No manual database edits are required.
+ContentMigration runtime remains generic; no scenario-specific migration branch was added.
+No live-site write/migration was executed while building this ZIP.

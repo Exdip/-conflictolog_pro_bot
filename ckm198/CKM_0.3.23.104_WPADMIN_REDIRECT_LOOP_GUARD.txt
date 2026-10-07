@@ -1,0 +1,5 @@
+CKM Quiz Pro 0.3.23.104-dev.136-WPADMIN-REDIRECT-LOOP-GUARD
+
+- Disabled recent-order wp-admin redirect fallback that could loop after payment provider returns.
+- Browser fallback now uses the safe payment-return landing page first.
+- Added session lock and one-time marker to prevent ERR_TOO_MANY_REDIRECTS.

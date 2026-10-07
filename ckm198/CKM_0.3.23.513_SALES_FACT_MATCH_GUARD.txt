@@ -1,0 +1,3 @@
+Version: 0.3.23.513-dev.545-SALES-FACT-MATCH-GUARD
+- Generic SALES hidden-fact matching now requires at least two independent lexical anchors.
+- Prevents an adjacent question about which calls to inspect from revealing the unrelated team-size fact merely because both mention managers.

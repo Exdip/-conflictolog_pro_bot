@@ -1,0 +1,8 @@
+NEG-SERVICE-VALUE-SCENARIO 428
+Version: 0.3.23.396-dev.428-NEG-SERVICE-VALUE-SCENARIO
+Content pack: 1.12.0
+Promoted «Сервис вместо скидки» from a draft card to a published playable scenario in «Цена вопроса».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains shifting from price-only bargaining to service value, SLA and total package design.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

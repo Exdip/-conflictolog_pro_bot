@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.480-dev.512-SALES-REPLY-DEDUP
+
+Minimal changes from .511:
+- SALES only: compare each new client reply with the last two client replies.
+- Exact or near-duplicate deterministic replies are rejected before save.
+- One model regeneration is requested with an explicit instruction not to repeat the matched reply.
+- A second duplicate cannot fall back to the same repeated deterministic text.
+- NEG-CORE, database schema, content pack and completion-sound module are unchanged.

@@ -1,0 +1,5 @@
+NEG-FORM-DIMENSION-GUARD 400
+Version: 0.3.23.368-dev.400-NEG-FORM-DIMENSION-GUARD
+Hard guard for uniform 40px input/select height and stable textarea dimensions at 14px.
+UI only; negotiation mechanics and handlers are unchanged.
+No verification run by user request.

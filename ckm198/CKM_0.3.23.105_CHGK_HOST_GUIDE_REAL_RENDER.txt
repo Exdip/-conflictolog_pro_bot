@@ -1,0 +1,3 @@
+CKM Quiz Pro 0.3.23.105-dev.137-CHGK-HOST-GUIDE-REAL-RENDER
+
+Инструкция по «Битве знатоков» перенесена в реально используемый standalone host shell и standalone-game.js. Добавлен видимый маркер CHGK-HOST-GUIDE-REAL-105 и переключение видимости только для формата chgk.

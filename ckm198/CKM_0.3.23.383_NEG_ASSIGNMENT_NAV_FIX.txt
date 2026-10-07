@@ -1,0 +1,5 @@
+NEG-ASSIGNMENT-NAV-FIX 415
+Version: 0.3.23.383-dev.415-NEG-ASSIGNMENT-NAV-FIX
+Fixed the assignments page hero/title duplication, widened the navigation behavior so the "Назначения" tab no longer clips, and increased the handwritten font size in the top navigation/brand.
+UI only; assignment logic, navigation targets and negotiation mechanics are unchanged.
+No verification run by user request.

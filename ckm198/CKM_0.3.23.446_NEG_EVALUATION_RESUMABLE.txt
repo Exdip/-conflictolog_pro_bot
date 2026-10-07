@@ -1,0 +1,14 @@
+NEG-EVALUATION-RESUMABLE 478
+Version: 0.3.23.446-dev.478-NEG-EVALUATION-RESUMABLE
+Database schema: 1.8.0
+Content pack: 1.47.0
+Evaluation version: neg-eval-2.0
+Live .477 still failed at AI stage, so batch-size tuning alone was not sufficient.
+Evaluation is now resumable across separate HTTP requests.
+Each /evaluate request processes at most one AI/hybrid criterion and persists it before returning.
+PHP-only criteria are persisted immediately.
+The browser automatically continues evaluation with separate requests until completed or failed.
+Already saved criteria are reused; a retry does not restart the whole evaluation.
+An evaluator-version change clears stale partial scores once before the new staged calculation starts.
+No scenario content changed; content pack remains 1.47.0.
+No scenario-specific PHP branches were added.

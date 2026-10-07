@@ -1,0 +1,6 @@
+NEG-SYSTEM-STATES-DESIGN 387
+Version: 0.3.23.355-dev.387-NEG-SYSTEM-STATES-DESIGN
+Compact service/loading/error/empty states in Negotiation Master.
+Includes 385 uniform 14px typography and 386 decision modal design.
+UI only; no runtime or negotiation mechanics changed.
+No verification run by user request.

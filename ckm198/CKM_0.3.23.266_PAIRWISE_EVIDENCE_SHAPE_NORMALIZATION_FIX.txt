@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.270-dev.302-STORY-EVIDENCE-CONFIDENCE-CAP-FIX
+
+- Ordinary two-party reviews now normalize harmless evidence transport shapes before strict validation.
+- Supports scalar quote strings, [messageId, quote] pairs, common id/quote aliases, integral float/string ids, and unique quote-only grounding to the evaluated role.
+- Grounding never crosses roles and never invents text. Ambiguous or fabricated evidence remains rejected.
+- Existing story-round rubric v4 and strict validators are unchanged.

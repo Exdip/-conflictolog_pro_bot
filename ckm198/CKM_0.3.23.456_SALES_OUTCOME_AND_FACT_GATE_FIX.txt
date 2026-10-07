@@ -1,0 +1,20 @@
+CKM Quiz Pro 0.3.23.456-dev.488-SALES-OUTCOME-AND-FACT-GATE-FIX
+
+Scope: Effective Sales only. No content/database migration.
+
+Fixes based on live .487 session #24:
+1. Hidden-fact reveal topic is derived only from fact title + reveal rules, never hidden content.
+   This prevents a decision-process answer mentioning the CEO from unlocking the separate past-CRM fact.
+2. Sales client progression is evaluated before fact discovery.
+   ROI/value arguments receive a value reaction; concrete next-step proposals receive a direct client acceptance/rejection reaction instead of replaying an old fact.
+3. Next-step outcome is confirmation-gated.
+   A seller proposal without explicit client acceptance is capped at 58/100 for next_step and cannot produce sales_advanced.
+   Explicit opponent acceptance or an active opponent commitment can unlock high next-step scoring and sales_advanced.
+4. Evaluation version bumped to neg-eval-2.4 so stale 2.3 results are recalculated.
+
+Regression coverage:
+- SALES 482-488 cumulative tests pass.
+- evaluation resumable/batch/batch-hardening/failsafe pass with 2.4.
+- live-package-role: 16 pass.
+- NEG catalog runtime: 1380 pass.
+- PHP syntax: 368 files clean.

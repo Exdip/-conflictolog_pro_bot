@@ -1,0 +1,3 @@
+CKM Quiz Pro 0.3.23.491-dev.523-SALES-SCENARIO-CHAINS
+
+Adds Pleep-style sales scenarios and follow-ups for the Web AI seller: idle/stage triggers, delay, message/handoff/stage/win/loss actions, per-dialog one-shot execution, human-takeover pause, and manual run for QA.

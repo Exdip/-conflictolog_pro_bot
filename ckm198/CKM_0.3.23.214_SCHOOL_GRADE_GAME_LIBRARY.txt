@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.214-dev.246 — SCHOOL GRADE GAME LIBRARY
+
+- Added a separate library game: «Переговори другого — для школьников: Двойка, которой не было».
+- Situation: Lera disputes a chemistry grade because variant B may have been checked as variant A.
+- Roles: Lera / Viktor Palych.
+- The same conflict is developed through all four rounds.
+- Uses the unified seven-criteria AI rubric, bonuses/penalties and 304-point total maximum.
+- Added a distinct paid entitlement/runtime persuade_school_grade_v1.
+- The game is not added to the main catalog; it appears only in the renamed «Библиотека игр».
+- Internal organizer route persuade-library is retained for backward compatibility.

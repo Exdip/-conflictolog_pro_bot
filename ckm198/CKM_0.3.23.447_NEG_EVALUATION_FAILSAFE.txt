@@ -1,0 +1,13 @@
+NEG-EVALUATION-FAILSAFE 479
+Version: 0.3.23.447-dev.479-NEG-EVALUATION-FAILSAFE
+Database schema: 1.8.0
+Content pack: 1.47.0
+Evaluation version: neg-eval-2.1
+Live .478 proved resumable persistence works: the first step saved progress 1/6, but the next pure-AI criterion failed.
+Pure AI criteria now have a deterministic server fallback based only on validated game events, agreement coverage, red-line state and other structured runtime evidence.
+Fallback scores are explicitly stored with source=server_fallback and confidence=0.50; they are never presented as AI scores.
+After the first missing AI result, evaluation stores ai_degraded=true and skips further AI calls for the same evaluation run, so the remaining criteria finish quickly and reliably.
+Hybrid criteria keep their existing php_fallback path.
+A single criterion now makes only one AI transport attempt before returning control to the resumable service.
+No scenario content changed. Content pack remains 1.47.0.
+No scenario-specific PHP branches were added.

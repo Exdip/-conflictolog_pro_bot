@@ -1,0 +1,10 @@
+CKM Quiz Pro 0.3.23.128-dev.160-NEGOTIATION-DEMO-UX-POLISH
+
+UX polish for the completed «Переговори другого» demo.
+
+- Shows the complete four-round structure before the game starts.
+- Every active stage displays «Раунд N из 4».
+- Waiting screen explains the 300 + 300 + 300 + 400 scoring and 1300 maximum.
+- Round rules are numbered consistently from 1/4 through 4/4.
+- Removes obsolete «подготовительная версия» wording from the format registry.
+- No state-machine, scoring, arbitration or timing rules changed.

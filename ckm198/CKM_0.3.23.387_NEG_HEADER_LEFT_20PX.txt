@@ -1,0 +1,5 @@
+NEG-HEADER-LEFT-20PX 419
+Version: 0.3.23.387-dev.419-NEG-HEADER-LEFT-20PX
+Header typography is fixed at 20px. The entire top bar is left-aligned with no centered max-width container. Safe left/right padding and non-clipping navigation widths are preserved.
+UI only; navigation targets and mechanics are unchanged.
+No verification run by user request.

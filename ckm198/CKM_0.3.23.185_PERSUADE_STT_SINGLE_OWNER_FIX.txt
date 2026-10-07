@@ -1,0 +1,10 @@
+0.3.23.185-dev.217-PERSUADE-STT-SINGLE-OWNER-FIX
+
+Base: 0.3.23.184-dev.216-PERSUADE-STT-CONTEXT-GUARD
+
+Fix:
+- Mirrors the working Decision Price STT ownership model: one active UI owns team dictation.
+- In negotiationShow, hidden answerBox is now presentation-only and does not call syncSttControls().
+- showCompose remains the sole owner of mount/sync/abort for participant STT while negotiationShow is active.
+- Prevents polling renderShowPreparation() from aborting an in-flight showCompose microphone/STT session.
+- Existing AI -> manual guard, STT session generation guard, handshake diagnostics, and microphone acquire fallback are preserved.

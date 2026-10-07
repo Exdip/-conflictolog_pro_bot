@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.202-dev.234-CLEAN-GAME-TITLES
+
+- Removes the user-facing “Демо:” prefix from bundled game titles.
+- Launch-game selector now shows one clean game name instead of “title · format”.
+- Canonical bundled titles: Классический квиз, Битва знатоков, Интеллектуальный батл, Управленческая игра "Ваш выбор", Переговорный раунд, Мастер переговоров, Эффективный продажник, Переговори другого.
+- Existing quiz/game/history titles are normalized by stable technical slug; slugs and runtime identifiers are unchanged.
+- ZIP root remains ckm198/ so WordPress replaces the currently active plugin path.

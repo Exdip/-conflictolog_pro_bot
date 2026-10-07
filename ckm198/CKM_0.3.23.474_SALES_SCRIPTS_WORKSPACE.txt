@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.474-dev.506-SALES-SCRIPTS-WORKSPACE
+
+- Added a separate “Скрипты продаж” section to Effective Sales navigation.
+- Added per-user, per-tenant script drafts stored in WordPress user meta; no new database tables.
+- Script constructor fields: title, product, client, situation class, conversation goal and constraints.
+- Adaptive four-stage playbook is generated from the 12 sales-situation classes.
+- Drafts can be opened, approved or deleted.
+- Each script can be checked against the matching standard AI-client scenario for its class.
+- The script UI explicitly states that a standard scenario is used for testing; custom product facts are not silently substituted into the AI client.

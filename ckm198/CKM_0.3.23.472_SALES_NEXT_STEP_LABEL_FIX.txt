@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.472-dev.504-SALES-NEXT-STEP-LABEL-FIX
+
+Effective Sales UI clarification:
+- renamed the fourth sales stage from «Следующий шаг» to «Договориться о следующем шаге»;
+- applies both on the sales home flow and during live sessions;
+- stored mechanics using the older short label are normalized at render time, so no DB migration is required;
+- the stage remains a non-clickable progress indicator.

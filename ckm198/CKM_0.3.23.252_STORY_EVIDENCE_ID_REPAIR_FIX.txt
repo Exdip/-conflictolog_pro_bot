@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.252-dev.284-STORY-EVIDENCE-ID-REPAIR-FIX
+
+Fixes story-round AI review evidence when AI Puffer returns a real speaker quote with a numeric messageId that points to a different message by the same speaker.
+
+Safety rules:
+- missing/unknown IDs may be grounded only from a unique real speaker quote;
+- a known speaker ID with a mismatched quote may be repaired only to the unique real speaker message containing that quote;
+- IDs belonging to another participant are never remapped;
+- fabricated or ambiguous quotes remain rejected.

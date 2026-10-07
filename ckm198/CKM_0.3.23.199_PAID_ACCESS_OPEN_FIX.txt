@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.200-dev.232-PLUGIN-REPLACEMENT-PATH-FIX
+
+- Active paid access is no longer treated as a checkout error.
+- If the selected format is already active, checkout returns directly to the organizer library and opens that paid format instead of telling the organizer to renew it.
+- A mixed cart silently removes formats that already have active access and charges only formats that still need access.
+- Explicit renewal remains separate: “Продлить на 30 дней” is used only when the organizer intentionally opens the renewal flow.
+- Administrator preview checkout now uses the signed preview organizer identity instead of the WordPress administrator account, preventing contradictory payment state while viewing another organizer’s cabinet.
+- Preview identity is carried through checkout AJAX with a nonce and is accepted only for WordPress administrators.
+- The ZIP is packaged with the canonical root folder `ckm-quiz-pro/` so WordPress replaces the installed plugin instead of creating another plugin with the same display name.

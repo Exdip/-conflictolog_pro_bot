@@ -1,0 +1,6 @@
+Version: 0.3.23.509-dev.541-SALES-FALLBACK-100
+- Sales fallback scoring can now reach a genuine 100/100 for exemplary performance.
+- Removed artificial ceilings in question quality and objection handling.
+- Value scoring can reach 100 without repetitive value claims when evidence is complete.
+- Next-step scoring no longer rewards repetition; one confirmed, specific step with timing, participants and deliverable can earn 100.
+- Evaluation version bumped to neg-eval-2.6.

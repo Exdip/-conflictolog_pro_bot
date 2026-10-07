@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.239-dev.271-TENANT-SAFE-REDIRECT-FIX
+
+- Safe redirects now support every registered tenant domain from wp_ckmqp_domains.
+- No hostname is hardcoded: existing and future tenant subdomains work automatically.
+- Only exact registered domains with active/reserved domain status and active/staged tenant status are allowed.
+- Unknown or arbitrary *.ckkm.ru hosts remain disallowed.
+- Fix applies to organizer cabinet routes such as educational games, ready-game catalog and builder.

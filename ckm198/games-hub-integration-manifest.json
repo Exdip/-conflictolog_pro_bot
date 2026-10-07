@@ -1,0 +1,49 @@
+{
+  "schema": "ckm.quiz-pro.integrated-games-catalog.v2",
+  "version": "      span.textContent = item.event.action === 'ai_host_message' ? 'ИИ-ведущий' : 'Голосовой ведущий';\n",
+  "base_core": "2.19.0-alpha.87.2+ckmqp.51",
+  "database_migration": false,
+  "features": [
+    "integrated_7_format_catalog",
+    "business_intellectual_categories",
+    "exact_runtime_launch",
+    "native_games_page",
+    "tenant_catalog",
+    "organizer_catalog",
+    "access_days_remaining",
+    "access_expiry_date",
+    "business_intellectual_nav",
+    "access_expiry_warning_7_days",
+    "access_renewal_30_days",
+    "renewal_adds_to_existing_expiry",
+    "payment_grant_idempotency"
+  ],
+  "formats": {
+    "business": [
+      "decision_price_v1",
+      "sales_v1",
+      "business_negotiation_v1",
+      "express_round_v1"
+    ],
+    "intellectual": [
+      "classic_quiz_v1",
+      "chgk_v1",
+      "jeopardy_v1"
+    ]
+  },
+  "files": {
+    "ckm-quiz-pro.php": "7e1c6fde1701e6e9305097e929d4810407c8ee69d3d05ba275397de9c7279922",
+    "VERSION.txt": "e71d2a9b8430c028006078751a398554e575de2c8ab803870a6fff3251798fde",
+    "includes/games-catalog.php": "7f280cdfe8019d170abf21f3291433836b42e215df01572af02130e4ce7b8e44",
+    "includes/standalone-game-access.php": "6498ad164d5a9a781caa4303db037e71c8dd349d733a9a28cc209deb71a79746",
+    "includes/standalone-organizer.php": "bc8018f8421c05dd30fccca1f58c5e875e5740f08af61661a90d0fa3822ec10a",
+    "includes/tenant-registration.php": "13184308570bb39988c41ab905e92b884b9924d6838510903b52caa51443e5c7",
+    "includes/standalone-payment-connector.php": "adaf8aa2ffb980b671ef014545fa787e693afcf58d5e18c6a898fa1338f5d6c5",
+    "includes/standalone-real-payment-adapter.php": "413cd04d82ae4bc155266b86dfc02681a6695fd8bbd07451e483fab1e45c8d51",
+    "includes/test-payment-bridge.php": "93109945ed4eb02135e98b89c95ace16c5264ad21866404c6866279e9a0e824a",
+    "includes/checkout-frontend-complete.php": "e081d61323e405b6cb794fc55e2aa6946e2f537741075c770468400e98c93097",
+    "assets/checkout/checkout.js": "6c1c4414861b35778b88ecd40f1554a6b57af4a116fdba841aba7a3d32cc05c0",
+    "docs/ACCESS-RENEWAL-0.3.23.51.md": "1b8cf491e1d7e269140da3d30aa23aeadd40e73fb41be8d19825fcc2f595dfd7"
+  },
+  "fingerprint": "2b0caa77b966caec5afb"
+}

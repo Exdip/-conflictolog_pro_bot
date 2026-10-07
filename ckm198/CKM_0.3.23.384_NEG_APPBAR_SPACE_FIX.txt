@@ -1,0 +1,5 @@
+NEG-APPBAR-SPACE-FIX 416
+Version: 0.3.23.384-dev.416-NEG-APPBAR-SPACE-FIX
+Top bar layout was rebuilt more aggressively: the brand subtitle is hidden, the header uses a grid layout, the organizer button is compressed, and the handwritten navigation gets a larger font with guaranteed max-content width so "Назначения" is no longer clipped.
+The assignments page title deduplication from .415 remains. UI only; mechanics unchanged.
+No verification run by user request.

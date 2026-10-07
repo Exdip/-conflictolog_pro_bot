@@ -1,0 +1,12 @@
+NEG-ROLE-PACKAGE-FIX 473
+Version: 0.3.23.441-dev.473-NEG-ROLE-PACKAGE-FIX
+Database schema: 1.8.0
+Content pack: 1.47.0
+Live .472 reproduction confirmed two runtime issues: incomplete package extraction and occasional opponent role drift.
+Arbiter runtime now understands short Russian number words, generic Russian unit aliases, repeated shared units, and explicit select-option labels.
+The reproduced package «две задачи + ограниченный блок + 6 недель + расширенная самостоятельность + помощь коллеги + пересмотр через 3 недели» is deterministically recovered as six separate deal items.
+Opponent prompt now requires first-person role behavior and forbids coaching the player.
+Opponent validator rejects obvious coach-style responses and triggers the existing retry path instead of saving them.
+No scenario-specific PHP branches were added.
+No scenario content changed; content pack remains 1.47.0.
+Live verification of the fix itself requires installation of this build.

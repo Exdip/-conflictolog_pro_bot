@@ -1,0 +1,5 @@
+NEG-DECISION-MODAL-DESIGN 386
+Version: 0.3.23.354-dev.386-NEG-DECISION-MODAL-DESIGN
+Agreement and no-deal confirmation windows use the same compact Negotiation Master UI.
+Includes 385 uniform 14px typography.
+No runtime or negotiation mechanics changed.

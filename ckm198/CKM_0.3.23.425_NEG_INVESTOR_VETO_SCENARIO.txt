@@ -1,0 +1,8 @@
+NEG-INVESTOR-VETO-SCENARIO 457
+Version: 0.3.23.425-dev.457-NEG-INVESTOR-VETO-SCENARIO
+Content pack: 1.38.0
+Promoted «Инвестор хочет право вето» from a draft card to a published playable scenario in «Доля влияния».
+Added 5 negotiation items, 4 hidden facts, 6 scenario rules and 6 evaluation criteria with total weight 100.
+The scenario trains separation of investor protection from operating control, calibrated veto thresholds, governance notice and sunset of special rights.
+No scenario-specific PHP runtime branches were added.
+No live-site verification was run.

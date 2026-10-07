@@ -1,0 +1,3 @@
+CKM Quiz Pro 0.3.23.66-dev.98-CHGK-NO-CAPTAIN
+Битва знатоков: одна команда, общий командный экран, отдельная роль капитана отключена на runtime/UI/API.
+MySQL migration: no.

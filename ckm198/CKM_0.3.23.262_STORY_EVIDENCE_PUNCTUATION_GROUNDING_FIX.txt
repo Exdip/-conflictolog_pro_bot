@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.262-dev.294-STORY-EVIDENCE-PUNCTUATION-GROUNDING-FIX
+
+- Story-seven evidence can recover exact source spans when AI preserves the same consecutive words but changes only punctuation, quote marks, whitespace or case.
+- The repair never permits added, removed, reordered or substituted words.
+- Recovered evidence is rewritten to the exact transcript substring before strict validation.
+- The same conservative token grounding is used to identify and discard checker-only evidence.

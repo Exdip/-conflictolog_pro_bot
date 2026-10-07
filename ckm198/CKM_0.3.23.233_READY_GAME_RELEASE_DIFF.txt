@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.233-dev.265 — READY GAME RELEASE DIFF
+
+Administrator release comparison for ready games.
+
+- Compares current working catalogue card with the stable release currently sold.
+- Shows changed title, subtitle, description, situation, category, audience, price, roles, rounds and result rules.
+- Detects linked source quiz/revision changes.
+- Adds Compare with release controls to catalogue, editor, preview and release-history screens.
+- Read-only comparison: no snapshot, entitlement or runtime data are changed.

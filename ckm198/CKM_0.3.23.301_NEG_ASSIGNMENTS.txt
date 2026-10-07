@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.301-dev.333-NEG-ASSIGNMENTS
+
+- Organizer assignments for Negotiation Master.
+- Pinned scenario version, training/exam mode, attempt limit, voice policy, deadline and result visibility.
+- Independent participants or shared team session.
+- Participant launch page and organizer progress report.
+- NEG DB 1.7.0 adds assignments and assignment_participants (17 module tables total).
+- Existing WordPress accounts are used; anonymous invite-code onboarding is deferred.
+- Existing games, payments, STT and voice are not refactored.

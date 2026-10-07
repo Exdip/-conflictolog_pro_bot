@@ -1,0 +1,5 @@
+CKM Quiz Pro 0.3.23.127-dev.159-NEGOTIATION-E2E-GUARD
+
+Added a pure end-to-end regression guard for «Переговори другого» to the existing «Диагностика 8 форматов».
+The guard traverses all four rounds with three teams, validates transitions, final blind voting, game_complete and cumulative scoring.
+No gameplay rules or UI mechanics were changed in this build.

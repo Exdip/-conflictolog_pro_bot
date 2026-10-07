@@ -1,0 +1,12 @@
+NEG-MASTER-RC 471
+Version: 0.3.23.439-dev.471-NEG-MASTER-RC
+Content pack: 1.47.0
+Full release-candidate validation for Negotiation Master.
+Full PHP lint passed for 346 PHP files in the complete plugin.
+1376 NEG-CATALOG-RUNTIME regression checks passed. No database required.
+Catalog integrity: 53 published scenarios, 0 stubs, content pack 1.47.0.
+Runtime architecture guard: no scenario slug references were found in production runtime PHP; content, diagnostics and tests were excluded as legitimate data/test surfaces.
+Runtime architecture guard: no explicit scenario_slug/scenarioSlug branching was found in production runtime PHP.
+No scenario content or runtime mechanics were changed in this RC step.
+This build is intended as the installation candidate for live end-to-end site verification.
+No live-site verification was run in this build step.

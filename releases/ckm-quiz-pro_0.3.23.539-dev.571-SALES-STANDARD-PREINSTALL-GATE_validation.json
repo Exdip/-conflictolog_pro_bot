@@ -1,0 +1,2041 @@
+{
+  "root": "/workspace/ckm-sales-mvp-550a/ckm198",
+  "php": "8.3.33",
+  "checks": {
+    "phpParser": {
+      "total": 451,
+      "passed": 451,
+      "failed": 0,
+      "failures": []
+    },
+    "tokenParse": {
+      "check": "PHP 8.3 TOKEN_PARSE",
+      "php": "8.3.33",
+      "total": 451,
+      "passed": 451,
+      "failed": 0,
+      "failures": []
+    },
+    "js": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "architectureGuards": {
+      "scope": [
+        "modules/effective-sales/",
+        "modules/negotiation-master/"
+      ],
+      "excludedDirectories": [
+        "tests",
+        "content",
+        "migrations"
+      ],
+      "failed": 0,
+      "violations": [],
+      "brandingReferences": [
+        {
+          "path": "modules/effective-sales/public/app-shell.php",
+          "url": "https://ckkm.ru/wp-content/uploads/2026/09/CKKM-logo-icon.webp",
+          "reason": "existing presentation logo; not a business/runtime endpoint"
+        },
+        {
+          "path": "modules/negotiation-master/public/app-shell.php",
+          "url": "https://ckkm.ru/wp-content/uploads/2026/09/CKKM-logo-icon.webp",
+          "reason": "existing presentation logo; not a business/runtime endpoint"
+        }
+      ]
+    },
+    "jsAll": {
+      "total": 21,
+      "passed": 21,
+      "failed": 0,
+      "results": [
+        {
+          "path": "assets/checkout/checkout.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "assets/checkout/test-return.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "assets/completion-signal/completion-signal.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "assets/standalone-ai-host.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "assets/standalone-game.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "assets/standalone-game0.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "assets/standalone-voice.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "core-source/frontend-payload/ckm/assets/quiz-common.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "core-source/frontend-payload/ckm/assets/quiz-host.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "core-source/frontend-payload/ckm/assets/quiz-room.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "core-source/frontend-payload/ckm/assets/quiz-scoreboard.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "modules/effective-sales/assets/sales-ai-seller.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "modules/effective-sales/assets/sales-session.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "modules/effective-sales/workers/live-sideband/index.mjs",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "modules/effective-sales/workers/phone-media-gateway/index.mjs",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "modules/negotiation-master/assets/negotiation-assignments.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "modules/negotiation-master/assets/negotiation-builder.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "modules/negotiation-master/assets/negotiation-session.js",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "tests/neg-builder-direction-roundtrip-571-test.mjs",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "tests/run-preinstall-gate.mjs",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        },
+        {
+          "path": "tests/run-sales-lifecycle-570.mjs",
+          "status": "pass",
+          "exitCode": 0,
+          "error": null
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "path": "modules/effective-sales/tests/sales-481-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-481-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-482-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-482-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-483-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-483-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-484-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-484-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-485-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-485-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-486-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-486-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-487-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-487-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-488-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-488-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-489-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-489-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-490-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-490-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-491-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-491-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-492-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-492-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-493-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-493-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-494-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-494-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-495-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-495-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-496-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-496-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-497-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-497-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-498-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-498-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-499-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-499-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-500-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-500-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-501-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-501-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-502-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-502-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-503-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-503-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-504-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-504-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-505-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-505-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-506-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-506-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-507-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-507-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-508-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-508-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-511-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-511-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-512-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-512-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-513-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-513-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-515-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-515-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-516-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-516-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-517-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-517-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-518-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-518-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-519-max-channel.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-519-max-channel.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-520-inbox-crm.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-520-inbox-crm.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-521-analytics-goals.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-521-analytics-goals.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-522-scenarios-followups.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-522-scenarios-followups.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-523-scenario-chains.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-523-scenario-chains.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-524-telegram-channel.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-524-telegram-channel.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-525-partner-integration-hub.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-525-partner-integration-hub.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-526-max-channel.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-526-max-channel.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-527-whatsapp-channel.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-527-whatsapp-channel.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-528-telephony-adapter-core.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-528-telephony-adapter-core.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-529-direct-sip-live-gateway.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-529-direct-sip-live-gateway.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-530-telephony-sideband-inbox.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-530-telephony-sideband-inbox.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-531-cartesia-phone-gateway.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-531-cartesia-phone-gateway.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-545-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-545-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-547-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-547-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-548-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-548-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-549-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-549-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-551-adaptive-ai-seller-mvp.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-551-adaptive-ai-seller-mvp.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/effective-sales/tests/sales-570-revision-commands.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__effective-sales__tests__sales-570-revision-commands.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/catalog-runtime-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__catalog-runtime-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/content-upgrade-147-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__content-upgrade-147-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/evaluation-batch-hardening-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__evaluation-batch-hardening-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/evaluation-batch-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__evaluation-batch-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/evaluation-failsafe-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__evaluation-failsafe-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/evaluation-resumable-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__evaluation-resumable-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/live-package-role-regression.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__live-package-role-regression.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/run.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__run.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/scenario.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__scenario.php.log",
+      "error": null
+    },
+    {
+      "path": "modules/negotiation-master/tests/session.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "modules__negotiation-master__tests__session.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ai-to-human-manual-guard-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ai-to-human-manual-guard-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/answer-timer-dictation-cue-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__answer-timer-dictation-cue-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/business-games-skill-groups-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__business-games-skill-groups-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/chgk-ai-flow-regression-guard-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__chgk-ai-flow-regression-guard-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/chgk-ai-takeover-hard-fix-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__chgk-ai-takeover-hard-fix-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/chgk-ai-voice-first-timers-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__chgk-ai-voice-first-timers-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/compact-game-typography-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__compact-game-typography-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/completion-sound-514-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__completion-sound-514-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/education-three-modes-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__education-three-modes-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/final-winner-exact-top-296-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__final-winner-exact-top-296-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/game-title-cleanup-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__game-title-cleanup-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/game-title-renames-278-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__game-title-renames-278-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/games-hub-runtime-smoke.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__games-hub-runtime-smoke.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/hard-speaker-only-contract-299-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__hard-speaker-only-contract-299-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/hard-untimed-clean-ui-300-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__hard-untimed-clean-ui-300-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/jeopardy-voice-timer-gate-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__jeopardy-voice-timer-gate-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/my-games-unified-library-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__my-games-unified-library-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-agreement-324-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-agreement-324-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-agreement-decision-fallback-360-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-agreement-decision-fallback-360-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-agreement-exact-package-357-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-agreement-exact-package-357-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-agreement-response-359-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-agreement-response-359-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-arbiter-322-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-arbiter-322-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-arbiter-runtime-322-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-arbiter-runtime-322-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-arbiter-semantic-355-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-arbiter-semantic-355-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-arbiter-validation-354-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-arbiter-validation-354-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-arbiter-validator-322-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-arbiter-validator-322-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-assignments-333-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-assignments-333-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-batna-342-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-batna-342-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-batna-builder-343-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-batna-builder-343-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-builder-331-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-builder-331-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-builder-cleanup-350-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-builder-cleanup-350-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-builder-direction-roundtrip-571-test.mjs",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-builder-direction-roundtrip-571-test.mjs.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-builder-e2e-351-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-builder-e2e-351-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-builder-process-rules-571-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-builder-process-rules-571-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-builder-qa-332-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-builder-qa-332-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-builder-seed-items-571-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-builder-seed-items-571-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-coach-323-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-coach-323-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-coach-validator-323-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-coach-validator-323-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-commitments-337-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-commitments-337-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-compact-panels-uniform-font-383-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-compact-panels-uniform-font-383-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-compose-action-bar-381-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-compose-action-bar-381-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-content-330-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-content-330-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-custom-scenario-launch-373-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-custom-scenario-launch-373-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-dialogue-message-design-382-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-dialogue-message-design-382-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-dialogue-viewport-358-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-dialogue-viewport-358-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-difficulty-335-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-difficulty-335-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-325-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-325-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-ai-validator-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-ai-validator-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-calculator-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-calculator-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-criterion-fallback-362-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-criterion-fallback-362-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-degraded-fallback-363-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-degraded-fallback-363-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-fields-349-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-fields-349-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-human-copy-366-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-human-copy-366-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-live-361-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-live-361-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-evaluation-summary-buckets-364-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-evaluation-summary-buckets-364-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-explicit-deal-fallback-356-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-explicit-deal-fallback-356-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-fact-fields-347-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-fact-fields-347-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-final-result-design-384-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-final-result-design-384-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-flat-list-paren-374-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-flat-list-paren-374-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-game-screen-layout-378-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-game-screen-layout-378-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-hidden-fact-semantic-365-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-hidden-fact-semantic-365-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-item-goals-344-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-item-goals-344-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-library-329-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-library-329-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-list-inline-descriptions-371-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-list-inline-descriptions-371-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-list-no-colon-372-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-list-no-colon-372-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-list-number-hard-guard-369-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-list-number-hard-guard-369-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-live-arbiter-353-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-live-arbiter-353-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-live-e2e-352-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-live-e2e-352-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-mvp-327-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-mvp-327-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-numeric-deal-grounding-368-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-numeric-deal-grounding-368-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-numeric-grounding-571-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-numeric-grounding-571-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-opponent-321-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-opponent-321-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-opponent-fields-346-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-opponent-fields-346-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-player-results-345-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-player-results-345-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-plugin-replace-clean-text-370-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-plugin-replace-clean-text-370-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-product-ui-328-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-product-ui-328-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-recovery-326-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-recovery-326-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-relationship-339-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-relationship-339-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-reopen-338-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-reopen-338-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-ru-branding-336-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-ru-branding-336-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-rule-fields-348-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-rule-fields-348-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-send-button-consistency-379-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-send-button-consistency-379-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-send-button-exact-match-380-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-send-button-exact-match-380-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-start-screen-design-375-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-start-screen-design-375-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-start-screen-polish-376-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-start-screen-polish-376-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-start-title-font-fix-377-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-start-title-font-fix-377-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-topic-guard-human-zopa-367-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-topic-guard-human-zopa-367-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-ui-skin-334-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-ui-skin-334-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-zopa-340-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-zopa-340-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/neg-zopa-semantic-341-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__neg-zopa-semantic-341-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-core-skeleton-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-core-skeleton-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-core-smoke-page-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-core-smoke-page-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-express-canary-launch-fix-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-express-canary-launch-fix-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-express-canary-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-express-canary-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-express-runtime-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-express-runtime-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-master-session-runtime-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-master-session-runtime-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-persistence-adapter-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-persistence-adapter-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-ai-host-full-flow-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-ai-host-full-flow-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-demo-ux-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-demo-ux-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-dialogue-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-dialogue-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-e2e-flow-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-e2e-flow-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-final-podium-voice-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-final-podium-voice-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-final-surfaces-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-final-surfaces-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-hard-question-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-hard-question-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-hidden-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-hidden-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-live-ux-guidance-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-live-ux-guidance-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-prep-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-prep-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-recovery-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-recovery-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-review-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-review-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-show-story-final-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-show-story-final-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-smoke-run-isolation-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-smoke-run-isolation-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-storage-self-heal-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-storage-self-heal-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/negotiation-test-api-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__negotiation-test-api-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/opponent-speaks-phrasing-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__opponent-speaks-phrasing-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/organizer-e2e-flow-hardening-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__organizer-e2e-flow-hardening-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/organizer-education-own-edit-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__organizer-education-own-edit-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/organizer-nav-cleanup-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__organizer-nav-cleanup-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/organizer-two-modes-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__organizer-two-modes-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/paid-access-open-routing-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__paid-access-open-routing-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/pairwise-evidence-shape-normalization-298-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__pairwise-evidence-shape-normalization-298-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/participant-finish-dialogue-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__participant-finish-dialogue-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-front-route-callback-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-front-route-callback-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-mode-naming-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-mode-naming-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-payment-provider-abstraction-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-payment-provider-abstraction-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-plan-checkout-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-plan-checkout-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-rental-integration-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-rental-integration-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-self-connect-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-self-connect-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-tbank-checkout-routing-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-tbank-checkout-routing-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-tbank-flow-simulation-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-tbank-flow-simulation-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/partner-yookassa-payments-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__partner-yookassa-payments-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-library-categories-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-library-categories-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-library-game-detail-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-library-game-detail-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-action-timeout-recovery-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-action-timeout-recovery-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-ai-dialogue-end-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-ai-dialogue-end-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-builder-coverage-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-builder-coverage-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-content-editor-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-content-editor-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-empty-review-recovery-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-empty-review-recovery-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-free-dialogue-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-free-dialogue-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-hidden-ai-contract-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-hidden-ai-contract-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-hidden-message-limit-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-hidden-message-limit-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-scenario-library-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-scenario-library-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-school-grade-library-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-school-grade-library-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-school-plot-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-school-plot-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-story-answer-policy-migration-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-story-answer-policy-migration-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-story-answer-untimed-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-story-answer-untimed-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-story-timeout-recovery-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-story-timeout-recovery-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-timer-policy-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-timer-policy-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-turn-order-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-turn-order-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/persuade-me-two-team-mode-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__persuade-me-two-team-mode-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/plugin-replacement-path-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__plugin-replacement-path-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/postpay-organizer-redirect-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__postpay-organizer-redirect-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-admin-sales-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-admin-sales-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-admin-test-launch-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-admin-test-launch-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-clone-delete-guard-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-clone-delete-guard-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-integrity-preflight-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-integrity-preflight-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-publish-validation-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-publish-validation-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-publishing-workflow-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-publishing-workflow-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-qa-publish-gate-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-qa-publish-gate-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-release-diff-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-release-diff-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-release-history-rollback-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-release-history-rollback-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-snapshot-architecture-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-snapshot-architecture-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-stable-releases-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-stable-releases-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-game-version-history-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-game-version-history-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-games-admin-catalog-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-games-admin-catalog-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/ready-games-admin-crud-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__ready-games-admin-crud-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/sales-570-assignment-guards.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__sales-570-assignment-guards.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/sales-570-impact-storage.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__sales-570-impact-storage.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/sales-reply-510-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__sales-reply-510-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/sales-standard-lifecycle-570-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__sales-standard-lifecycle-570-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/scenario-order-workflow-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__scenario-order-workflow-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/sequential-voice-timer-gate-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__sequential-voice-timer-gate-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/seven-criteria-only-rubric-289-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__seven-criteria-only-rubric-289-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-ai-contract-normalization-285-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-ai-contract-normalization-285-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-answer-evidence-confidence-cap-295-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-answer-evidence-confidence-cap-295-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-auxiliary-canonicalization-288-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-auxiliary-canonicalization-288-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-checker-wording-280-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-checker-wording-280-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-dedicated-rubric-297-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-dedicated-rubric-297-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-evidence-confidence-cap-302-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-evidence-confidence-cap-302-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-evidence-cross-slot-repair-287-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-evidence-cross-slot-repair-287-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-evidence-id-repair-284-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-evidence-id-repair-284-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-evidence-punctuation-grounding-294-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-evidence-punctuation-grounding-294-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-foreign-evidence-filter-290-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-foreign-evidence-filter-290-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-optional-text-fields-292-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-optional-text-fields-292-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-review-pipeline-286-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-review-pipeline-286-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-rubric-evidence-quality-293-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-rubric-evidence-quality-293-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-speaker-only-ai-review-282-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-speaker-only-ai-review-282-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-text-field-normalization-291-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-text-field-normalization-291-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-two-team-alternation-301-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-two-team-alternation-301-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/story-vote-rest-281-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__story-vote-rest-281-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/tbank-security-audit-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__tbank-security-audit-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/team-voice-dictation-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__team-voice-dictation-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/tenant-safe-redirect-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__tenant-safe-redirect-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/test-payment-scenario-compat-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__test-payment-scenario-compat-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/topic-context-509-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__topic-context-509-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/topic-guard-509-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__topic-guard-509-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/unified-four-round-rubric-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__unified-four-round-rubric-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/universal-host-switch-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__universal-host-switch-test.php.log",
+      "error": null
+    },
+    {
+      "path": "tests/universal-speaker-phrasing-test.php",
+      "status": "pass",
+      "exitCode": 0,
+      "log": "tests__universal-speaker-phrasing-test.php.log",
+      "error": null
+    }
+  ],
+  "waivers": [],
+  "counts": {
+    "pass": 262,
+    "fail": 0,
+    "skip": 0,
+    "timeout": 0
+  },
+  "status": "PASS",
+  "total": 262,
+  "originalSuites": 254,
+  "release": {
+    "version": "0.3.23.539-dev.571-SALES-STANDARD-PREINSTALL-GATE",
+    "zip": "/workspace/shared/downloads/ckm-quiz-pro_0.3.23.539-dev.571-SALES-STANDARD-PREINSTALL-GATE.zip",
+    "bytes": 2309787,
+    "sha256": "34bd764fc9f5bdc2aac21476b46327e6e8deecf443fd17c4bb8f391b1901f840",
+    "files": 1040,
+    "crc": "PASS",
+    "archive_matches_working_tree": "PASS",
+    "preserved_570_zip": "PASS"
+  },
+  "audit_sha256": "2327b392c3ca88a14268af38692baed79690fb5df50f1723e36ff8a28af4d31d"
+}

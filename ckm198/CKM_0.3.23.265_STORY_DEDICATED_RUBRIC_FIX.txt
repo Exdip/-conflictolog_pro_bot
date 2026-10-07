@@ -1,0 +1,14 @@
+CKM Quiz Pro 0.3.23.270-dev.302-STORY-EVIDENCE-CONFIDENCE-CAP-FIX
+
+Final round «Проверь историю» now uses its own seven-criterion, 70-point rubric instead of the ordinary negotiation rubric.
+
+New criteria (0-10 each):
+1. Ясность и структура истории
+2. Выполнение условия истории
+3. Непротиворечивость фактов
+4. Прямота и полнота ответов
+5. Обоснованность ответов
+6. Устойчивость версии под проверкой
+7. Корректность и ясность общения
+
+Truth/distortion is passed to the AI as the storyteller's hidden task. The prescribed distortion is not treated as an error. Strong scores for answer-specific criteria require evidence from actual answers. Ordinary negotiation rounds retain their existing rubric. Existing saved rubricVersion 3 story reviews remain displayable; new story reviews use rubricVersion 4 and roundRubric=story_seven_v2.

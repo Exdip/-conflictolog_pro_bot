@@ -1,0 +1,3 @@
+Version: 0.3.23.510-dev.542-SALES-CLIENT-CONSISTENCY
+- Decision-process facts stay grounded in scenario data; named player subjects can be converted to first person for 'должен/должна/должны'.
+- Once the client has explicitly confirmed that the price objection is resolved, the fallback cannot return the original price objection again.

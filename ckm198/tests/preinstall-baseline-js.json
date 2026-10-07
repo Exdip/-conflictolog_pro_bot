@@ -1,0 +1,21 @@
+{
+  "assets/standalone-voice.js": "1fe381f08c0d2e15bde28ffec0d047d812a654d1b4fb41f8e4f55f930d9d6674",
+  "assets/standalone-game.js": "7807628f3127666c3a7277247250cc8895fba493470f9c88ccb8c5b2a0849628",
+  "assets/standalone-ai-host.js": "0b8f44091d441e1c4c7dc58433950460bc8124536859aa11ba8ff6e7825dade8",
+  "assets/standalone-game0.js": "4eed4a2a5c3365019f0d580b7d8bf1ca1ae319b5d68ad7d972177b0e76528018",
+  "tests/run-sales-lifecycle-570.mjs": "bfb9e51d5514b4650d49c675584bf9079bb7a72da7959a82c38c6d66fb6d73f4",
+  "assets/completion-signal/completion-signal.js": "decdc25637f1e56bad38c271c5186030b99dcbe8460f99ab2fc62ac50da016dd",
+  "assets/checkout/test-return.js": "512c1408543b5f36a80e81c44247cd13946d78af30a1999dcc3770a9adb21d8f",
+  "assets/checkout/checkout.js": "6d5b77c69a80e0b52c4b70409ee079d1aeb1cf071228db95ed0611cac88862d9",
+  "modules/negotiation-master/assets/negotiation-builder.js": "26191bccbb4af9075289008855e23a4f42cf92308e9b71f241594987ede3403f",
+  "modules/negotiation-master/assets/negotiation-session.js": "fbe10903c45ea6d6cc95324c02ac2264faa64a5afd51e177ec55fc8b1d41faa8",
+  "modules/negotiation-master/assets/negotiation-assignments.js": "9303496171aa4ab53e11e63d37a4b82ecbc54f051e8177b2b10861569c29b4b9",
+  "modules/effective-sales/assets/sales-session.js": "1d783d1410bb71cfc355f13731f3d8ea60ff8789bf060c3b48ad4a9cbd66dc82",
+  "modules/effective-sales/assets/sales-ai-seller.js": "31ed0bc19feee9dc3bc73960420554a8e39e47cab464733283de652efc8e78b5",
+  "modules/effective-sales/workers/live-sideband/index.mjs": "f643feef59bd4e13446618e324cb0511eb293087a660032dafa43f2d0658ab10",
+  "modules/effective-sales/workers/phone-media-gateway/index.mjs": "63be2261de7576c4a4762000a7f057616ec5f2a9851789b29a1019c3316cd72f",
+  "core-source/frontend-payload/ckm/assets/quiz-room.js": "eb24997b3024092c1f6cc0e3114fe0e27922caf7214a4ddf3d544ef39e117b7a",
+  "core-source/frontend-payload/ckm/assets/quiz-common.js": "32023c7661c4779319fab54a933cb54881a245bd572c9eeb58b75801d14d469b",
+  "core-source/frontend-payload/ckm/assets/quiz-scoreboard.js": "4bd64771088bad7847f90174702a47f8e2a858a200591b80547813481c55a7a7",
+  "core-source/frontend-payload/ckm/assets/quiz-host.js": "cc4d29263bc9090f166b5495aeb37138378f74a2de297ff76fbd2a41bbfa5640"
+}

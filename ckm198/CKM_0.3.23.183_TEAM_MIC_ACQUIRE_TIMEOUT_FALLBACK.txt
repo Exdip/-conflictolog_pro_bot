@@ -1,0 +1,10 @@
+0.3.23.183-dev.215-TEAM-MIC-ACQUIRE-TIMEOUT-FALLBACK
+
+Participant/team dictation microphone acquisition hardening.
+
+- Adds a 7-second deadline around the first getUserMedia() request.
+- A stream returned after timeout/stale session is immediately stopped and cannot revive dictation.
+- On first timeout, enumerates audio inputs and retries once using a concrete deviceId when available.
+- If no concrete device is available, retries with relaxed audio-processing constraints.
+- A second timeout becomes a visible diagnostic instead of leaving UI at “Разрешите доступ к микрофону…”.
+- Keeps 182 STT handshake diagnostics, 181 STT session guard and 180 AI -> manual takeover guard unchanged.

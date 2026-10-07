@@ -1,0 +1,8 @@
+CKM Quiz Pro 0.3.23.222 / dev.254
+
+READY GAME CLONE + DELETE GUARD
+- Deep clone of ready-game catalogue card and technical quiz template.
+- Clone always starts as Draft with a new payment product key.
+- Catalogue table shows snapshot purchases and game-session usage.
+- Hard delete is allowed only before any purchase or session exists.
+- Used games are retired (Private) instead; buyer snapshots and history remain intact.

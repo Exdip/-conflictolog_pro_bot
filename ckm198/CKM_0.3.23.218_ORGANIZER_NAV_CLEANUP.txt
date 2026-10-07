@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.218-dev.250-ORGANIZER-NAV-CLEANUP
+
+- Organizer cabinet opens Base Games by default.
+- Removed the duplicate Overview item from organizer navigation.
+- Navigation grouped into Games / Creation / Management.
+- Legacy Overview and Education Library views resolve to Base Games.
+- Saved-game editing is administrator-only.
+- WordPress administrators may edit games without purchasing an entitlement.
+- Organizer constructor remains creation-only after any active purchase.

@@ -1,0 +1,21 @@
+{
+    "schema": "ckm.license-response.v1",
+    "key_id": "ckm-dev-2026-09-15-03",
+    "payload": {
+        "status": "active",
+        "plan": "ai_pro",
+        "domain": "dev.example",
+        "installation_id": "dev-installation",
+        "license_id": "LIC-DEV-001",
+        "expires_at": "2027-09-15T23:59:59Z",
+        "features": {
+            "updates": true,
+            "catalog": true,
+            "ai_host": true
+        },
+        "issued_at": "2026-09-15T12:00:00Z",
+        "valid_until": "2030-01-01T00:00:00Z",
+        "request_nonce": "dev-nonce"
+    },
+    "signature": "1l76IJx2e72Se7A3Xrl3syzwEyEb3c6sdWyGpBzI1UlruBKJ_uEo8vxv8QC7GAN0aBvf4Cs24H2SRfDIhT_KDg"
+}

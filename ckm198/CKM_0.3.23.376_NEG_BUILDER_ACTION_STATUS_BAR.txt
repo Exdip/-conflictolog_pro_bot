@@ -1,0 +1,6 @@
+NEG-BUILDER-ACTION-STATUS-BAR 408
+Version: 0.3.23.376-dev.408-NEG-BUILDER-ACTION-STATUS-BAR
+Unified builder save/publish toolbar, validation messages, unsaved-state labels and footer status.
+Typography remains 14px and controls remain 40px high.
+UI only; builder save/publish logic and negotiation mechanics are unchanged.
+No verification run by user request.

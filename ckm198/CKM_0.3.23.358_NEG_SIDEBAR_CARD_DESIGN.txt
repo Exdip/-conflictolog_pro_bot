@@ -1,0 +1,5 @@
+NEG-SIDEBAR-CARD-DESIGN 390
+Version: 0.3.23.358-dev.390-NEG-SIDEBAR-CARD-DESIGN
+Unified 14px task/state side panels and status cards.
+UI only; negotiation mechanics unchanged.
+No verification run by user request.

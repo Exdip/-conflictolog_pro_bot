@@ -1,0 +1,7 @@
+CKM Quiz Pro 0.3.23.171-dev.203-PERSUADE-HARD-QUESTION-ALIGNMENT-GATE
+
+- Adds an independent semantic alignment gate after AI scoring in Round 3 “Неудобный вопрос”.
+- A positive 50/100 score is retained only when a separate check confirms that the answer addresses the exact current question.
+- If an answer actually belongs to another one of the three questions, its score is deterministically reset to 0 and evidence is cleared.
+- Empty/time-out answers remain 0 without an AI call.
+- Alignment gate uses strict JSON, one retry, and fails closed to retry/manual review if semantic verification cannot be obtained.

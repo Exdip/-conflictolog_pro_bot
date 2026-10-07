@@ -1,0 +1,7 @@
+NEG-PRICE-QUESTION-RC 433
+Version: 0.3.23.401-dev.433-NEG-PRICE-QUESTION-RC
+Content pack remains 1.16.0.
+«Цена вопроса» structural integrity: 10 published scenarios, 0 draft stubs, every scenario evaluation weight = 100.
+Administrative library diagnostics now include draft_scenarios, invalid_published_scenarios and complete for every library generically.
+No scenario-specific runtime branches were added.
+No live-site/browser verification was run.

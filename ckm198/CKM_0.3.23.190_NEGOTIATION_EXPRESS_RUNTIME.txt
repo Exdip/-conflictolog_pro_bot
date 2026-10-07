@@ -1,0 +1,25 @@
+CKM Quiz Pro 0.3.23.190-dev.222 — NEGOTIATION EXPRESS RUNTIME
+
+Добавлен первый runtime поверх Negotiation Core v1: negotiation_express_v1.
+
+Важно:
+- runtime зарегистрирован в CKM_Negotiation_Runtime_Registry;
+- существующие игры не переназначены на него;
+- REST/AJAX маршруты не добавлены;
+- Games Hub и negotiation_duel_v1 остаются legacy-маршрутом;
+- runtime используется только программно и в smoke-test до отдельного этапа подключения.
+
+Реализовано:
+- state machine host_speaking → answer_window → evaluating → feedback → next/finished;
+- Voice → Timer Gate: ответ и deadline открываются только после voice_finished;
+- защита от stale voice_generation/message_id;
+- один заблокированный ответ на кейс;
+- логическая идемпотентность client_request_id в тестовой сессии;
+- server deadline;
+- mock/callback/local evaluation без обязательного внешнего AI;
+- накопление score;
+- восстановление state;
+- последовательный in-memory event log для проверки контракта;
+- последняя feedback-фаза сохраняется до явного finish_session.
+
+Следующий этап: persistence/repository adapter — запись test session в ckm_negotiation_sessions/turns/events/requests без подключения реальных игр.

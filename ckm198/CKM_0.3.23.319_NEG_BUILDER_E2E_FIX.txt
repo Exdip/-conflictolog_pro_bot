@@ -1,0 +1,6 @@
+NEG-BUILDER-E2E-FIX — 0.3.23.319-dev.351
+
+- Published unchanged scenarios can be validated/tested without creating a redundant draft.
+- Builder test runtime accepts an owned draft or owned published version.
+- Testing an unchanged published scenario uses current_version_id.
+- Editing still creates a new draft before test/publish.

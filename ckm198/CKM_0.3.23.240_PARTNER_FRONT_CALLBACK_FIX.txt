@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.242-dev.274-ORGANIZER-TWO-MODES
+
+Fix:
+- corrects the registered template_redirect callback name for the integrated partner module;
+- prevents frontend fatal errors on tenant pages such as /ckm-organizer/;
+- keeps tenant-safe redirect support from 0.3.23.239-dev.271.

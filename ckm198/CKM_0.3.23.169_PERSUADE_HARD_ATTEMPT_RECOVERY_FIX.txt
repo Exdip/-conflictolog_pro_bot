@@ -1,0 +1,6 @@
+CKM Quiz Pro 0.3.23.169-dev.201-PERSUADE-HARD-ATTEMPT-RECOVERY-FIX
+
+- Round 3 / «Неудобный вопрос»: if all three 30-second answer windows expire with no answer and AI review fails, the host can repeat the same team attempt with «Повторить испытание».
+- Restart clears only the current failed hard-question attempt and preserves prior rounds, scores, and completed attempts.
+- Three fully timed-out empty answers now receive deterministic 0/0/0 without calling AI, so an empty turn cannot fail quote validation.
+- Host hint distinguishes timed-out answer recovery from empty-dialogue recovery.

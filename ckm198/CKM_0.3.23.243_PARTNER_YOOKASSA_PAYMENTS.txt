@@ -1,0 +1,9 @@
+CKM Quiz Pro 0.3.23.243-dev.275-PARTNER-YOOKASSA-PAYMENTS
+
+- Active rental partners can connect their own YooKassa Shop ID + Secret key.
+- Secret key is encrypted at rest with AES-256-GCM using the WordPress auth salt.
+- Test/live shop verification via YooKassa /v3/me.
+- Per-tenant webhook URL; webhook bodies never grant access directly. The payment is re-fetched from YooKassa and amount, currency, recipient, metadata and environment are verified.
+- Partner can issue a payment link to a prospective organizer. The WordPress account + tenant membership is created/activated only after payment.succeeded.
+- Optional receipt payload is generated when YooKassa reports fiscalization_enabled, using the VAT code selected by the partner.
+- Existing CKM game/scenario checkout is intentionally NOT routed through the partner cash desk. Partner YooKassa is only for the partner's own client-organizer payments.
