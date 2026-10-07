@@ -97,6 +97,32 @@ final class SalesPracticeFeedbackService {
         return ['candidates'=>$rows,'count'=>count($rows),'created'=>$created,'pending'=>count($rows)-$created];
     }
 
+    public static function realDialogHistory(string $scriptId,int $limit=8): array {
+        if(!self::canManage()||$scriptId==='')return [];
+        $script=SalesScriptService::find($scriptId);if(!$script)return [];
+        $out=[];
+        foreach(SalesAiSellerWorkspaceService::recentDialogs($scriptId,20) as $dialog){
+            if(!is_array($dialog)||(string)($dialog['source_kind']??'')!=='human_import')continue;
+            $sessionId=(string)($dialog['session_id']??'');if($sessionId==='')continue;
+            $goal=(string)($dialog['goal_status']??'active');
+            $case=self::existingCase($script,$sessionId);
+            $focus=in_array($goal,['unsuccessful','stalled'],true)?self::focus($dialog):null;
+            $out[]=[
+                'session_id'=>$sessionId,
+                'channel'=>(string)($dialog['channel']??'web'),
+                'goal_status'=>$goal,
+                'last_at'=>(string)($dialog['last_at']??''),
+                'messages'=>count((array)($dialog['messages']??[])),
+                'focus_code'=>is_array($focus)?(string)($focus['code']??''):'',
+                'focus_title'=>is_array($focus)?(string)($focus['title']??''):'',
+                'case_created'=>$case!==null,
+                'case'=>$case,
+            ];
+            if(count($out)>=max(1,min(20,$limit)))break;
+        }
+        return $out;
+    }
+
     public static function createCase(string $scriptId,string $sessionId): array {
         if(!self::canManage())throw new \RuntimeException('Кейсы из практики доступны организатору или партнёру.');
         $script=SalesScriptService::find($scriptId);if(!$script)throw new \InvalidArgumentException('Методика не найдена.');
