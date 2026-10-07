@@ -244,3 +244,11 @@ body.ckm-sales-app-document *{box-sizing:border-box}.ckm-sales-frame{min-height:
 .ckm-sales-training-result.is-pass{border-color:rgba(34,120,72,.28)}
 .ckm-sales-training-result.is-repeat{border-color:rgba(170,121,25,.30)}
 
+/* .584 — Transfer back to real practice */
+.ckm-sales-transfer-result{display:inline-flex;flex-direction:column;gap:2px;padding:7px 10px;border:1px solid rgba(0,0,0,.10);border-radius:10px;background:rgba(255,255,255,.66)}
+.ckm-sales-transfer-result b{font-size:12px}
+.ckm-sales-transfer-result small{font-size:10px;color:var(--sales-muted)}
+.ckm-sales-transfer-result.is-confirmed{border-color:rgba(34,120,72,.30)}
+.ckm-sales-transfer-result.is-repeated{border-color:rgba(180,70,55,.30)}
+.ckm-sales-transfer-result.is-pending{border-color:rgba(120,130,140,.22)}
+
