@@ -252,3 +252,15 @@ body.ckm-sales-app-document *{box-sizing:border-box}.ckm-sales-frame{min-height:
 .ckm-sales-transfer-result.is-repeated{border-color:rgba(180,70,55,.30)}
 .ckm-sales-transfer-result.is-pending{border-color:rgba(120,130,140,.22)}
 
+/* .585 — Real-practice effectiveness for managers */
+.ckm-sales-practice-effectiveness-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.ckm-sales-practice-effectiveness-metrics article{padding:15px 16px}
+.ckm-sales-practice-effectiveness-metrics small{display:block;opacity:.64}
+.ckm-sales-practice-effectiveness-metrics strong{display:block;margin-top:6px;font-size:26px}
+.ckm-sales-practice-effectiveness-table-wrap{overflow:auto}
+.ckm-sales-practice-effectiveness-table{width:100%;border-collapse:collapse;min-width:760px;background:rgba(255,255,255,.58);border-radius:14px;overflow:hidden}
+.ckm-sales-practice-effectiveness-table th,.ckm-sales-practice-effectiveness-table td{padding:12px 14px;border-top:1px solid rgba(0,0,0,.08);text-align:left;vertical-align:middle}
+.ckm-sales-practice-effectiveness-table th{font-size:11px;letter-spacing:.04em;text-transform:uppercase;opacity:.62}
+@media(max-width:1000px){.ckm-sales-practice-effectiveness-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ckm-sales-practice-effectiveness-metrics{grid-template-columns:1fr}}
+
