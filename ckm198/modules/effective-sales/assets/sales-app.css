@@ -219,3 +219,18 @@ body.ckm-sales-app-document *{box-sizing:border-box}.ckm-sales-frame{min-height:
 @media(max-width:900px){.ckm-sales-real-dialog-grid{grid-template-columns:1fr 1fr}.ckm-sales-real-dialog-file{grid-column:1/-1}}
 @media(max-width:620px){.ckm-sales-real-dialog-intro{flex-direction:column}.ckm-sales-real-dialog-grid{grid-template-columns:1fr}.ckm-sales-real-dialog-file{grid-column:auto}.ckm-sales-real-dialog-help{align-items:flex-start;flex-direction:column}.ckm-sales-real-dialog-card .ckm-sales-card-actions{align-items:stretch;flex-direction:column}.ckm-sales-real-dialog-card .ckm-sales-card-actions button{width:100%}}
 
+/* .579 — Real conversation history */
+.ckm-sales-real-dialog-history{margin-top:16px}
+.ckm-sales-real-dialog-history>.ckm-sales-section-head{margin-bottom:10px}
+.ckm-sales-real-dialog-history h3{margin:4px 0 0;font-size:20px}
+.ckm-sales-real-dialog-list{display:grid;gap:10px}
+.ckm-sales-real-dialog-row{padding:16px 18px;display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr);gap:18px;align-items:center}
+.ckm-sales-real-dialog-meta,.ckm-sales-real-dialog-result{display:flex;flex-direction:column;gap:5px}
+.ckm-sales-real-dialog-meta>strong{font-size:14px}
+.ckm-sales-real-dialog-meta>span{font-size:12px;color:#c7d2dc}
+.ckm-sales-real-dialog-meta>small{font-size:10px;color:var(--sales-muted)}
+.ckm-sales-real-dialog-result{align-items:flex-start}
+.ckm-sales-real-dialog-result>strong{font-size:13px;line-height:1.45}
+.ckm-sales-real-dialog-result .ckm-sales-btn{margin-top:5px}
+@media(max-width:760px){.ckm-sales-real-dialog-row{grid-template-columns:1fr}}
+
