@@ -97,11 +97,38 @@ final class SalesPracticeFeedbackService {
         return ['candidates'=>$rows,'count'=>count($rows),'created'=>$created,'pending'=>count($rows)-$created];
     }
 
+    private static function transferEvidence(array $dialogs,string $participantKey,string $focusCode,string $completedAt,string $sourceSessionId): ?array {
+        if($participantKey===''||$focusCode===''||$completedAt==='')return null;
+        $completedTs=strtotime($completedAt);if($completedTs===false||$completedTs<1)return null;
+        $best=null;$bestTs=PHP_INT_MAX;
+        foreach($dialogs as $dialog){
+            if(!is_array($dialog)||(string)($dialog['source_kind']??'')!=='human_import')continue;
+            if((string)($dialog['participant_key']??'')!==$participantKey)continue;
+            $sessionId=(string)($dialog['session_id']??'');if($sessionId===''||$sessionId===$sourceSessionId)continue;
+            $at=(string)($dialog['last_at']??'');$ts=$at!==''?strtotime($at):false;
+            if($ts===false||$ts<=$completedTs||$ts>=$bestTs)continue;
+            $goal=(string)($dialog['goal_status']??'active');
+            if(!in_array($goal,['successful','unsuccessful','stalled'],true))continue;
+            $focus=self::focus($dialog);if((string)($focus['code']??'')!==$focusCode)continue;
+            $bestTs=$ts;
+            $best=[
+                'session_id'=>$sessionId,
+                'status'=>$goal==='successful'?'confirmed':'repeated',
+                'goal_status'=>$goal,
+                'last_at'=>$at,
+                'channel'=>(string)($dialog['channel']??'web'),
+                'focus_code'=>$focusCode,
+                'focus_title'=>(string)($focus['title']??$focusCode),
+            ];
+        }
+        return $best;
+    }
+
     public static function realDialogHistory(string $scriptId,int $limit=8): array {
         if(!self::canManage()||$scriptId==='')return [];
         $script=SalesScriptService::find($scriptId);if(!$script)return [];
-        $out=[];
-        foreach(SalesAiSellerWorkspaceService::recentDialogs($scriptId,20) as $dialog){
+        $out=[];$dialogs=SalesAiSellerWorkspaceService::recentDialogs($scriptId,50);
+        foreach($dialogs as $dialog){
             if(!is_array($dialog)||(string)($dialog['source_kind']??'')!=='human_import')continue;
             $sessionId=(string)($dialog['session_id']??'');if($sessionId==='')continue;
             $goal=(string)($dialog['goal_status']??'active');
@@ -111,6 +138,8 @@ final class SalesPracticeFeedbackService {
             $scenarioId=(int)($case['scenario_id']??0);
             $assignment=$participantKey!==''&&$scenarioId>0?SalesTeamDevelopmentService::assignmentForScenario($participantKey,$scenarioId):null;
             $trainingResult=$participantKey!==''&&$scenarioId>0?SalesTeamDevelopmentService::latestScenarioTrainingResult($participantKey,$scenarioId):null;
+            $focusCode=is_array($focus)?(string)($focus['code']??''):'';
+            $transfer=$trainingResult?self::transferEvidence($dialogs,$participantKey,$focusCode,(string)($trainingResult['completed_at']??''),$sessionId):null;
             $out[]=[
                 'session_id'=>$sessionId,
                 'channel'=>(string)($dialog['channel']??'web'),
@@ -119,12 +148,13 @@ final class SalesPracticeFeedbackService {
                 'goal_status'=>$goal,
                 'last_at'=>(string)($dialog['last_at']??''),
                 'messages'=>count((array)($dialog['messages']??[])),
-                'focus_code'=>is_array($focus)?(string)($focus['code']??''):'',
+                'focus_code'=>$focusCode,
                 'focus_title'=>is_array($focus)?(string)($focus['title']??''):'',
                 'case_created'=>$case!==null,
                 'case'=>$case,
                 'assignment'=>$assignment,
                 'training_result'=>$trainingResult,
+                'transfer_evidence'=>$transfer,
             ];
             if(count($out)>=max(1,min(20,$limit)))break;
         }
