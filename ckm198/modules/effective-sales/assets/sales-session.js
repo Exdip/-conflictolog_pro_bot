@@ -59,6 +59,20 @@ if(hostRoot){
  poll();return;
 }
 
+const realDialogRoot=qs('#ckm-sales-real-dialog-import');
+if(realDialogRoot){
+ const file=qs('#ckm-sales-real-dialog-file'),text=qs('#ckm-sales-real-dialog-text'),channel=qs('#ckm-sales-real-dialog-channel'),outcome=qs('#ckm-sales-real-dialog-outcome'),create=qs('#ckm-sales-real-dialog-create'),statusEl=qs('#ckm-sales-real-dialog-status');
+ const show=(message,bad=false)=>{if(!statusEl)return;statusEl.textContent=message||'';statusEl.classList.toggle('ckm-sales-error',bad);};
+ const parseTranscript=raw=>{
+  const rows=[],lines=String(raw||'').replace(/\r/g,'').split('\n');let current=null;
+  const roleOf=label=>{const x=String(label||'').toLowerCase().replace(/ё/g,'е').trim();if(/^(клиент|покупатель|заказчик|customer|client)$/.test(x))return 'client';if(/^(менеджер|продавец|сотрудник|оператор|seller|manager|operator)$/.test(x))return 'seller';return '';};
+  for(const source of lines){const line=source.trim();if(!line)continue;const m=line.match(/^([^:：]{2,24})[:：]\s*(.*)$/);if(m){const role=roleOf(m[1]);if(role){current={role,content:(m[2]||'').trim()};if(current.content)rows.push(current);continue;}}if(current&&rows.length){rows[rows.length-1].content=(rows[rows.length-1].content+' '+line).trim();}}
+  return rows.filter(x=>x.content);
+ };
+ if(file)file.addEventListener('change',async()=>{const picked=file.files&&file.files[0];if(!picked)return;if(picked.size>1024*1024){show('Файл слишком большой. Для одного разговора используйте файл до 1 МБ.',true);file.value='';return;}try{const raw=await picked.text();if(text)text.value=raw;show('Расшифровка загружена. Проверьте роли и нажмите «Создать тренировочный кейс».');}catch(e){show('Не удалось прочитать файл.',true);}});
+ if(create)create.addEventListener('click',async()=>{show('');const messages=parseTranscript(text?.value||'');const clients=messages.filter(x=>x.role==='client').length,sellers=messages.filter(x=>x.role==='seller').length;if(!clients||!sellers){show('Не удалось разделить диалог. Добавьте перед репликами «Клиент:» и «Менеджер:».',true);return;}setBusy(create,true,'Создаём кейс…');try{const data=await api('practice/dialogs/import',{method:'POST',body:JSON.stringify({script_id:realDialogRoot.dataset.scriptId||'',channel:channel?.value||'web',outcome:outcome?.value||'unsuccessful',external_id:'manual-'+Date.now()+'-'+Math.random().toString(36).slice(2,10),messages,create_case:true})});if(data.training_case&&data.training_case.id){show('Тренировочный кейс создан. Он добавлен в Полигон продаж.');create.textContent='Кейс создан';create.disabled=true;}else if((outcome?.value||'')==='successful'){show('Разговор сохранён как успешная практика. Тренировочный кейс не требуется.');}else{show('Разговор сохранён, но кейс не создан. Проверьте, что в диалоге есть проблемный эпизод.',true);}}catch(e){show(e.message||'Не удалось создать тренировочный кейс.',true);}finally{if(!create.disabled)setBusy(create,false);}});
+}
+
 const centerChecks=[...document.querySelectorAll('[data-sales-center-check]')];
 for(const centerCheck of centerChecks){centerCheck.addEventListener('click',async()=>{const section=centerCheck.closest('.ckm-sales-section');const out=section?section.querySelector('.ckm-sales-inline-status'):null;setBusy(centerCheck,true,'Создаём проверку…');if(out){out.textContent='';out.classList.remove('ckm-sales-error');}try{const scenarioId=parseInt(centerCheck.dataset.scenarioId||'0',10),scriptId=centerCheck.dataset.scriptId||'';if(!scenarioId)throw new Error('Сначала создайте ИИ-клиента для этой методики.');const data=await api('sessions/start',{method:'POST',body:JSON.stringify({scenario_id:scenarioId,mode:'exam',difficulty:'medium',restart:true,client_id:clientId()})});location.assign(pageUrl({sales_custom_scenario:scenarioId,sales_session:data.session_id,sales_format:'check',sales_methodology:scriptId}));return;}catch(e){if(out){out.textContent=e.message;out.classList.add('ckm-sales-error');}}finally{setBusy(centerCheck,false);}});}
 
