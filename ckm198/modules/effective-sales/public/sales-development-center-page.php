@@ -184,6 +184,13 @@ final class SalesDevelopmentCenterPage {
                                     <?php if($scenarioIdCreated>0): ?><a class="ckm-sales-btn" href="<?php echo esc_url(self::url(['sales_custom_scenario'=>$scenarioIdCreated,'sales_format'=>'training','sales_methodology'=>$scriptId])); ?>">Открыть в Полигоне</a><?php endif; ?>
                                     <?php if($assignment): ?>
                                         <span class="ckm-sales-status <?php echo (string)($assignment['status']??'')==='Выполнено'?'is-approved':''; ?>"><?php echo esc_html((string)($assignment['status']??'Назначено')); ?></span>
+                                        <?php $trainingResult=is_array($dialog['training_result']??null)?$dialog['training_result']:null; ?>
+                                        <?php if($trainingResult): ?>
+                                            <span class="ckm-sales-training-result <?php echo !empty($trainingResult['passed'])?'is-pass':'is-repeat'; ?>">
+                                                <b><?php echo (int)round((float)($trainingResult['final_score']??0)); ?>/100</b>
+                                                <small><?php echo !empty($trainingResult['passed'])?'Навык отработан':'Нужно повторить'; ?></small>
+                                            </span>
+                                        <?php endif; ?>
                                         <?php if(!empty($assignment['assignment_url'])): ?><a class="ckm-sales-btn" href="<?php echo esc_url((string)$assignment['assignment_url']); ?>">Открыть назначение</a><?php endif; ?>
                                     <?php elseif(!empty($dialog['participant_key'])): ?>
                                     <form method="post" action="<?php echo esc_url(self::url(['sales_methodology'=>$scriptId])); ?>">
