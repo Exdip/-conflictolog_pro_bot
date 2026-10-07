@@ -107,11 +107,14 @@ final class SalesPracticeFeedbackService {
             $goal=(string)($dialog['goal_status']??'active');
             $case=self::existingCase($script,$sessionId);
             $focus=in_array($goal,['unsuccessful','stalled'],true)?self::focus($dialog):null;
+            $participantKey=(string)($dialog['participant_key']??'');
+            $scenarioId=(int)($case['scenario_id']??0);
+            $assignment=$participantKey!==''&&$scenarioId>0?SalesTeamDevelopmentService::assignmentForScenario($participantKey,$scenarioId):null;
             $out[]=[
                 'session_id'=>$sessionId,
                 'channel'=>(string)($dialog['channel']??'web'),
                 'employee_name'=>(string)($dialog['employee_name']??''),
-                'participant_key'=>(string)($dialog['participant_key']??''),
+                'participant_key'=>$participantKey,
                 'goal_status'=>$goal,
                 'last_at'=>(string)($dialog['last_at']??''),
                 'messages'=>count((array)($dialog['messages']??[])),
@@ -119,6 +122,7 @@ final class SalesPracticeFeedbackService {
                 'focus_title'=>is_array($focus)?(string)($focus['title']??''):'',
                 'case_created'=>$case!==null,
                 'case'=>$case,
+                'assignment'=>$assignment,
             ];
             if(count($out)>=max(1,min(20,$limit)))break;
         }
