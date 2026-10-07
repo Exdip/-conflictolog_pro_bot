@@ -67,6 +67,7 @@ final class SalesPracticeFeedbackService {
         return [
             'script_id'=>(string)($script['id']??''),'script_title'=>(string)($script['title']??'Методика'),
             'session_id'=>$sessionId,'channel'=>(string)($dialog['channel']??'web'),'goal_status'=>$goal,
+            'source_kind'=>(string)($dialog['source_kind']??'ai_seller'),
             'pipeline_stage'=>(string)($dialog['pipeline_stage']??'new'),'handoff'=>!empty($dialog['handoff']),
             'last_at'=>(string)($dialog['last_at']??''),'focus_code'=>(string)$focus['code'],'focus_title'=>(string)$focus['title'],
             'excerpt'=>implode(' / ',array_slice($messages,-2)),'priority'=>self::difficulty($dialog),
@@ -105,6 +106,7 @@ final class SalesPracticeFeedbackService {
         $case=SalesAdaptivePolygonService::createCaseForFocus($scriptId,(string)$row['focus_code'],1,[
             'why'=>'Кейс создан из обезличенного паттерна трудной ситуации реального диалога. Исходные реплики клиента в тренировочный сценарий не копируются.',
             'practice_source_session_id'=>$sessionId,
+            'practice_source_kind'=>(string)($row['source_kind']??'ai_seller'),
             'practice_source_channel'=>(string)$row['channel'],
             'practice_source_outcome'=>(string)$row['goal_status'],
         ]);
