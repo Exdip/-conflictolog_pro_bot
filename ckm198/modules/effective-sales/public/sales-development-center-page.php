@@ -33,6 +33,7 @@ final class SalesDevelopmentCenterPage {
         $scenarioId=(int)$w['scenario_id'];$training=(array)$w['training_attempts'];$checks=(array)$w['check_attempts'];
         $latest=is_array($w['latest_check']??null)?$w['latest_check']:null;$scriptId=(string)$script['id'];
         $adaptive=SalesAdaptivePolygonService::recommendation($script);$adaptiveHistory=SalesAdaptivePolygonService::history($script);
+        $realDialogs=SalesPracticeFeedbackService::realDialogHistory($scriptId,8);
         $pendingAdaptive=!empty($adaptive['pending'])&&is_array($adaptive['case']??null)?$adaptive['case']:null; ?>
         <section class="ckm-sales-center-progress" aria-label="Цикл развития продаж"><?php foreach($progress as $i=>$step): ?>
             <div class="<?php echo !empty($step['done'])?'is-done':''; ?>"><b><?php echo (int)($i+1); ?></b><span><?php echo esc_html((string)$step['title']); ?></span></div>
@@ -151,6 +152,41 @@ final class SalesDevelopmentCenterPage {
                 </div>
                 <div class="ckm-sales-inline-status" id="ckm-sales-real-dialog-status" aria-live="polite"></div>
             </div>
+            <?php if($realDialogs): ?>
+            <div class="ckm-sales-real-dialog-history">
+                <div class="ckm-sales-section-head"><div><div class="ckm-sales-kicker">ПОСЛЕДНИЕ РЕАЛЬНЫЕ РАЗГОВОРЫ</div><h3>Что уже превратилось в тренировку</h3></div><span class="ckm-sales-count"><?php echo count($realDialogs); ?> записей</span></div>
+                <div class="ckm-sales-real-dialog-list">
+                    <?php
+                    $channelLabels=['phone'=>'Телефон','telegram'=>'Telegram','max'=>'MAX','whatsapp'=>'WhatsApp','web'=>'Чат'];
+                    $outcomeLabels=['successful'=>'Успешно','unsuccessful'=>'Сделка не состоялась','stalled'=>'Диалог остановился','active'=>'В работе'];
+                    foreach($realDialogs as $dialog):
+                        $case=is_array($dialog['case']??null)?$dialog['case']:null;
+                        $scenarioIdCreated=(int)($case['scenario_id']??0);
+                    ?>
+                    <article class="ckm-sales-card ckm-sales-real-dialog-row">
+                        <div class="ckm-sales-real-dialog-meta">
+                            <strong><?php echo esc_html((string)($channelLabels[$dialog['channel']]??$dialog['channel'])); ?></strong>
+                            <span><?php echo esc_html((string)($outcomeLabels[$dialog['goal_status']]??$dialog['goal_status'])); ?></span>
+                            <small><?php echo esc_html((string)$dialog['last_at']); ?> · <?php echo (int)$dialog['messages']; ?> реплик</small>
+                        </div>
+                        <div class="ckm-sales-real-dialog-result">
+                            <?php if(!empty($dialog['case_created'])&&$case): ?>
+                                <span class="ckm-sales-status is-approved">Кейс создан</span>
+                                <strong><?php echo esc_html((string)($case['focus_title']??$dialog['focus_title']??'Тренировочная ситуация')); ?></strong>
+                                <?php if($scenarioIdCreated>0): ?><a class="ckm-sales-btn" href="<?php echo esc_url(self::url(['sales_custom_scenario'=>$scenarioIdCreated,'sales_format'=>'training','sales_methodology'=>$scriptId])); ?>">Открыть в Полигоне</a><?php endif; ?>
+                            <?php elseif((string)$dialog['goal_status']==='successful'): ?>
+                                <span class="ckm-sales-status is-approved">Хорошая практика</span>
+                                <strong>Отдельный тренировочный кейс не требуется</strong>
+                            <?php else: ?>
+                                <span class="ckm-sales-status">Нужен кейс</span>
+                                <strong><?php echo esc_html((string)($dialog['focus_title']??'Зона развития')); ?></strong>
+                            <?php endif; ?>
+                        </div>
+                    </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endif; ?>
         </section>
 
         <section class="ckm-sales-section" id="ckm-center-check">
