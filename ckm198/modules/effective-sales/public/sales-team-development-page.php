@@ -13,7 +13,7 @@ final class SalesTeamDevelopmentPage {
     }
 
     public static function render(): string {
-        $d=SalesTeamDevelopmentService::dashboard();$employees=(array)$d['employees'];$criteria=(array)$d['team_criteria'];$recommendations=(array)$d['recommendations'];$notice=SalesPage::takeScriptNotice();
+        $d=SalesTeamDevelopmentService::dashboard();$employees=(array)$d['employees'];$criteria=(array)$d['team_criteria'];$recommendations=(array)$d['recommendations'];$practice=SalesPracticeFeedbackService::teamEffectiveness();$notice=SalesPage::takeScriptNotice();
         ob_start(); ?>
         <?php if($notice): ?><div class="ckm-sales-card ckm-sales-workspace-notice <?php echo !empty($notice['error'])?'is-error':''; ?>"><?php echo esc_html((string)($notice['message']??'')); ?></div><?php endif; ?>
         <section class="ckm-sales-card ckm-sales-script-hero ckm-sales-team-hero">
@@ -26,6 +26,35 @@ final class SalesTeamDevelopmentPage {
             <div><small>Текущий средний балл</small><strong><?php echo esc_html(self::score($d['team_latest_average'])); ?></strong></div>
             <div><small>Нужна тренировка</small><strong><?php echo (int)$d['needs_training']; ?></strong></div>
           </div>
+        </section>
+
+        <section class="ckm-sales-section ckm-sales-practice-effectiveness">
+          <div class="ckm-sales-section-head"><div><div class="ckm-sales-kicker">ЭФФЕКТ В РЕАЛЬНОЙ ПРАКТИКЕ</div><h2>Исправляются ли ошибки после тренировки</h2></div><span class="ckm-sales-muted">Учитываются только связанные реальные разговоры сотрудников</span></div>
+          <div class="ckm-sales-practice-effectiveness-metrics">
+            <article class="ckm-sales-card"><small>Реальных ошибок</small><strong><?php echo (int)$practice['errors']; ?></strong></article>
+            <article class="ckm-sales-card"><small>Пройдено тренировок</small><strong><?php echo (int)$practice['trained']; ?></strong></article>
+            <article class="ckm-sales-card"><small>Перенос подтверждён</small><strong><?php echo (int)$practice['confirmed']; ?></strong></article>
+            <article class="ckm-sales-card"><small>Ошибка повторилась</small><strong><?php echo (int)$practice['repeated']; ?></strong></article>
+            <article class="ckm-sales-card"><small>Эффективность переноса</small><strong><?php echo $practice['rate']===null?'—':esc_html((string)$practice['rate']).'%'; ?></strong></article>
+          </div>
+          <?php if(!empty($practice['employees'])): ?>
+          <div class="ckm-sales-practice-effectiveness-table-wrap"><table class="ckm-sales-practice-effectiveness-table">
+            <thead><tr><th>Сотрудник</th><th>Ошибки</th><th>Тренировки</th><th>Подтверждено</th><th>Повторилось</th><th>Ждём практику</th><th>Перенос</th></tr></thead>
+            <tbody><?php foreach((array)$practice['employees'] as $row): ?>
+              <tr>
+                <td><strong><?php echo esc_html((string)$row['label']); ?></strong></td>
+                <td><?php echo (int)$row['errors']; ?></td>
+                <td><?php echo (int)$row['trained']; ?></td>
+                <td><?php echo (int)$row['confirmed']; ?></td>
+                <td><?php echo (int)$row['repeated']; ?></td>
+                <td><?php echo (int)$row['pending']; ?></td>
+                <td><span class="ckm-sales-status <?php echo $row['rate']!==null&&(float)$row['rate']>=75?'is-approved':''; ?>"><?php echo $row['rate']===null?'Нет данных':esc_html((string)$row['rate']).'%'; ?></span></td>
+              </tr>
+            <?php endforeach; ?></tbody>
+          </table></div>
+          <?php else: ?>
+            <div class="ckm-sales-card ckm-sales-team-empty"><h3>Пока нет замкнутых циклов</h3><p>После привязки реального разговора к сотруднику, назначения кейса и следующего разговора здесь появится фактический эффект обучения.</p></div>
+          <?php endif; ?>
         </section>
 
         <section class="ckm-sales-section">
